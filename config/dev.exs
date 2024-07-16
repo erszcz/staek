@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :staek, Staek.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "staek_db",
+  password: "staek_db_secret",
   hostname: "localhost",
-  database: "staek_dev",
+  database: "staek_db",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
