@@ -21,6 +21,7 @@ defmodule StaekWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/dashboard", DashboardController, :view
   end
 
   # Other scopes may use custom stacks.
