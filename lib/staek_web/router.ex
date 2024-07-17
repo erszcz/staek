@@ -22,6 +22,10 @@ defmodule StaekWeb.Router do
 
     get "/", PageController, :home
     get "/dashboard", DashboardController, :view
+
+    resources "/groups", GroupController
+    # get "/groups", GroupController, :index
+    # get "/groups/:id", GroupController, :show
   end
 
   # Other scopes may use custom stacks.
