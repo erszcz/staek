@@ -9,3 +9,22 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Staek.Repo
+alias Staek.Accounts.User
+
+user1 = %{
+  email: "user1@example.com",
+  password: "user1secret_whichmustbeatleastNcharacterslong"
+}
+
+user2 = %{
+  email: "user2@example.com",
+  password: "user2secret_whichmustbeatleastNcharacterslong"
+}
+
+Enum.each([user1, user2], fn user ->
+  %User{}
+  |> User.registration_changeset(user)
+  |> Repo.insert!()
+end)
