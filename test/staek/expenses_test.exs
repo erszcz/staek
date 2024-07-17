@@ -2,6 +2,7 @@ defmodule Staek.ExpensesTest do
   use Staek.DataCase
 
   alias Staek.Expenses
+  alias Staek.Expenses.GroupMembers
 
   describe "groups" do
     alias Staek.Expenses.Group
@@ -54,6 +55,61 @@ defmodule Staek.ExpensesTest do
     test "change_group/1 returns a group changeset" do
       group = group_fixture()
       assert %Ecto.Changeset{} = Expenses.change_group(group)
+    end
+  end
+
+  describe "group_members" do
+    alias Staek.Accounts.User
+    alias Staek.Expenses.Group
+
+    import Staek.AccountsFixtures
+    import Staek.ExpensesFixtures
+
+    setup do
+      user1 = user_fixture()
+      user2 = user_fixture()
+      group1 = group_fixture()
+
+      memberships = [
+        {user1.id, group1.id},
+        {user2.id, group1.id}
+      ]
+
+      Enum.each(memberships, fn {user_id, group_id} ->
+        %GroupMembers{}
+        |> GroupMembers.changeset(%{group_id: group_id, user_id: user_id})
+        |> Repo.insert!()
+      end)
+
+      %{
+        user1: user1,
+        user2: user2,
+        group1: group1
+      }
+    end
+
+    test "User.groups returns user's groups", ctx do
+      %{user1: user1, user2: user2, group1: group1} = ctx
+
+      user1 = user1 |> Repo.preload(:groups)
+      user2 = user2 |> Repo.preload(:groups)
+
+      assert user1.groups == [group1]
+      assert user2.groups == [group1]
+    end
+
+    test "Group.members returns group members", ctx do
+      %{user1: user1, user2: user2, group1: group1} = ctx
+
+      group1 = group1 |> Repo.preload(members:
+        from(
+          user in User,
+          join: gm in GroupMembers,
+          on: gm.user_id == user.id,
+          order_by: user.id)
+      )
+
+      assert group1.members == Enum.sort_by([user1, user2], &(&1.id))
     end
   end
 end
