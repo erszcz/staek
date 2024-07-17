@@ -12,6 +12,7 @@
 
 alias Staek.Repo
 alias Staek.Accounts.User
+alias Staek.Expenses.Group
 
 user1 = %{
   email: "user1@example.com",
@@ -23,8 +24,21 @@ user2 = %{
   password: "user2secret_whichmustbeatleastNcharacterslong"
 }
 
-Enum.each([user1, user2], fn user ->
+user3 = %{
+  email: "user3@example.com",
+  password: "user3secret_whichmustbeatleastNcharacterslong"
+}
+
+Enum.each([user1, user2, user3], fn user ->
   %User{}
   |> User.registration_changeset(user)
   |> Repo.insert!()
 end)
+
+group1 = %{
+  name: "Last night out"
+}
+
+%Group{}
+|> Group.changeset(group1)
+|> Repo.insert!()
