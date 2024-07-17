@@ -6,6 +6,7 @@ defmodule Staek.Expenses do
   import Ecto.Query, warn: false
   alias Staek.Repo
 
+  alias Staek.Accounts.User
   alias Staek.Expenses.Group
 
   @doc """
@@ -100,5 +101,10 @@ defmodule Staek.Expenses do
   """
   def change_group(%Group{} = group, attrs \\ %{}) do
     Group.changeset(group, attrs)
+  end
+
+  def get_user_groups(%User{} = user) do
+    user = user |> Repo.preload(:groups)
+    user.groups
   end
 end
