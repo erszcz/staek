@@ -5,6 +5,11 @@
       <div>
         <span class="text-lg">Groups</span>
         <a href="">+ add</a>
+        <ul>
+        <%= for group <- @groups do %>
+          <li><a href={~p"/groups/#{group.id}"}><%= group.name %></a></li>
+        <% end %>
+        </ul>
       </div>
       <div>
         <span class="text-lg">Friends</span>
