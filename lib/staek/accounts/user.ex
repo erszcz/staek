@@ -2,12 +2,17 @@ defmodule Staek.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Staek.Expenses.Group
+  alias Staek.Expenses.GroupMembers
+
   schema "users" do
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
+
+    many_to_many :groups, Group, join_through: GroupMembers
 
     timestamps(type: :utc_datetime)
   end
