@@ -30,19 +30,21 @@ user3_params = %{
   password: "user3secret_whichmustbeatleastNcharacterslong"
 }
 
-[user1, _user2, user3] = Enum.map([user1_params, user2_params, user3_params], fn user ->
-  %User{}
-  |> User.registration_changeset(user)
-  |> Repo.insert!()
-end)
+[user1, _user2, user3] =
+  Enum.map([user1_params, user2_params, user3_params], fn user ->
+    %User{}
+    |> User.registration_changeset(user)
+    |> Repo.insert!()
+  end)
 
 group1_params = %{
   name: "Last night out"
 }
 
-group1 = %Group{}
-         |> Group.changeset(group1_params)
-         |> Repo.insert!()
+group1 =
+  %Group{}
+  |> Group.changeset(group1_params)
+  |> Repo.insert!()
 
 memberships = [{group1.id, user1.id}, {group1.id, user3.id}]
 
