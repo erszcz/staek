@@ -19,6 +19,13 @@ defmodule Staek.Expenses.Group do
   def changeset(group, attrs) do
     group
     |> cast(attrs, @required)
+    |> maybe_put_members(attrs[:members])
     |> validate_required(@required)
+  end
+
+  defp maybe_put_members(group, nil), do: group
+
+  defp maybe_put_members(group, members) do
+    put_assoc(group, :members, members)
   end
 end

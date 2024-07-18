@@ -13,7 +13,6 @@
 alias Staek.Repo
 alias Staek.Accounts.User
 alias Staek.Expenses.Group
-alias Staek.Expenses.GroupMembers
 
 user1_params = %{
   email: "user1@example.com",
@@ -38,18 +37,11 @@ user3_params = %{
   end)
 
 group1_params = %{
-  name: "Last night out"
+  name: "Last night out",
+  members: [user1, user3]
 }
 
 group1 =
   %Group{}
   |> Group.changeset(group1_params)
   |> Repo.insert!()
-
-memberships = [{group1.id, user1.id}, {group1.id, user3.id}]
-
-Enum.each(memberships, fn {group_id, user_id} ->
-  %GroupMembers{}
-  |> GroupMembers.changeset(%{group_id: group_id, user_id: user_id})
-  |> Repo.insert!()
-end)
