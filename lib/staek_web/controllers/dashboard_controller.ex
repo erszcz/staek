@@ -7,7 +7,9 @@ defmodule StaekWeb.DashboardController do
     current_user = conn.assigns[:current_user]
     conn = if current_user do
       conn
-      |> assign(:groups, Expenses.get_user_groups(current_user))
+      |> assign(:groups, Enum.map(Expenses.get_user_groups(current_user), fn group ->
+        %{name: group.name, path: ~p"/groups/#{group.id}"}
+      end))
     else
       conn
     end
