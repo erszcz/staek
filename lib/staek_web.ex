@@ -85,6 +85,7 @@ defmodule StaekWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import StaekWeb.CoreComponents
+      import StaekWeb.CustomComponents
       import StaekWeb.Gettext
 
       # Shortcut for generating JS commands

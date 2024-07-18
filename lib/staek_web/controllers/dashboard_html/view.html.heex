@@ -1,22 +1,10 @@
 <div class="flex flex-row">
+
   <!-- left col -->
-  <div class="basis-1/5 p-2 border-l">
-    <div class="flex flex-col">
-      <div>
-        <span class="text-lg">Groups</span>
-        <a href="">+ add</a>
-        <ul>
-        <%= for group <- @groups do %>
-          <li><a href={~p"/groups/#{group.id}"}><%= group.name %></a></li>
-        <% end %>
-        </ul>
-      </div>
-      <div>
-        <span class="text-lg">Friends</span>
-        <a href="">+ add</a>
-      </div>
-    </div>
+  <div class="basis-1/5 p-2">
+    <.user_groups groups={@groups} />
   </div>
+
   <!-- middle col -->
   <div class="basis-3/5 bg-slate-50 shadow-lg p-2">
     <div class="text-3xl">Dashboard</div>
@@ -25,8 +13,10 @@
       <div class="basis-1/2">You are owed</div>
     </div>
   </div>
+
   <!-- right col -->
   <div class="basis-1/5 p-2 border-r">
     <span class="text-lg">Staek Pro</span>: pay once, eat twice! ;p
   </div>
+
 </div>
