@@ -4,16 +4,12 @@ defmodule StaekWeb.DashboardController do
   alias Staek.Expenses
 
   def view(conn, _params) do
-    current_user = conn.assigns[:current_user]
+    current_user = conn.assigns.current_user
 
     groups =
-      if current_user do
-        Enum.map(Expenses.get_user_groups(current_user), fn group ->
-          %{name: group.name, path: ~p"/groups/#{group.id}"}
-        end)
-      else
-        []
-      end
+      Enum.map(Expenses.get_user_groups(current_user), fn group ->
+        %{name: group.name, path: ~p"/groups/#{group.id}"}
+      end)
 
     conn =
       conn
