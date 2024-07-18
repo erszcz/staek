@@ -101,15 +101,19 @@ defmodule Staek.ExpensesTest do
     test "Group.members returns group members", ctx do
       %{user1: user1, user2: user2, group1: group1} = ctx
 
-      group1 = group1 |> Repo.preload(members:
-        from(
-          user in User,
-          join: gm in GroupMembers,
-          on: gm.user_id == user.id,
-          order_by: user.id)
-      )
+      group1 =
+        group1
+        |> Repo.preload(
+          members:
+            from(
+              user in User,
+              join: gm in GroupMembers,
+              on: gm.user_id == user.id,
+              order_by: user.id
+            )
+        )
 
-      assert group1.members == Enum.sort_by([user1, user2], &(&1.id))
+      assert group1.members == Enum.sort_by([user1, user2], & &1.id)
     end
   end
 end
