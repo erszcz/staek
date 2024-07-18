@@ -15,6 +15,14 @@ defmodule StaekWeb.GroupController do
   end
 
   def create(conn, %{"group" => group_params}) do
+    current_user = conn.assigns.current_user
+
+    group_params =
+      Map.merge(
+        %{"members" => [current_user]},
+        group_params
+      )
+
     case Expenses.create_group(group_params) do
       {:ok, group} ->
         conn
