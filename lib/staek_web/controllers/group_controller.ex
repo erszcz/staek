@@ -35,8 +35,16 @@ defmodule StaekWeb.GroupController do
   end
 
   def show(conn, %{"id" => id}) do
+    current_user = conn.assigns.current_user
+
+    groups =
+      Enum.map(Expenses.get_user_groups(current_user), fn group ->
+        %{name: group.name, path: ~p"/groups/#{group.id}"}
+      end)
+
     group = Expenses.get_group!(id)
-    render(conn, :show, group: group)
+
+    render(conn, :show, group: group, groups: groups)
   end
 
   def edit(conn, %{"id" => id}) do

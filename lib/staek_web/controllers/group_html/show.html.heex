@@ -1,15 +1,25 @@
-<.header>
-  Group <%= @group.id %>
-  <:subtitle>This is a group record from your database.</:subtitle>
-  <:actions>
-    <.link href={~p"/groups/#{@group}/edit"}>
-      <.button>Edit group</.button>
-    </.link>
-  </:actions>
-</.header>
-
-<.list>
-  <:item title="Name"><%= @group.name %></:item>
-</.list>
-
-<.back navigate={~p"/groups"}>Back to groups</.back>
+<div class="flex flex-row gap-2">
+  <!-- left col -->
+  <div class="basis-1/5">
+    <.user_groups groups={@groups} />
+  </div>
+  <!-- middle col -->
+  <div class="flex flex-col basis-3/5 bg-white rounded-lg shadow-lg p-4 gap-4">
+    <div class="flex flex-row">
+      <div class="basis-3/5 text-3xl"><%= @group.name %></div>
+      <div class="basis-1/5">Add an expense</div>
+      <div class="basis-1/5">Settle up</div>
+    </div>
+    <div class="flex flex-row">
+      <ul>
+        <li>Expense 1 - 50.00</li>
+        <li>Expense 2 - 150.00</li>
+      </ul>
+    </div>
+  </div>
+  <!-- right col -->
+  <div class="flex flex-col basis-1/5 bg-white rounded-lg shadow-lg p-4">
+    <div>Group balances</div>
+    <div>View details</div>
+  </div>
+</div>
