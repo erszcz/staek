@@ -17,4 +17,19 @@ defmodule Staek.ExpensesFixtures do
 
     group
   end
+
+  @doc """
+  Generate a expense.
+  """
+  def expense_fixture(attrs \\ %{}) do
+    {:ok, expense} =
+      attrs
+      |> Enum.into(%{
+        name: "some name",
+        total: "120.5"
+      })
+      |> Staek.Expenses.create_expense()
+
+    expense
+  end
 end
