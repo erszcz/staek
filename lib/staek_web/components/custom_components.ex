@@ -6,14 +6,17 @@ defmodule StaekWeb.CustomComponents do
   ## Flowbite List Group
   def user_groups(assigns) do
     ~H"""
-    <div class="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-      <div class="block w-full px-4 py-2 text-slate-600 font-bold bg-slate-200 border-b border-gray-200 first:rounded-t-lg last:rounded-b-lg dark:bg-gray-800 dark:border-gray-600">
-        Groups <a class="float-end" href="/groups/new">+ add</a>
+    <div class="w-full text-sm font-medium text-gray-900 bg-white rounded-lg shadow-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <div class="flex flex-row w-full px-4 py-2 text-gray-600 font-bold bg-gray-200 border-b border-gray-200 first:rounded-t-lg last:rounded-b-lg dark:bg-gray-800 dark:border-gray-600">
+        <div class="basis-2/3">Groups</div>
+        <div class="basis-1/3">
+          <a class="float-end hover:text-gray-400" href="/groups/new">&nbsp;+&nbsp;add</a>
+        </div>
       </div>
       <a
         :for={group <- @groups}
         href={group.path}
-        class="relative inline-flex items-center w-full px-4 py-2 last:rounded-b-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-1 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        class="relative inline-flex items-center w-full px-4 py-2 last:rounded-b-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
       >
         <svg
           class="w-6 h-6 text-gray-800 dark:text-white mr-2"
