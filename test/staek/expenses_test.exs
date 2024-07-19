@@ -147,4 +147,30 @@ defmodule Staek.ExpensesTest do
       assert %Ecto.Changeset{} = Expenses.change_expense(expense)
     end
   end
+
+  describe "group expenses" do
+    import Staek.ExpensesFixtures
+
+    setup do
+      group1 = group_fixture()
+      exp1 = expense_fixture(group: group1)
+      exp2 = expense_fixture(group: group1)
+
+      %{
+        group1: group1,
+        exp1: exp1,
+        exp2: exp2
+      }
+    end
+
+    test "are accessible", ctx do
+      %{group1: group1, exp1: exp1, exp2: exp2} = ctx
+
+      group1 =
+        group1
+        |> Repo.preload(:expenses)
+
+      assert Enum.map(group1.expenses, & &1.id) == [exp1.id, exp2.id]
+    end
+  end
 end

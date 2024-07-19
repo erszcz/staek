@@ -2,10 +2,12 @@ defmodule Staek.Expenses.Expense do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Staek.Expenses.Group
+
   schema "expenses" do
     field :name, :string
     field :total, :decimal
-    field :group_id, :id
+    belongs_to :group, Group
 
     timestamps(type: :utc_datetime)
   end
@@ -14,6 +16,15 @@ defmodule Staek.Expenses.Expense do
   def changeset(expense, attrs) do
     expense
     |> cast(attrs, [:name, :total])
+    |> maybe_put_group(attrs)
     |> validate_required([:name, :total])
+  end
+
+  defp maybe_put_group(expense, attrs) do
+    if group = attrs["group"] || attrs[:group] do
+      put_assoc(expense, :group, group)
+    else
+      expense
+    end
   end
 end

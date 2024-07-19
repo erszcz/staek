@@ -3,11 +3,13 @@ defmodule Staek.Expenses.Group do
   import Ecto.Changeset
 
   alias Staek.Accounts.User
+  alias Staek.Expenses.Expense
   alias Staek.Expenses.GroupMembers
 
   schema "groups" do
     field :name, :string
 
+    has_many :expenses, Expense
     many_to_many :members, User, join_through: GroupMembers
 
     timestamps(type: :utc_datetime)
