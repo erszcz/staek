@@ -1,4 +1,4 @@
-defmodule Staek.Expenses.Debits do
+defmodule Staek.Expenses.Debit do
   use Ecto.Schema
   import Ecto.Changeset
 
