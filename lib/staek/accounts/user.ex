@@ -2,6 +2,8 @@ defmodule Staek.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Staek.Expenses.Credit
+  alias Staek.Expenses.Debit
   alias Staek.Expenses.Group
   alias Staek.Expenses.GroupMembers
 
@@ -13,6 +15,8 @@ defmodule Staek.Accounts.User do
     field :confirmed_at, :utc_datetime
 
     many_to_many :groups, Group, join_through: GroupMembers
+    has_many :credits, Credit
+    has_many :debits, Debit
 
     timestamps(type: :utc_datetime)
   end

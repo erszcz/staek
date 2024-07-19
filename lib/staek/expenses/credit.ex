@@ -2,18 +2,39 @@ defmodule Staek.Expenses.Credit do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Staek.Accounts.User
+  alias Staek.Expenses.Expense
+
   schema "credits" do
     field :amount, :decimal
-    field :expense_id, :id
-    field :user_id, :id
+    belongs_to :expense, Expense
+    belongs_to :user, User
 
     timestamps(type: :utc_datetime)
   end
 
   @doc false
-  def changeset(credits, attrs) do
-    credits
+  def changeset(credit, attrs) do
+    credit
     |> cast(attrs, [:amount])
+    |> maybe_put_expense(attrs)
+    |> maybe_put_user(attrs)
     |> validate_required([:amount])
+  end
+
+  defp maybe_put_expense(credit, attrs) do
+    if expense = attrs[:expense] || attrs["expense"] do
+      put_assoc(credit, :expense, expense)
+    else
+      credit
+    end
+  end
+
+  defp maybe_put_user(credit, attrs) do
+    if user = attrs[:user] || attrs["user"] do
+      put_assoc(credit, :user, user)
+    else
+      credit
+    end
   end
 end

@@ -175,14 +175,19 @@ defmodule Staek.ExpensesTest do
   end
 
   describe "expense debits and credits" do
+    import Staek.AccountsFixtures
     import Staek.ExpensesFixtures
 
     setup do
-      credit1 = credit_fixture()
-      debit1 = debit_fixture()
+      user1 = user_fixture()
+      user2 = user_fixture()
+      credit1 = credit_fixture(user: user1)
+      debit1 = debit_fixture(user: user2)
       exp1 = expense_fixture(credits: [credit1], debits: [debit1])
 
       %{
+        user1: user1,
+        user2: user2,
         credit1: credit1,
         debit1: debit1,
         exp1: exp1
@@ -198,6 +203,19 @@ defmodule Staek.ExpensesTest do
 
       assert Enum.map(exp1.credits, & &1.id) == [credit1.id]
       assert Enum.map(exp1.debits, & &1.id) == [debit1.id]
+    end
+
+    test "have accessible users and can be accessed on users", ctx do
+      %{credit1: credit1, debit1: debit1, user1: user1, user2: user2} = ctx
+
+      [user1, user2] = Enum.map([user1, user2], &Repo.preload(&1, [:credits, :debits]))
+
+      assert credit1.user_id == user1.id
+      assert debit1.user_id == user2.id
+      assert Enum.map(user1.credits, & &1.id) == [credit1.id]
+      assert Enum.map(user1.debits, & &1.id) == []
+      assert Enum.map(user2.credits, & &1.id) == []
+      assert Enum.map(user2.debits, & &1.id) == [debit1.id]
     end
   end
 end
