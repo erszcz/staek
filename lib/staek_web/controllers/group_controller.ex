@@ -35,16 +35,24 @@ defmodule StaekWeb.GroupController do
   end
 
   def show(conn, %{"id" => id}) do
-    current_user = conn.assigns.current_user
+    try do
+      group = Expenses.get_group!(id, [:expenses])
 
-    groups =
-      Enum.map(Expenses.get_user_groups(current_user), fn group ->
-        %{name: group.name, path: ~p"/groups/#{group.id}"}
-      end)
+      current_user = conn.assigns.current_user
 
-    group = Expenses.get_group!(id, [:expenses])
+      groups =
+        Enum.map(Expenses.get_user_groups(current_user), fn group ->
+          %{name: group.name, path: ~p"/groups/#{group.id}"}
+        end)
 
-    render(conn, :show, group: group, expenses: group.expenses, groups: groups)
+      render(conn, :show, group: group, expenses: group.expenses, groups: groups)
+    rescue
+      Ecto.NoResultsError ->
+        conn
+        |> put_status(404)
+        |> render(StaekWeb.ErrorHTML, "404.html")
+        |> halt()
+    end
   end
 
   def edit(conn, %{"id" => id}) do
