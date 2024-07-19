@@ -43,8 +43,28 @@ group1_params = %{
 
 {:ok, group1} = Expenses.create_group(group1_params)
 
+{:ok, exp1credit1} = Expenses.create_credit(%{user: user1, amount: "120.0"})
+{:ok, exp1debit1} = Expenses.create_debit(%{user: user1, amount: "70.0"})
+{:ok, exp1debit2} = Expenses.create_debit(%{user: user3, amount: "50.0"})
+
 {:ok, exp1} =
-  Expenses.create_expense(%{name: "Dinner", total: Decimal.new("120.0"), group: group1})
+  Expenses.create_expense(%{
+    name: "Dinner",
+    group: group1,
+    total: "120.0",
+    credits: [exp1credit1],
+    debits: [exp1debit1, exp1debit2]
+  })
+
+{:ok, exp2credit1} = Expenses.create_credit(%{user: user3, amount: "220.0"})
+{:ok, exp2debit1} = Expenses.create_debit(%{user: user3, amount: "120.0"})
+{:ok, exp2debit2} = Expenses.create_debit(%{user: user1, amount: "100.0"})
 
 {:ok, exp2} =
-  Expenses.create_expense(%{name: "Drinks", total: Decimal.new("220.0"), group: group1})
+  Expenses.create_expense(%{
+    name: "Drinks",
+    group: group1,
+    total: "120.0",
+    credits: [exp2credit1],
+    debits: [exp2debit1, exp2debit2]
+  })
