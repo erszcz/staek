@@ -12,8 +12,7 @@
     </div>
     <div class="flex flex-row">
       <ul>
-        <li>Expense 1 - 50.00</li>
-        <li>Expense 2 - 150.00</li>
+        <li :for={expense <- @expenses}><%= expense.name %>, cost: <%= expense.total %></li>
       </ul>
     </div>
   </div>

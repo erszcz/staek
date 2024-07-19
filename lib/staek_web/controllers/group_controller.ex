@@ -42,9 +42,9 @@ defmodule StaekWeb.GroupController do
         %{name: group.name, path: ~p"/groups/#{group.id}"}
       end)
 
-    group = Expenses.get_group!(id)
+    group = Expenses.get_group!(id, [:expenses])
 
-    render(conn, :show, group: group, groups: groups)
+    render(conn, :show, group: group, expenses: group.expenses, groups: groups)
   end
 
   def edit(conn, %{"id" => id}) do
