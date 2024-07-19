@@ -32,4 +32,32 @@ defmodule Staek.ExpensesFixtures do
 
     expense
   end
+
+  @doc """
+  Generate a credit.
+  """
+  def credit_fixture(attrs \\ %{}) do
+    {:ok, credit} =
+      attrs
+      |> Enum.into(%{
+        amount: "120.5"
+      })
+      |> Staek.Expenses.create_credit()
+
+    credit
+  end
+
+  @doc """
+  Generate a debit.
+  """
+  def debit_fixture(attrs \\ %{}) do
+    {:ok, debit} =
+      attrs
+      |> Enum.into(%{
+        amount: "120.5"
+      })
+      |> Staek.Expenses.create_debit()
+
+    debit
+  end
 end

@@ -21,12 +21,30 @@ defmodule Staek.Expenses.Expense do
     expense
     |> cast(attrs, [:name, :total])
     |> maybe_put_group(attrs)
+    |> maybe_put_credits(attrs)
+    |> maybe_put_debits(attrs)
     |> validate_required([:name, :total])
   end
 
   defp maybe_put_group(expense, attrs) do
     if group = attrs["group"] || attrs[:group] do
       put_assoc(expense, :group, group)
+    else
+      expense
+    end
+  end
+
+  defp maybe_put_credits(expense, attrs) do
+    if credits = attrs[:credits] || attrs["credits"] do
+      put_assoc(expense, :credits, credits)
+    else
+      expense
+    end
+  end
+
+  defp maybe_put_debits(expense, attrs) do
+    if debits = attrs[:debits] || attrs["debits"] do
+      put_assoc(expense, :debits, debits)
     else
       expense
     end

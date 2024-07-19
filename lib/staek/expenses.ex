@@ -7,6 +7,8 @@ defmodule Staek.Expenses do
   alias Staek.Repo
 
   alias Staek.Accounts.User
+  alias Staek.Expenses.Credit
+  alias Staek.Expenses.Debit
   alias Staek.Expenses.Group
 
   @doc """
@@ -206,5 +208,41 @@ defmodule Staek.Expenses do
   """
   def change_expense(%Expense{} = expense, attrs \\ %{}) do
     Expense.changeset(expense, attrs)
+  end
+
+  @doc """
+  Creates a credit.
+
+  ## Examples
+
+      iex> create_credit(%{field: value})
+      {:ok, %Credit{}}
+
+      iex> create_credit(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_credit(attrs \\ %{}) do
+    %Credit{}
+    |> Credit.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Creates a debit.
+
+  ## Examples
+
+      iex> create_debit(%{field: value})
+      {:ok, %Debit{}}
+
+      iex> create_debit(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_debit(attrs \\ %{}) do
+    %Debit{}
+    |> Debit.changeset(attrs)
+    |> Repo.insert()
   end
 end

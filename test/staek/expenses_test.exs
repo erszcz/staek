@@ -173,4 +173,31 @@ defmodule Staek.ExpensesTest do
       assert Enum.map(group1.expenses, & &1.id) == [exp1.id, exp2.id]
     end
   end
+
+  describe "expense debits and credits" do
+    import Staek.ExpensesFixtures
+
+    setup do
+      credit1 = credit_fixture()
+      debit1 = debit_fixture()
+      exp1 = expense_fixture(credits: [credit1], debits: [debit1])
+
+      %{
+        credit1: credit1,
+        debit1: debit1,
+        exp1: exp1
+      }
+    end
+
+    test "are accessible", ctx do
+      %{credit1: credit1, debit1: debit1, exp1: exp1} = ctx
+
+      exp1 =
+        exp1
+        |> Repo.preload([:credits, :debits])
+
+      assert Enum.map(exp1.credits, & &1.id) == [credit1.id]
+      assert Enum.map(exp1.debits, & &1.id) == [debit1.id]
+    end
+  end
 end
