@@ -12,7 +12,7 @@
 
 alias Staek.Repo
 alias Staek.Accounts.User
-alias Staek.Expenses.Group
+alias Staek.Expenses
 
 user1_params = %{
   email: "user1@example.com",
@@ -41,7 +41,10 @@ group1_params = %{
   members: [user1, user3]
 }
 
-group1 =
-  %Group{}
-  |> Group.changeset(group1_params)
-  |> Repo.insert!()
+{:ok, group1} = Expenses.create_group(group1_params)
+
+{:ok, exp1} =
+  Expenses.create_expense(%{name: "Dinner", total: Decimal.new("120.0"), group: group1})
+
+{:ok, exp2} =
+  Expenses.create_expense(%{name: "Drinks", total: Decimal.new("220.0"), group: group1})
