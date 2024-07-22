@@ -45,7 +45,9 @@ defmodule StaekWeb.GroupController do
           %{name: group.name, href: ~p"/groups/#{group.id}"}
         end)
 
-      render(conn, :show, group: group, expenses: group.expenses, groups: groups)
+      expenses = group_expenses_for_user(group, current_user)
+
+      render(conn, :show, group: group, expenses: expenses, groups: groups)
     rescue
       Ecto.NoResultsError ->
         conn
@@ -53,6 +55,31 @@ defmodule StaekWeb.GroupController do
         |> render(StaekWeb.ErrorHTML, "404.html")
         |> halt()
     end
+  end
+
+  @type expense_for_user() :: %{
+          name: String.t(),
+          creditor: String.t(),
+          total_credit: Decimal.t(),
+          user_debit: Decimal.t()
+        }
+
+  @spec group_expenses_for_user(any, any) :: [expense_for_user()]
+  defp group_expenses_for_user(group, user) do
+    [
+      %{
+        name: "Dinner",
+        creditors: ["User1", "User2"],
+        total_credit: "122.0",
+        user_debit: "61.0"
+      },
+      %{
+        name: "Drinks",
+        creditors: ["User1"],
+        total_credit: "222.0",
+        user_debit: "111.0"
+      }
+    ]
   end
 
   def edit(conn, %{"id" => id}) do

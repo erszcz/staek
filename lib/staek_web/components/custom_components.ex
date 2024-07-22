@@ -62,4 +62,33 @@ defmodule StaekWeb.CustomComponents do
     </svg>
     """
   end
+
+  attr :items, :any, required: true
+
+  def expenses(assigns) do
+    ~H"""
+    <div :if={@items != []} class="flex flex-col">
+      <div :for={expense <- @items} class="odd:bg-gray-100 last:rounded-b-lg">
+        <a href="" class="block w-full flex flex-row">
+          <div class="basis-2/5 text-xl m-auto px-4 py-3"><%= expense.name %></div>
+          <div class="basis-2/5 text-right">
+            <span class="text-sm">
+              <%= case expense.creditors do
+                [user] -> user
+                _ -> "others"
+              end %> paid
+            </span>
+            <br /><%= expense.total_credit %>
+          </div>
+          <div class="basis-1/5 text-right pr-4">
+            <span class="text-sm">you owe</span> <br /><%= expense.user_debit %>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div :if={@items == []} class="p-4">
+      No expenses recorded in this group
+    </div>
+    """
+  end
 end

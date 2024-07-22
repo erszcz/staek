@@ -14,13 +14,7 @@
         <a class="hover:text-gray-400" href="">Settle up</a>
       </div>
     </div>
-    <div class="flex flex-row p-4">
-      <ul>
-        <li :for={expense <- @expenses}>
-          <a href=""><%= expense.name %>, cost: 123.0</a>
-        </li>
-      </ul>
-    </div>
+    <.expenses items={@expenses} />
   </div>
   <!-- right col -->
   <div class="flex flex-col basis-1/5 bg-white rounded-lg shadow-lg p-4">
