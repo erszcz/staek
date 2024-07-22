@@ -245,4 +245,17 @@ defmodule Staek.Expenses do
     |> Debit.changeset(attrs)
     |> Repo.insert()
   end
+
+  @spec get_group_expenses(integer()) :: [%Expense{}]
+  def get_group_expenses(group_id) do
+    from(e in Expense,
+      where: e.group_id == ^group_id,
+      join: c in assoc(e, :credits),
+      join: d in assoc(e, :debits),
+      group_by: e.id,
+      order_by: [desc: e.inserted_at]
+    )
+    |> Repo.all()
+    |> Repo.preload([:credits, :debits])
+  end
 end
