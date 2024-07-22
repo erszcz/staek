@@ -4,15 +4,21 @@
     <.user_groups {assigns} />
   </div>
   <!-- middle col -->
-  <div class="flex flex-col basis-3/5 bg-white rounded-lg shadow-lg p-4 gap-4">
-    <div class="flex flex-row">
-      <div class="basis-3/5 text-3xl"><%= @group.name %></div>
-      <div class="basis-1/5">Add an expense</div>
-      <div class="basis-1/5">Settle up</div>
+  <div class="flex flex-col basis-3/5 bg-white rounded-lg shadow-lg">
+    <div class="flex flex-row w-full text-gray-600 border-b border-gray-300 first:rounded-t-lg last:rounded-b-lg dark:bg-gray-800 dark:border-gray-600">
+      <div class="basis-2/5 text-3xl px-4 py-3"><%= @group.name %></div>
+      <div class="basis-2/5 text-right m-auto">
+        <a class="hover:text-gray-400" href="">Add an expense</a>
+      </div>
+      <div class="basis-1/5 text-right m-auto pr-4">
+        <a class="hover:text-gray-400" href="">Settle up</a>
+      </div>
     </div>
-    <div class="flex flex-row">
+    <div class="flex flex-row p-4">
       <ul>
-        <li :for={expense <- @expenses}><%= expense.name %>, cost: <%= expense.total %></li>
+        <li :for={expense <- @expenses}>
+          <a href=""><%= expense.name %>, cost: <%= expense.total %></a>
+        </li>
       </ul>
     </div>
   </div>
