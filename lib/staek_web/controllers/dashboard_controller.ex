@@ -8,7 +8,7 @@ defmodule StaekWeb.DashboardController do
 
     groups =
       Enum.map(Expenses.get_user_groups(current_user), fn group ->
-        %{name: group.name, path: ~p"/groups/#{group.id}"}
+        %{name: group.name, href: ~p"/groups/#{group.id}"}
       end)
 
     conn =

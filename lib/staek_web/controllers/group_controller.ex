@@ -42,7 +42,7 @@ defmodule StaekWeb.GroupController do
 
       groups =
         Enum.map(Expenses.get_user_groups(current_user), fn group ->
-          %{name: group.name, path: ~p"/groups/#{group.id}"}
+          %{name: group.name, href: ~p"/groups/#{group.id}"}
         end)
 
       render(conn, :show, group: group, expenses: group.expenses, groups: groups)
