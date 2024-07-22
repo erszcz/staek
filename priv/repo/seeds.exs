@@ -51,8 +51,6 @@ group1_params = %{
   Expenses.create_expense(%{
     name: "Dinner",
     group: group1,
-    ## TODO: drop total, compute from credits and debits
-    # total: "120.0",
     credits: [exp1credit1],
     debits: [exp1debit1, exp1debit2]
   })
@@ -65,8 +63,6 @@ group1_params = %{
   Expenses.create_expense(%{
     name: "Drinks",
     group: group1,
-    ## TODO: drop total, compute from credits and debits
-    # total: "120.0",
     credits: [exp2credit1],
     debits: [exp2debit1, exp2debit2]
   })

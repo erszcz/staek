@@ -4,7 +4,6 @@ defmodule Staek.Repo.Migrations.CreateExpenses do
   def change do
     create table(:expenses) do
       add :name, :string
-      add :total, :decimal
       add :group_id, references(:groups, on_delete: :delete_all)
 
       timestamps(type: :utc_datetime)

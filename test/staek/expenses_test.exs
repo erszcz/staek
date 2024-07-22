@@ -97,7 +97,7 @@ defmodule Staek.ExpensesTest do
 
     import Staek.ExpensesFixtures
 
-    @invalid_attrs %{name: nil, total: nil}
+    @invalid_attrs %{name: nil}
 
     test "list_expenses/0 returns all expenses" do
       expense = expense_fixture()
@@ -110,11 +110,10 @@ defmodule Staek.ExpensesTest do
     end
 
     test "create_expense/1 with valid data creates a expense" do
-      valid_attrs = %{name: "some name", total: "120.5"}
+      valid_attrs = %{name: "some name"}
 
       assert {:ok, %Expense{} = expense} = Expenses.create_expense(valid_attrs)
       assert expense.name == "some name"
-      assert expense.total == Decimal.new("120.5")
     end
 
     test "create_expense/1 with invalid data returns error changeset" do
@@ -123,11 +122,10 @@ defmodule Staek.ExpensesTest do
 
     test "update_expense/2 with valid data updates the expense" do
       expense = expense_fixture()
-      update_attrs = %{name: "some updated name", total: "456.7"}
+      update_attrs = %{name: "some updated name"}
 
       assert {:ok, %Expense{} = expense} = Expenses.update_expense(expense, update_attrs)
       assert expense.name == "some updated name"
-      assert expense.total == Decimal.new("456.7")
     end
 
     test "update_expense/2 with invalid data returns error changeset" do

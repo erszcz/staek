@@ -8,7 +8,6 @@ defmodule Staek.Expenses.Expense do
 
   schema "expenses" do
     field :name, :string
-    field :total, :decimal
     belongs_to :group, Group
     has_many :credits, Credit
     has_many :debits, Debit
@@ -19,11 +18,11 @@ defmodule Staek.Expenses.Expense do
   @doc false
   def changeset(expense, attrs) do
     expense
-    |> cast(attrs, [:name, :total])
+    |> cast(attrs, [:name])
     |> maybe_put_group(attrs)
     |> maybe_put_credits(attrs)
     |> maybe_put_debits(attrs)
-    |> validate_required([:name, :total])
+    |> validate_required([:name])
   end
 
   defp maybe_put_group(expense, attrs) do

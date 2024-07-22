@@ -3,9 +3,9 @@ defmodule StaekWeb.ExpenseControllerTest do
 
   import Staek.ExpensesFixtures
 
-  @create_attrs %{name: "some name", total: "120.5"}
-  @update_attrs %{name: "some updated name", total: "456.7"}
-  @invalid_attrs %{name: nil, total: nil}
+  @create_attrs %{name: "some name"}
+  @update_attrs %{name: "some updated name"}
+  @invalid_attrs %{name: nil}
 
   describe "index" do
     test "lists all expenses", %{conn: conn} do

@@ -25,8 +25,7 @@ defmodule Staek.ExpensesFixtures do
     {:ok, expense} =
       attrs
       |> Enum.into(%{
-        name: "some name",
-        total: "120.5"
+        name: "some name"
       })
       |> Staek.Expenses.create_expense()
 
