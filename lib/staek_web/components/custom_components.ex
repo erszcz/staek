@@ -4,7 +4,7 @@ defmodule StaekWeb.CustomComponents do
   attr :title, :any, required: true
   attr :items, :any, required: true
   slot :header_button
-  slot :item_icon
+  slot :list_item
 
   ## Flowbite List Group
   def list_group(assigns) do
@@ -23,8 +23,7 @@ defmodule StaekWeb.CustomComponents do
         href={item.href}
         class="relative inline-flex items-center w-full px-4 py-2 last:rounded-b-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
       >
-        <div :if={@item_icon != []}><%= render_slot(@item_icon) %></div>
-        <div class=""><%= item.name %></div>
+        <%= render_slot(@list_item, item) %>
       </a>
     </div>
     """
