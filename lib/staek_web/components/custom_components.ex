@@ -21,7 +21,7 @@ defmodule StaekWeb.CustomComponents do
       <a
         :for={item <- @items}
         href={item.href}
-        class="relative inline-flex items-center w-full px-4 py-2 last:rounded-b-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        class="relative inline-flex items-center w-full last:rounded-b-lg cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
       >
         <%= render_slot(@list_item, item) %>
       </a>

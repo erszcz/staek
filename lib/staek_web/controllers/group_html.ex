@@ -92,12 +92,12 @@ defmodule StaekWeb.GroupHTML do
     case balance.status do
       :owes ->
         ~H"""
-        <%= @user %> owes <%= @amount %>
+        <%= @user %> <br /> owes <%= @amount %>
         """
 
       :gets_back ->
         ~H"""
-        <%= @user %> gets back <%= @amount %>
+        <%= @user %> <br />gets back <%= @amount %>
         """
     end
   end
