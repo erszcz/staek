@@ -11,6 +11,8 @@ defmodule StaekWeb.GroupHTML do
 
   def group_form(assigns)
 
+  def user_groups(assigns)
+
   def render_who_paid(who_paid, assigns) do
     case who_paid do
       {:current_user_paid, amount} ->
