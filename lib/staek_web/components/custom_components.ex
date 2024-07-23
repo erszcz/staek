@@ -72,16 +72,10 @@ defmodule StaekWeb.CustomComponents do
         <a href="" class="block w-full flex flex-row">
           <div class="basis-2/5 text-xl m-auto px-4 py-3"><%= expense.name %></div>
           <div class="basis-2/5 text-right">
-            <span class="text-sm">
-              <%= case expense.creditors do
-                [user] -> user
-                _ -> "others"
-              end %> paid
-            </span>
-            <br /><%= expense.total_credit %>
+            <%= StaekWeb.GroupHTML.render_who_paid(expense.who_paid, assigns) %>
           </div>
           <div class="basis-1/5 text-right pr-4">
-            <span class="text-sm">you owe</span> <br /><%= expense.user_debit %>
+            <%= StaekWeb.GroupHTML.render_user_debt(expense.user_debt, assigns) %>
           </div>
         </a>
       </div>
