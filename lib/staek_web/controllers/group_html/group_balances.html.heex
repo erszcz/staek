@@ -1,0 +1,5 @@
+<.list_group title="Group balances" items={@balances}>
+  <:list_item :let={balance}>
+    <%= render_balance(balance, assigns) %>
+  </:list_item>
+</.list_group>

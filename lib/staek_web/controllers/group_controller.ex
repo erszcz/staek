@@ -50,12 +50,20 @@ defmodule StaekWeb.GroupController do
           %{name: group.name, href: ~p"/groups/#{group.id}"}
         end)
 
-      expenses_for_user =
-        group.id
-        |> Expenses.get_group_expenses()
-        |> Enum.map(&prepare_expense_for_user(&1, current_user))
+      expenses = Expenses.get_group_expenses(group.id)
 
-      render(conn, :show, group: group, expenses: expenses_for_user, groups: groups)
+      expenses_for_user = Enum.map(expenses, &prepare_expense_for_user(&1, current_user))
+
+      balances = balances_from_expenses(expenses)
+
+      assigns = %{
+        group: group,
+        expenses: expenses_for_user,
+        groups: groups,
+        balances: balances
+      }
+
+      render(conn, :show, assigns)
     rescue
       Ecto.NoResultsError ->
         conn
@@ -137,6 +145,40 @@ defmodule StaekWeb.GroupController do
       who_paid: who_paid,
       user_debt: user_debt
     }
+  end
+
+  defp balances_from_expenses(expenses) do
+    credits = Enum.flat_map(expenses, & &1.credits)
+    debits = Enum.flat_map(expenses, & &1.debits)
+
+    credits_by_user = Enum.group_by(credits, & &1.user_id, & &1.amount)
+    debits_by_user = Enum.group_by(debits, & &1.user_id, & &1.amount)
+
+    [
+      %{user: :user1, status: :owes, amount: 120, href: ""},
+      %{user: :user2, status: :gets_back, amount: 220, href: ""}
+    ]
+
+    all_user_ids =
+      (Map.keys(credits_by_user) ++ Map.keys(debits_by_user))
+      |> Enum.uniq()
+
+    Enum.map(all_user_ids, fn user_id ->
+      total_credit = Enum.reduce(credits_by_user[user_id] || [], Decimal.new(0), &Decimal.add/2)
+      total_debit = Enum.reduce(debits_by_user[user_id] || [], Decimal.new(0), &Decimal.add/2)
+      total = Decimal.sub(total_credit, total_debit)
+
+      %{
+        user: Accounts.get_user!(user_id).email,
+        status:
+          case Decimal.compare(total, 0) do
+            :gt -> :gets_back
+            _ -> :owes
+          end,
+        href: "",
+        amount: Decimal.abs(total)
+      }
+    end)
   end
 
   def edit(conn, %{"id" => id}) do

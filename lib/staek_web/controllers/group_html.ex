@@ -11,6 +11,8 @@ defmodule StaekWeb.GroupHTML do
 
   def group_form(assigns)
 
+  def group_balances(assigns)
+
   attr :items, :any, required: true
 
   def group_expenses(assigns)
@@ -77,6 +79,25 @@ defmodule StaekWeb.GroupHTML do
       :not_involved ->
         ~H"""
         <span class="text-sm">not involved</span>
+        """
+    end
+  end
+
+  def render_balance(balance, assigns) do
+    assigns =
+      assigns
+      |> assign(:user, balance.user)
+      |> assign(:amount, balance.amount)
+
+    case balance.status do
+      :owes ->
+        ~H"""
+        <%= @user %> owes <%= @amount %>
+        """
+
+      :gets_back ->
+        ~H"""
+        <%= @user %> gets back <%= @amount %>
         """
     end
   end
