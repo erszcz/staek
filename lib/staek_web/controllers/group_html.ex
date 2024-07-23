@@ -11,6 +11,10 @@ defmodule StaekWeb.GroupHTML do
 
   def group_form(assigns)
 
+  attr :items, :any, required: true
+
+  def group_expenses(assigns)
+
   def user_groups(assigns)
 
   def render_who_paid(who_paid, assigns) do
