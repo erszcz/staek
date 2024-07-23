@@ -13,6 +13,7 @@ defmodule Staek.Accounts.User do
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
+    ## TODO: add display name
 
     many_to_many :groups, Group, join_through: GroupMembers
     has_many :credits, Credit
