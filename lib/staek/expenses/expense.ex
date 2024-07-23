@@ -23,6 +23,8 @@ defmodule Staek.Expenses.Expense do
     |> maybe_put_credits(attrs)
     |> maybe_put_debits(attrs)
     |> validate_required([:name])
+
+    ## TODO: validate total credit equals total debit
   end
 
   defp maybe_put_group(expense, attrs) do
