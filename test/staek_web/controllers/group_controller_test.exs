@@ -25,13 +25,14 @@ defmodule StaekWeb.GroupControllerTest do
 
   describe "create group" do
     test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, ~p"/groups", group: @create_attrs)
+      attrs = %{name: "some specific name"}
+      conn = post(conn, ~p"/groups", group: attrs)
 
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == ~p"/groups/#{id}"
 
       conn = get(conn, ~p"/groups/#{id}")
-      assert html_response(conn, 200) =~ "Group #{id}"
+      assert html_response(conn, 200) =~ "#{attrs.name}"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
