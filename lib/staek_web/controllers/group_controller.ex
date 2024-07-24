@@ -40,37 +40,29 @@ defmodule StaekWeb.GroupController do
   end
 
   def show(conn, %{"id" => id}) do
-    try do
-      group = Expenses.get_group!(id, [:expenses])
+    group = Expenses.get_group!(id, [:expenses])
 
-      current_user = conn.assigns.current_user
+    current_user = conn.assigns.current_user
 
-      groups =
-        Enum.map(Expenses.get_user_groups(current_user), fn group ->
-          %{name: group.name, href: ~p"/groups/#{group.id}"}
-        end)
+    groups =
+      Enum.map(Expenses.get_user_groups(current_user), fn group ->
+        %{name: group.name, href: ~p"/groups/#{group.id}"}
+      end)
 
-      expenses = Expenses.get_group_expenses(group.id)
+    expenses = Expenses.get_group_expenses(group.id)
 
-      expenses_for_user = Enum.map(expenses, &prepare_expense_for_user(&1, current_user))
+    expenses_for_user = Enum.map(expenses, &prepare_expense_for_user(&1, current_user))
 
-      balances = balances_from_expenses(expenses)
+    balances = balances_from_expenses(expenses)
 
-      assigns = %{
-        group: group,
-        expenses: expenses_for_user,
-        groups: groups,
-        balances: balances
-      }
+    assigns = %{
+      group: group,
+      expenses: expenses_for_user,
+      groups: groups,
+      balances: balances
+    }
 
-      render(conn, :show, assigns)
-    rescue
-      Ecto.NoResultsError ->
-        conn
-        |> put_status(404)
-        |> render(StaekWeb.ErrorHTML, "404.html")
-        |> halt()
-    end
+    render(conn, :show, assigns)
   end
 
   @type expense_for_user() :: %{
