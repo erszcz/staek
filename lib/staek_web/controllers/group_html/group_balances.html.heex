@@ -17,7 +17,7 @@
         />
       </svg>
       <div class="basis-3/4 m-auto">
-        <%= render_balance(balance, assigns) %>
+        <%= render_balance(balance, Map.put(assigns, :currency, balance.currency)) %>
       </div>
     </div>
   </:list_item>

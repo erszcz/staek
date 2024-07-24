@@ -2,12 +2,16 @@ defmodule Staek.Expenses.Expense do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Staek.Currencies
   alias Staek.Expenses.Credit
   alias Staek.Expenses.Debit
   alias Staek.Expenses.Group
 
+  require Currencies
+
   schema "expenses" do
     field :name, :string
+    field :currency, Ecto.Enum, values: Currencies.literal_symbols()
     belongs_to :group, Group
     has_many :credits, Credit
     has_many :debits, Debit
@@ -18,11 +22,11 @@ defmodule Staek.Expenses.Expense do
   @doc false
   def changeset(expense, attrs) do
     expense
-    |> cast(attrs, [:name])
+    |> cast(attrs, [:name, :currency])
     |> maybe_put_group(attrs)
     |> maybe_put_credits(attrs)
     |> maybe_put_debits(attrs)
-    |> validate_required([:name])
+    |> validate_required([:name, :currency])
 
     ## TODO: validate total credit equals total debit
   end

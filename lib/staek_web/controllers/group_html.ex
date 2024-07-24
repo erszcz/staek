@@ -25,7 +25,7 @@ defmodule StaekWeb.GroupHTML do
         assigns = assign(assigns, :amount, amount)
 
         ~H"""
-        <span class="text-sm">you paid</span> <br /><%= @amount %>
+        <span class="text-sm">you paid</span> <br /><%= @currency %> <%= @amount %>
         """
 
       {:another_user_paid, user, amount} ->
@@ -35,7 +35,7 @@ defmodule StaekWeb.GroupHTML do
           |> assign(:amount, amount)
 
         ~H"""
-        <span class="text-sm"><%= @user %> paid</span> <br /><%= @amount %>
+        <span class="text-sm"><%= @user %> paid</span> <br /><%= @currency %> <%= @amount %>
         """
 
       {:n_users_paid, n, amount} ->
@@ -45,7 +45,7 @@ defmodule StaekWeb.GroupHTML do
           |> assign(:amount, amount)
 
         ~H"""
-        <span class="text-sm"><%= @n %> people paid</span> <br /><%= @amount %>
+        <span class="text-sm"><%= @n %> people paid</span> <br /><%= @currency %> <%= @amount %>
         """
     end
   end
@@ -56,14 +56,14 @@ defmodule StaekWeb.GroupHTML do
         assigns = assign(assigns, :amount, amount)
 
         ~H"""
-        <span class="text-sm">you lent</span> <br /><%= @amount %>
+        <span class="text-sm">you lent</span> <br /><%= @currency %> <%= @amount %>
         """
 
       {:current_user_borrowed, amount} ->
         assigns = assign(assigns, :amount, amount)
 
         ~H"""
-        <span class="text-sm">you borrowed</span> <br /><%= @amount %>
+        <span class="text-sm">you borrowed</span> <br /><%= @currency %> <%= @amount %>
         """
 
       {:another_user_lent, user, amount} ->
@@ -73,7 +73,7 @@ defmodule StaekWeb.GroupHTML do
           |> assign(:amount, amount)
 
         ~H"""
-        <span class="text-sm"><%= @user %> lent you</span> <br /><%= @amount %>
+        <span class="text-sm"><%= @user %> lent you</span> <br /><%= @currency %> <%= @amount %>
         """
 
       :not_involved ->
@@ -92,12 +92,12 @@ defmodule StaekWeb.GroupHTML do
     case balance.status do
       :owes ->
         ~H"""
-        <%= @user %> <br /> owes <%= @amount %>
+        <%= @user %> <br /> owes <%= @currency %> <%= @amount %>
         """
 
       :gets_back ->
         ~H"""
-        <%= @user %> <br />gets back <%= @amount %>
+        <%= @user %> <br />gets back <%= @currency %> <%= @amount %>
         """
     end
   end

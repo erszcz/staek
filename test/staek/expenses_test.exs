@@ -98,6 +98,8 @@ defmodule Staek.ExpensesTest do
     import Staek.ExpensesFixtures
 
     @invalid_attrs %{name: nil}
+    @invalid_name @invalid_attrs
+    @invalid_currency %{name: "some name", currency: nil}
 
     test "list_expenses/0 returns all expenses" do
       expense = expense_fixture()
@@ -110,14 +112,19 @@ defmodule Staek.ExpensesTest do
     end
 
     test "create_expense/1 with valid data creates a expense" do
-      valid_attrs = %{name: "some name"}
+      valid_attrs = %{name: "some name", currency: :PLN}
 
       assert {:ok, %Expense{} = expense} = Expenses.create_expense(valid_attrs)
       assert expense.name == "some name"
+      assert expense.currency == :PLN
     end
 
-    test "create_expense/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Expenses.create_expense(@invalid_attrs)
+    test "create_expense/1 with invalid name returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Expenses.create_expense(@invalid_name)
+    end
+
+    test "create_expense/1 with invalid currency returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Expenses.create_expense(@invalid_currency)
     end
 
     test "update_expense/2 with valid data updates the expense" do
