@@ -3,7 +3,6 @@ defmodule StaekWeb.GroupControllerTest do
 
   import Staek.ExpensesFixtures
 
-  @create_attrs %{name: "some name"}
   @update_attrs %{name: "some updated name"}
   @invalid_attrs %{name: nil}
 
