@@ -13,13 +13,6 @@ module.exports = {
     "../lib/staek_web/**/*.*ex"
   ],
   theme: {
-    colors: {
-      gray: colors.coolGray,
-      blue: colors.lightBlue,
-      red: colors.rose,
-      pink: colors.fuchsia,
-      white: colors.white
-    },
     extend: {
       colors: {
         brand: "#FD4F00",
