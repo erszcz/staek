@@ -9,9 +9,16 @@ defmodule StaekWeb.ExpenseController do
     render(conn, :index, expenses: expenses)
   end
 
-  def new(conn, _params) do
+  def new(conn, %{"group_id" => group_id}) do
     changeset = Expenses.change_expense(%Expense{})
-    render(conn, :new, changeset: changeset)
+
+    assigns = %{
+      changeset: changeset,
+      group_id: group_id,
+      members: Enum.map(Expenses.get_group!(group_id, [:members]).members, & &1.email)
+    }
+
+    render(conn, :new, assigns)
   end
 
   def create(conn, %{"expense" => expense_params}) do

@@ -7,9 +7,11 @@ defmodule Staek.Currencies do
                 {String.to_atom(symbol), name}
               end)
 
-  @currency_symbols Map.keys(@currencies)
+  @currency_symbols Map.keys(@currencies) |> Enum.sort()
 
   def name(symbol), do: Map.fetch!(@currencies, symbol)
+
+  def symbols(), do: @currency_symbols
 
   defmacro literal_symbols, do: @currency_symbols
 end
