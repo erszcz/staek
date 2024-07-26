@@ -73,6 +73,7 @@ defmodule StaekWeb.Router do
     get "/dashboard", DashboardController, :view
 
     resources "/groups", GroupController
+    resources "/groups/:group_id/expenses", ExpenseController
     # get "/groups", GroupController, :index
     # get "/groups/:id", GroupController, :show
   end
