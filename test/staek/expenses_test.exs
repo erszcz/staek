@@ -179,7 +179,7 @@ defmodule Staek.ExpensesTest do
     end
   end
 
-  describe "expense debits and credits" do
+  describe "expense debits and credits assocs" do
     import Staek.AccountsFixtures
     import Staek.ExpensesFixtures
 
@@ -210,7 +210,7 @@ defmodule Staek.ExpensesTest do
       assert Enum.map(exp1.debits, & &1.id) == [debit1.id]
     end
 
-    test "have accessible users and can be accessed on users", ctx do
+    test "allow access to and from users", ctx do
       %{credit1: credit1, debit1: debit1, user1: user1, user2: user2} = ctx
 
       [user1, user2] = Enum.map([user1, user2], &Repo.preload(&1, [:credits, :debits]))
@@ -221,6 +221,47 @@ defmodule Staek.ExpensesTest do
       assert Enum.map(user1.debits, & &1.id) == []
       assert Enum.map(user2.credits, & &1.id) == []
       assert Enum.map(user2.debits, & &1.id) == [debit1.id]
+    end
+  end
+
+  describe "expense debits and credits" do
+    import Staek.AccountsFixtures
+    import Staek.ExpensesFixtures
+
+    setup do
+      [user1, user2, user3, user4] = Enum.map(1..4, fn _ -> user_fixture() end)
+
+      %{
+        user1: user1,
+        user2: user2,
+        user3: user3,
+        user4: user4
+      }
+    end
+
+    test "unequal totals fail validation", ctx do
+      %{user1: user1, user2: user2} = ctx
+
+      {:ok, credit1} = Expenses.create_credit(%{user: user1, amount: "120.0"})
+      {:ok, debit1} = Expenses.create_debit(%{user: user2, amount: "40.0"})
+
+      {:error, changeset} =
+        Expenses.create_expense(%{
+          name: "Totals don't match",
+          currency: :PLN,
+          credits: [credit1],
+          debits: [debit1]
+        })
+
+      assert changeset.errors == [
+               credits: {
+                 "total credit is not equal to total debit",
+                 [
+                   total_credit: Decimal.new("120.0"),
+                   total_debit: Decimal.new("40.0")
+                 ]
+               }
+             ]
     end
   end
 end
