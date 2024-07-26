@@ -245,13 +245,13 @@ defmodule Staek.ExpensesTest do
       {:ok, credit1} = Expenses.create_credit(%{user: user1, amount: "120.0"})
       {:ok, debit1} = Expenses.create_debit(%{user: user2, amount: "40.0"})
 
-      {:error, changeset} =
-        Expenses.create_expense(%{
-          name: "Totals don't match",
-          currency: :PLN,
-          credits: [credit1],
-          debits: [debit1]
-        })
+      assert {:error, changeset} =
+               Expenses.create_expense(%{
+                 name: "Totals don't match",
+                 currency: :PLN,
+                 credits: [credit1],
+                 debits: [debit1]
+               })
 
       assert changeset.errors == [
                credits: {

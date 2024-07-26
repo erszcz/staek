@@ -27,8 +27,7 @@ defmodule Staek.Expenses.Expense do
     |> maybe_put_credits(attrs)
     |> maybe_put_debits(attrs)
     |> validate_required([:name, :currency])
-
-    ## TODO: validate total credit equals total debit
+    |> validate_credit_and_debit_totals(attrs)
   end
 
   defp maybe_put_group(expense, attrs) do
@@ -53,5 +52,25 @@ defmodule Staek.Expenses.Expense do
     else
       expense
     end
+  end
+
+  defp validate_credit_and_debit_totals(changeset, attrs) do
+    total_credit = Enum.reduce(attrs[:credits] || [], 0, &Decimal.add(&1.amount, &2))
+    total_debit = Enum.reduce(attrs[:debits] || [], 0, &Decimal.add(&1.amount, &2))
+
+    validate_change(changeset, :credits, fn :credits, _credits ->
+      case Decimal.compare(total_credit, total_debit) do
+        :eq ->
+          []
+
+        _ ->
+          [
+            credits: {
+              "total credit is not equal to total debit",
+              total_credit: total_credit, total_debit: total_debit
+            }
+          ]
+      end
+    end)
   end
 end
