@@ -2,6 +2,7 @@
 // https://tailwindcss.com/docs/configuration
 
 const plugin = require("tailwindcss/plugin")
+const colors = require('tailwindcss/colors')
 const fs = require("fs")
 const path = require("path")
 
@@ -12,6 +13,13 @@ module.exports = {
     "../lib/staek_web/**/*.*ex"
   ],
   theme: {
+    colors: {
+      gray: colors.coolGray,
+      blue: colors.lightBlue,
+      red: colors.rose,
+      pink: colors.fuchsia,
+      white: colors.white
+    },
     extend: {
       colors: {
         brand: "#FD4F00",
