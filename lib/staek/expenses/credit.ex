@@ -20,6 +20,13 @@ defmodule Staek.Expenses.Credit do
     |> maybe_put_expense(attrs)
     |> maybe_put_user(attrs)
     |> validate_required([:amount])
+    |> validate_change(:amount, fn
+      :amount, amount ->
+        case Decimal.compare(amount, 0) do
+          :gt -> []
+          _ -> [amount: "must be positive"]
+        end
+    end)
   end
 
   defp maybe_put_expense(credit, attrs) do

@@ -315,5 +315,12 @@ defmodule Staek.ExpensesTest do
                changeset.errors
              )
     end
+
+    test "amounts have to be positive", ctx do
+      %{user1: user1} = ctx
+
+      assert {:error, %Ecto.Changeset{}} = Expenses.create_credit(%{user: user1, amount: "0"})
+      assert {:error, %Ecto.Changeset{}} = Expenses.create_debit(%{user: user1, amount: "-3"})
+    end
   end
 end
