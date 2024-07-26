@@ -27,7 +27,7 @@ defmodule Staek.Expenses.Expense do
     |> maybe_put_credits(attrs)
     |> maybe_put_debits(attrs)
     |> validate_required([:name, :currency])
-    |> validate_credit_and_debit_totals(attrs)
+    |> validate_credits_and_debits(attrs)
   end
 
   defp maybe_put_group(expense, attrs) do
@@ -54,23 +54,57 @@ defmodule Staek.Expenses.Expense do
     end
   end
 
-  defp validate_credit_and_debit_totals(changeset, attrs) do
-    total_credit = Enum.reduce(attrs[:credits] || [], 0, &Decimal.add(&1.amount, &2))
-    total_debit = Enum.reduce(attrs[:debits] || [], 0, &Decimal.add(&1.amount, &2))
-
-    validate_change(changeset, :credits, fn :credits, _credits ->
-      case Decimal.compare(total_credit, total_debit) do
-        :eq ->
-          []
-
-        _ ->
-          [
-            credits: {
-              "total credit is not equal to total debit",
-              total_credit: total_credit, total_debit: total_debit
-            }
-          ]
-      end
+  defp validate_credits_and_debits(changeset, attrs) do
+    changeset
+    |> validate_change(:credits, &do_validate_owner_uniqueness/2)
+    |> validate_change(:debits, &do_validate_owner_uniqueness/2)
+    |> validate_change(:credits, fn :credits, _credits ->
+      credits = attrs[:credits] || []
+      debits = attrs[:debits] || []
+      do_validate_totals(credits, debits)
     end)
+  end
+
+  defp do_validate_owner_uniqueness(field, field_values) when field in [:credits, :debits] do
+    owners = Enum.map(field_values, & &1.data.user_id) |> Enum.sort()
+    unique_owners = Enum.uniq(owners)
+
+    case unique_owners do
+      ^owners ->
+        []
+
+      _ ->
+        owners_name =
+          case field do
+            :credits -> "creditors"
+            :debits -> "debtors"
+          end
+
+        [
+          {field,
+           {
+             "#{owners_name} not unique",
+             duplicate_user_ids: owners -- unique_owners
+           }}
+        ]
+    end
+  end
+
+  defp do_validate_totals(credits, debits) do
+    total_credit = Enum.reduce(credits, 0, &Decimal.add(&1.amount, &2))
+    total_debit = Enum.reduce(debits, 0, &Decimal.add(&1.amount, &2))
+
+    case Decimal.compare(total_credit, total_debit) do
+      :eq ->
+        []
+
+      _ ->
+        [
+          credits: {
+            "total credit is not equal to total debit",
+            total_credit: total_credit, total_debit: total_debit
+          }
+        ]
+    end
   end
 end

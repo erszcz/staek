@@ -263,5 +263,57 @@ defmodule Staek.ExpensesTest do
                }
              ]
     end
+
+    test ": creditors must be unique", ctx do
+      %{user1: user1} = ctx
+
+      {:ok, credit1} = Expenses.create_credit(%{user: user1, amount: "60.0"})
+      {:ok, credit2} = Expenses.create_credit(%{user: user1, amount: "60.0"})
+      {:ok, debit1} = Expenses.create_debit(%{user: user1, amount: "120.0"})
+
+      assert {:error, changeset} =
+               Expenses.create_expense(%{
+                 name: "Creditors are not unique",
+                 currency: :PLN,
+                 credits: [credit1, credit2],
+                 debits: [debit1]
+               })
+
+      assert match?(
+               [
+                 credits: {
+                   "creditors not unique",
+                   [duplicate_user_ids: [_]]
+                 }
+               ],
+               changeset.errors
+             )
+    end
+
+    test ": debtors must be unique", ctx do
+      %{user1: user1} = ctx
+
+      {:ok, credit1} = Expenses.create_credit(%{user: user1, amount: "120.0"})
+      {:ok, debit1} = Expenses.create_debit(%{user: user1, amount: "60.0"})
+      {:ok, debit2} = Expenses.create_debit(%{user: user1, amount: "60.0"})
+
+      assert {:error, changeset} =
+               Expenses.create_expense(%{
+                 name: "Debtors are not unique",
+                 currency: :PLN,
+                 credits: [credit1],
+                 debits: [debit1, debit2]
+               })
+
+      assert match?(
+               [
+                 debits: {
+                   "debtors not unique",
+                   [duplicate_user_ids: [_]]
+                 }
+               ],
+               changeset.errors
+             )
+    end
   end
 end
