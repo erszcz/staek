@@ -3,11 +3,15 @@ defmodule Staek.Expenses.Group do
   import Ecto.Changeset
 
   alias Staek.Accounts.User
+  alias Staek.Currencies
   alias Staek.Expenses.Expense
   alias Staek.Expenses.GroupMembers
 
+  require Currencies
+
   schema "groups" do
     field :name, :string
+    field :default_currency, Ecto.Enum, values: Currencies.literal_symbols()
 
     has_many :expenses, Expense
     many_to_many :members, User, join_through: GroupMembers
@@ -20,7 +24,7 @@ defmodule Staek.Expenses.Group do
   @doc false
   def changeset(group, attrs) do
     group
-    |> cast(attrs, @required)
+    |> cast(attrs, @required ++ [:default_currency])
     |> maybe_put_members(attrs)
     |> validate_required(@required)
   end
