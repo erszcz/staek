@@ -15,7 +15,14 @@ defmodule StaekWeb.ExpenseController do
     assigns = %{
       changeset: changeset,
       group_id: group_id,
-      members: Enum.map(Expenses.get_group!(group_id, [:members]).members, & &1.email)
+      members:
+        Enum.map(Expenses.get_group!(group_id, [:members]).members, fn member ->
+          %{
+            id: member.id,
+            name: member.name,
+            email: member.email
+          }
+        end)
     }
 
     render(conn, :new, assigns)
