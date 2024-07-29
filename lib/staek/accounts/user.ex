@@ -13,7 +13,7 @@ defmodule Staek.Accounts.User do
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
-    ## TODO: add display name
+    field :name, :string
 
     many_to_many :groups, Group, join_through: GroupMembers
     has_many :credits, Credit
@@ -47,7 +47,7 @@ defmodule Staek.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :name, :password])
     |> validate_email(opts)
     |> validate_password(opts)
   end

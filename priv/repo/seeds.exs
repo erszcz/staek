@@ -16,21 +16,25 @@ alias Staek.Expenses
 
 user1_params = %{
   email: "user1@example.com",
+  name: "Alice",
   password: "user1secret_whichmustbeatleastNcharacterslong"
 }
 
 user2_params = %{
   email: "user2@example.com",
+  name: "Bob",
   password: "user2secret_whichmustbeatleastNcharacterslong"
 }
 
 user3_params = %{
   email: "user3@example.com",
+  name: "Carol",
   password: "user3secret_whichmustbeatleastNcharacterslong"
 }
 
 user4_params = %{
   email: "user4@example.com",
+  name: "Daniel",
   password: "user4secret_whichmustbeatleastNcharacterslong"
 }
 
