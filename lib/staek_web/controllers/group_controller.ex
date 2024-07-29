@@ -92,7 +92,7 @@ defmodule StaekWeb.GroupController do
           {:current_user_paid, c.amount}
 
         [%Credit{user_id: creditor_id} = c] ->
-          {:another_user_paid, Accounts.get_user!(creditor_id).email, c.amount}
+          {:another_user_paid, Accounts.get_user!(creditor_id).name, c.amount}
 
         [_ | _] ->
           {:n_users_paid, length(credits),
@@ -168,7 +168,7 @@ defmodule StaekWeb.GroupController do
       total = Decimal.sub(total_credit, total_debit)
 
       %{
-        user: Accounts.get_user!(user_id).email,
+        user: Accounts.get_user!(user_id).name,
         currency: currency,
         status:
           case Decimal.compare(total, 0) do
