@@ -70,8 +70,6 @@ defmodule StaekWeb.Router do
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
     end
 
-    get "/dashboard", DashboardController, :view
-
     resources "/groups", GroupController
     resources "/groups/:group_id/expenses", ExpenseController
     # get "/groups", GroupController, :index
