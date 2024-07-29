@@ -12,9 +12,14 @@ defmodule StaekWeb.ExpenseController do
   def new(conn, %{"group_id" => group_id}) do
     changeset = Expenses.change_expense(%Expense{})
 
+    group = Expenses.get_group!(group_id)
+
     assigns = %{
       changeset: changeset,
-      group_id: group_id,
+      group: %{
+        id: group_id,
+        default_currency: group.default_currency
+      },
       members:
         Enum.map(Expenses.get_group!(group_id, [:members]).members, fn member ->
           %{

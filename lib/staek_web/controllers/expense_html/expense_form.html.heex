@@ -7,6 +7,7 @@
     field={f[:currency]}
     type="select"
     options={Staek.Currencies.symbols()}
+    value={@group.default_currency}
     label="Currency"
   />
   <.input field={f[:amount]} type="text" label="Amount" />

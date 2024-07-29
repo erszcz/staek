@@ -2,6 +2,6 @@
   Add an expense
 </.header>
 
-<.expense_form changeset={@changeset} action={~p"/expenses"} members={@members} />
+<.expense_form changeset={@changeset} action={~p"/expenses"} members={@members} group={@group} />
 
-<.back navigate={~p"/groups/#{@group_id}"}>Back to group</.back>
+<.back navigate={~p"/groups/#{@group.id}"}>Back to group</.back>
