@@ -58,7 +58,9 @@ config :staek, StaekWeb.Endpoint,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/staek_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/staek_web/(controllers|live|components)/.*(ex|heex)$",
+      ~r"lib/staek/(accounts|expenses)/.*(ex)",
+      ~r"lib/staek/.*(ex)"
     ]
   ]
 
