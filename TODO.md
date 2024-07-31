@@ -9,3 +9,4 @@
 - [ ] group balance icon sizes don't match
 - [ ] prohibit expenses without debits and credits from being created
 - [ ] create debits and credits on expense creation based on the form data
+- [ ] support non-equal expense credit/debit assignments

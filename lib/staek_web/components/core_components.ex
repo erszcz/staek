@@ -291,6 +291,8 @@ defmodule StaekWeb.CoreComponents do
     include: ~w(accept autocomplete capture cols disabled form list max maxlength min minlength
                 multiple pattern placeholder readonly required rows size step)
 
+  attr :selected, :list
+
   def input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
     errors = if Phoenix.Component.used_input?(field), do: field.errors, else: []
 
@@ -361,6 +363,34 @@ defmodule StaekWeb.CoreComponents do
         ]}
         {@rest}
       ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
+      <.error :for={msg <- @errors}><%= msg %></.error>
+    </div>
+    """
+  end
+
+  def input(%{type: "checkgroup"} = assigns) do
+    ~H"""
+    <div phx-feedback-for={@name} class="text-sm">
+      <.label for={@id}><%= @label %></.label>
+      <div class="mt-1 w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <div class="grid grid-cols-1 gap-1 text-sm items-baseline">
+          <input type="hidden" name={@name} value="" />
+          <div :for={{label, value} <- @options} class="flex items-center">
+            <label for={"#{@name}-#{value}"} class="font-medium text-gray-700">
+              <input
+                type="checkbox"
+                id={"#{@name}-#{value}"}
+                name={@name}
+                checked={value in @selected}
+                value={value}
+                class="mr-2 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 transition duration-150 ease-in-out"
+                {@rest}
+              />
+              <%= label %>
+            </label>
+          </div>
+        </div>
+      </div>
       <.error :for={msg <- @errors}><%= msg %></.error>
     </div>
     """
@@ -672,5 +702,30 @@ defmodule StaekWeb.CoreComponents do
   """
   def translate_errors(errors, field) when is_list(errors) do
     for {^field, {msg, opts}} <- errors, do: translate_error({msg, opts})
+  end
+
+  @doc """
+  Generate a checkbox group for multi-select.
+  """
+  attr :id, :any
+  attr :name, :any
+  attr :label, :string, default: nil
+
+  attr :field, Phoenix.HTML.FormField,
+    doc: "a form field struct retrieved from the form, for example: @form[:email]"
+
+  attr :errors, :list
+  attr :options, :list, doc: "the options to pass to Phoenix.HTML.Form.options_for_select/2"
+  attr :rest, :global, include: ~w(disabled form readonly)
+  attr :class, :string, default: nil
+  attr :selected, :list
+
+  def checkgroup(assigns) do
+    new_assigns =
+      assigns
+      |> assign(:multiple, true)
+      |> assign(:type, "checkgroup")
+
+    input(new_assigns)
   end
 end

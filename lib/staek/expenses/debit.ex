@@ -15,11 +15,12 @@ defmodule Staek.Expenses.Debit do
 
   @doc false
   def changeset(debits, attrs) do
+    required = ~w[amount user_id]a
+    optional = ~w[expense_id]a
+
     debits
-    |> cast(attrs, [:amount])
-    |> maybe_put_expense(attrs)
-    |> maybe_put_user(attrs)
-    |> validate_required([:amount])
+    |> cast(attrs, required ++ optional)
+    |> validate_required(required)
     |> validate_change(:amount, fn
       :amount, amount ->
         case Decimal.compare(amount, 0) do
@@ -27,21 +28,7 @@ defmodule Staek.Expenses.Debit do
           _ -> [amount: "must be positive"]
         end
     end)
-  end
-
-  defp maybe_put_expense(debit, attrs) do
-    if expense = attrs[:expense] || attrs["expense"] do
-      put_assoc(debit, :expense, expense)
-    else
-      debit
-    end
-  end
-
-  defp maybe_put_user(debit, attrs) do
-    if user = attrs[:user] || attrs["user"] do
-      put_assoc(debit, :user, user)
-    else
-      debit
-    end
+    |> foreign_key_constraint(:expense_id)
+    |> foreign_key_constraint(:user_id)
   end
 end

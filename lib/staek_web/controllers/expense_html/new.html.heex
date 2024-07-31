@@ -4,7 +4,7 @@
 
 <.expense_form
   changeset={@changeset}
-  action={~p"/expenses"}
+  action={~p"/groups/#{@group.id}/expenses"}
   members={@members}
   group={@group}
   current_user={@current_user}

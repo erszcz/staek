@@ -21,41 +21,20 @@ defmodule Staek.Expenses.Expense do
 
   @doc false
   def changeset(expense, attrs) do
+    required = [:name, :currency, :group_id]
+
     expense
-    |> cast(attrs, [:name, :currency])
-    |> maybe_put_group(attrs)
-    |> maybe_put_credits(attrs)
-    |> maybe_put_debits(attrs)
-    |> validate_required([:name, :currency])
+    |> cast(attrs, required)
+    |> cast_assoc(:credits, required: true)
+    |> cast_assoc(:debits, required: true)
+    |> validate_required(required)
     |> validate_credits_and_debits(attrs)
-  end
-
-  defp maybe_put_group(expense, attrs) do
-    if group = attrs["group"] || attrs[:group] do
-      put_assoc(expense, :group, group)
-    else
-      expense
-    end
-  end
-
-  defp maybe_put_credits(expense, attrs) do
-    if credits = attrs[:credits] || attrs["credits"] do
-      put_assoc(expense, :credits, credits)
-    else
-      expense
-    end
-  end
-
-  defp maybe_put_debits(expense, attrs) do
-    if debits = attrs[:debits] || attrs["debits"] do
-      put_assoc(expense, :debits, debits)
-    else
-      expense
-    end
   end
 
   defp validate_credits_and_debits(changeset, attrs) do
     changeset
+    |> validate_length(:credits, min: 1)
+    |> validate_length(:debits, min: 1)
     |> validate_change(:credits, &do_validate_owner_uniqueness/2)
     |> validate_change(:debits, &do_validate_owner_uniqueness/2)
     |> validate_change(:credits, fn :credits, _credits ->
@@ -66,11 +45,19 @@ defmodule Staek.Expenses.Expense do
   end
 
   defp do_validate_owner_uniqueness(field, field_values) when field in [:credits, :debits] do
-    owners = Enum.map(field_values, & &1.data.user_id) |> Enum.sort()
-    unique_owners = Enum.uniq(owners)
+    owner_changes = Enum.map(field_values, & &1.changes.user_id)
+
+    owners = Enum.map(field_values, & &1.data.user_id)
+
+    all_owners =
+      (owner_changes ++ owners)
+      |> Enum.filter(& &1)
+      |> Enum.sort()
+
+    unique_owners = Enum.uniq(all_owners)
 
     case unique_owners do
-      ^owners ->
+      ^all_owners ->
         []
 
       _ ->

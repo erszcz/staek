@@ -3,6 +3,7 @@
     Oops, something went wrong! Please check the errors below.
   </.error>
   <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:group_id]} type="hidden" value={@group.id} />
   <.input
     field={f[:currency]}
     type="select"
@@ -11,58 +12,22 @@
     label="Currency"
   />
   <.input field={f[:amount]} type="text" label="Amount" />
-  <!--<.input field={f[:creditors]} type="select" options={@members} label="Paid by" />-->
-  <!--<.input field={f[:debtors]} type="select" options={@members} label="Split among" />-->
   <div class="flex flex-row gap-4">
     <div class="w-1/2">
-      <h2 class="block text-sm font-semibold leading-6 text-zinc-800">Paid by</h2>
-      <ul class="text-sm font-medium text-gray-900 mt-2 bg-white border border-zinc-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <li :for={member <- @members} class="w-full">
-          <div class="flex items-center ps-3">
-            <input
-              id={"paidby-checkbox-#{member.email}"}
-              type="checkbox"
-              value=""
-              {
-                if @current_user.id == member.id do
-                  %{checked: true}
-                else
-                  []
-                end
-              }
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for={"paidby-checkbox-#{member.email}"}
-              class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              <%= member.name %>
-            </label>
-          </div>
-        </li>
-      </ul>
+      <.checkgroup
+        field={f[:paid_by]}
+        label="Paid equally by"
+        options={Enum.map(@members, &{&1.name, &1.id})}
+        selected={[@current_user.id]}
+      />
     </div>
     <div class="w-1/2">
-      <h2 class="block text-sm font-semibold leading-6 text-zinc-800">Split among</h2>
-      <ul class="text-sm font-medium text-gray-900 mt-2 bg-white border border-zinc-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <li :for={member <- @members} class="w-full">
-          <div class="flex items-center ps-3">
-            <input
-              id={"split-checkbox-#{member.email}"}
-              type="checkbox"
-              value=""
-              checked
-              class="w-4 h-4 text-blue-600 bg-gray-100 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for={"split-checkbox-#{member.email}"}
-              class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              <%= member.name %>
-            </label>
-          </div>
-        </li>
-      </ul>
+      <.checkgroup
+        field={f[:split_among]}
+        label="Split equally among"
+        options={Enum.map(@members, &{&1.name, &1.id})}
+        selected={Enum.map(@members, & &1.id)}
+      />
     </div>
   </div>
   <:actions>
