@@ -13,6 +13,8 @@ defmodule StaekWeb.GroupHTML do
 
   def group_balances(assigns)
 
+  def group_members(assigns)
+
   attr :items, :any, required: true
 
   def group_expenses(assigns)

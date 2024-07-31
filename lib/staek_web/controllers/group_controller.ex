@@ -40,7 +40,7 @@ defmodule StaekWeb.GroupController do
   end
 
   def show(conn, %{"id" => id}) do
-    group = Expenses.get_group!(id, [:expenses])
+    group = Expenses.get_group!(id, [:expenses, :members])
 
     current_user = conn.assigns.current_user
 
@@ -55,11 +55,20 @@ defmodule StaekWeb.GroupController do
 
     balances = balances_from_expenses(expenses)
 
+    members =
+      Enum.map(group.members, fn member ->
+        %{
+          name: member.name,
+          href: ""
+        }
+      end)
+
     assigns = %{
       group: group,
       expenses: expenses_for_user,
       groups: groups,
-      balances: balances
+      balances: balances,
+      members: members
     }
 
     render(conn, :show, assigns)
