@@ -144,6 +144,14 @@ defmodule StaekWeb.GroupController do
     expenses_by_currency = Enum.group_by(expenses, & &1.currency)
 
     Enum.flat_map(expenses_by_currency, &balances_from_expenses_by_currency/1)
+    |> Enum.group_by(& &1.user)
+    |> Enum.map(fn {user, balances} ->
+      %{
+        user: user,
+        href: "",
+        balances: Enum.map(balances, &Map.drop(&1, [:user]))
+      }
+    end)
   end
 
   defp balances_from_expenses_by_currency({currency, expenses}) do
@@ -152,11 +160,6 @@ defmodule StaekWeb.GroupController do
 
     credits_by_user = Enum.group_by(credits, & &1.user_id, & &1.amount)
     debits_by_user = Enum.group_by(debits, & &1.user_id, & &1.amount)
-
-    [
-      %{user: :user1, status: :owes, amount: 120, href: ""},
-      %{user: :user2, status: :gets_back, amount: 220, href: ""}
-    ]
 
     all_user_ids =
       (Map.keys(credits_by_user) ++ Map.keys(debits_by_user))
@@ -175,7 +178,6 @@ defmodule StaekWeb.GroupController do
             :gt -> :gets_back
             _ -> :owes
           end,
-        href: "",
         amount: Decimal.abs(total)
       }
     end)

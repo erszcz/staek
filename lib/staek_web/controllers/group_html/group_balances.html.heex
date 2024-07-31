@@ -1,8 +1,8 @@
 <.list_group title="Group balances" items={@balances}>
-  <:list_item :let={balance}>
-    <div class="flex flex-row p-2 pr-4">
+  <:list_item :let={user_balances}>
+    <div class="grid grid-cols-6 p-2 gap-2">
       <svg
-        class="basis-1/4 w-10 h-10 text-gray-800 dark:text-white mr-2"
+        class="col-span-2 w-full h-full text-gray-800 dark:text-white"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -16,8 +16,9 @@
           clip-rule="evenodd"
         />
       </svg>
-      <div class="basis-3/4 m-auto">
-        <%= render_balance(balance, Map.put(assigns, :currency, balance.currency)) %>
+      <div class="col-span-4">
+        <%= user_balances.user %> <br />
+        <%= render_balances(user_balances, assigns) %>
       </div>
     </div>
   </:list_item>

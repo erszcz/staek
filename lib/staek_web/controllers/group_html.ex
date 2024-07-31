@@ -83,22 +83,20 @@ defmodule StaekWeb.GroupHTML do
     end
   end
 
-  def render_balance(balance, assigns) do
+  def render_balances(balances, assigns) do
     assigns =
       assigns
-      |> assign(:user, balance.user)
-      |> assign(:amount, balance.amount)
+      |> assign(:user, balances.user)
+      |> assign(:balances, balances.balances)
 
-    case balance.status do
-      :owes ->
-        ~H"""
-        <%= @user %> <br /> owes <%= @currency %> <%= @amount %>
-        """
-
-      :gets_back ->
-        ~H"""
-        <%= @user %> <br />gets back <%= @currency %> <%= @amount %>
-        """
-    end
+    ~H"""
+    <span :for={balance <- @balances} class="text-xs">
+      <%= (fn
+             :owes -> "owes"
+             :gets_back -> "gets back"
+           end).(balance.status) %>
+      <%= balance.currency %>&nbsp;<%= balance.amount %> <br />
+    </span>
+    """
   end
 end
