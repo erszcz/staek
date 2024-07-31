@@ -1,10 +1,10 @@
-<div class="flex flex-row gap-2">
+<div class="grid grid-cols-5 gap-2">
   <!-- left col -->
-  <div class="basis-1/5">
+  <div class="col-span-1">
     <.user_groups {assigns} />
   </div>
   <!-- middle col -->
-  <div class="flex flex-col basis-3/5 bg-white rounded-lg shadow-lg">
+  <div class="flex flex-col col-span-3 bg-white rounded-lg shadow-lg">
     <div class="flex flex-row w-full text-gray-600 border-b border-gray-300 first:rounded-t-lg last:rounded-b-lg dark:bg-gray-800 dark:border-gray-600">
       <div class="basis-2/5 text-3xl px-4 py-3"><%= @group.name %></div>
       <div class="basis-2/5 text-right m-auto">
@@ -19,7 +19,7 @@
     <.group_expenses items={@expenses} />
   </div>
   <!-- right col -->
-  <div class="basis-1/5">
+  <div class="col-span-1 flex flex-col gap-2">
     <.group_balances {assigns} />
   </div>
 </div>
