@@ -17,7 +17,13 @@ defmodule StaekDesktop.Application do
       # Start a worker by calling: StaekDesktop.Worker.start_link(arg)
       # {StaekDesktop.Worker, arg},
       # Start to serve requests, typically the last entry
-      StaekDesktopWeb.Endpoint
+      StaekDesktopWeb.Endpoint,
+      {Desktop.Window,
+       [
+         app: :staek_desktop,
+         id: StaekDesktopWindow,
+         url: &StaekDesktopWeb.Endpoint.url/0
+       ]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
