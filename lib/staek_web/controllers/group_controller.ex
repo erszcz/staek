@@ -212,14 +212,10 @@ defmodule StaekWeb.GroupController do
   end
 
   def update(conn, %{"id" => id, "group" => group_params}) do
-    member_ids_to_existing_users = fn members ->
-      Enum.map(members, &Accounts.get_user!(&1))
-    end
-
     group_params =
       group_params
       |> Forms.cleanup_params_array("members")
-      |> Map.update("members", [], member_ids_to_existing_users)
+      |> Map.update("members", [], &Accounts.get_users!(&1))
       |> IO.inspect(label: :group_params)
 
     group = Expenses.get_group!(id, [:members])
