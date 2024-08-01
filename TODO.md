@@ -2,7 +2,9 @@
 
 - [x] group default currency
 - [ ] new group: choose members
-- [o] existing group: add new member
+- [x] existing group: add new member
+- [ ] existing group: delete a member
+    - [ ] check member balance before removing them
 - [x] default screen: groups, discard the dashboard view
 - [ ] middle section is extended to the width of right sections total height,
       which leaves space not consumed by expenses
