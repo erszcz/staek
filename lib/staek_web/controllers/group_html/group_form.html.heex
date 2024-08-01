@@ -2,8 +2,24 @@
   <.error :if={@changeset.action}>
     Oops, something went wrong! Please check the errors below.
   </.error>
-  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:name]} type="text" label="My group is called..." />
+  <.input
+    field={f[:default_currency]}
+    type="select"
+    options={Staek.Currencies.symbols()}
+    value={@changeset.data.default_currency}
+    label="Default currency"
+  />
+  <.checkgroup
+    field={f[:members]}
+    label="Group members"
+    options={Enum.map(@users, &{&1.name, &1.id})}
+    selected={Enum.map(@members, & &1.id)}
+  />
+  <div class="text-sm text-zinc-800">
+    <a href="#">TODO: Invite new member...</a>
+  </div>
   <:actions>
-    <.button>Save Group</.button>
+    <.button>Save changes</.button>
   </:actions>
 </.simple_form>

@@ -3,6 +3,7 @@ defmodule StaekWeb.ExpenseController do
 
   alias Staek.Expenses
   alias Staek.Expenses.Expense
+  alias StaekWeb.Forms
 
   require Logger
 
@@ -40,8 +41,8 @@ defmodule StaekWeb.ExpenseController do
 
     expense_params =
       expense_params
-      |> cleanup_params_array("paid_by")
-      |> cleanup_params_array("split_among")
+      |> Forms.cleanup_params_array("paid_by")
+      |> Forms.cleanup_params_array("split_among")
 
     expense_params = prepare_expense_params(expense_params)
 
@@ -68,10 +69,6 @@ defmodule StaekWeb.ExpenseController do
     params
     |> Map.put("credits", credits)
     |> Map.put("debits", debits)
-  end
-
-  defp cleanup_params_array(params, array_field) do
-    Map.put(params, array_field, (params[array_field] || []) -- [""])
   end
 
   defp prepare_equal_credits(params) do

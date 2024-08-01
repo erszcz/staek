@@ -350,4 +350,10 @@ defmodule Staek.Accounts do
       {:error, :user, changeset, _} -> {:error, changeset}
     end
   end
+
+  def all_users(preloads \\ []) do
+    User
+    |> Repo.all()
+    |> Repo.preload(preloads)
+  end
 end

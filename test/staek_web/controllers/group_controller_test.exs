@@ -45,7 +45,7 @@ defmodule StaekWeb.GroupControllerTest do
 
     test "renders form for editing chosen group", %{conn: conn, group: group} do
       conn = get(conn, ~p"/groups/#{group}/edit")
-      assert html_response(conn, 200) =~ "Edit Group"
+      assert html_response(conn, 200) =~ "Edit group settings"
     end
   end
 

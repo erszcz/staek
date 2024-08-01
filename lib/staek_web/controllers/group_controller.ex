@@ -8,6 +8,9 @@ defmodule StaekWeb.GroupController do
   alias Staek.Expenses.Debit
   alias Staek.Expenses.Expense
   alias Staek.Expenses.Group
+  alias StaekWeb.Forms
+
+  require Logger
 
   def index(conn, _params) do
     groups = Expenses.list_groups()
@@ -193,13 +196,33 @@ defmodule StaekWeb.GroupController do
   end
 
   def edit(conn, %{"id" => id}) do
-    group = Expenses.get_group!(id)
+    group = Expenses.get_group!(id, [:members])
     changeset = Expenses.change_group(group)
-    render(conn, :edit, group: group, changeset: changeset)
+    members = group.members
+    users = Accounts.all_users()
+
+    assigns = %{
+      group: group,
+      changeset: changeset,
+      members: members,
+      users: users
+    }
+
+    render(conn, :edit, assigns)
   end
 
   def update(conn, %{"id" => id, "group" => group_params}) do
-    group = Expenses.get_group!(id)
+    member_ids_to_existing_users = fn members ->
+      Enum.map(members, &Accounts.get_user!(&1))
+    end
+
+    group_params =
+      group_params
+      |> Forms.cleanup_params_array("members")
+      |> Map.update("members", [], member_ids_to_existing_users)
+      |> IO.inspect(label: :group_params)
+
+    group = Expenses.get_group!(id, [:members])
 
     case Expenses.update_group(group, group_params) do
       {:ok, group} ->
@@ -208,7 +231,17 @@ defmodule StaekWeb.GroupController do
         |> redirect(to: ~p"/groups/#{group}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, :edit, group: group, changeset: changeset)
+        Logger.notice(update_group: :error, changeset: changeset)
+
+        assigns = %{
+          group: group,
+          changeset: changeset,
+          members: group.members,
+          users: Accounts.all_users()
+        }
+
+        conn
+        |> render(:edit, assigns)
     end
   end
 
