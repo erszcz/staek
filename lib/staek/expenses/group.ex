@@ -14,7 +14,7 @@ defmodule Staek.Expenses.Group do
     field :default_currency, Ecto.Enum, values: Currencies.literal_symbols()
 
     has_many :expenses, Expense
-    many_to_many :members, User, join_through: GroupMembers
+    many_to_many :members, User, join_through: GroupMembers, on_replace: :mark_as_invalid
 
     timestamps(type: :utc_datetime)
   end
