@@ -13,3 +13,4 @@
 - [x] create debits and credits on expense creation based on the form data
 - [ ] support non-equal expense credit/debit assignments
 - [ ] fold group balances and group members into an accordion
+- [ ] redesign the main group expenses view to use fixed columns instead of flex divs with basis
