@@ -8,8 +8,8 @@ defmodule StaekDesktop.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      StaekDesktopWeb.Telemetry,
-      StaekDesktop.Repo,
+      StaekWeb.Telemetry,
+      Staek.repo(),
       {Ecto.Migrator,
        repos: Application.fetch_env!(:staek_desktop, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:staek_desktop, :dns_cluster_query) || :ignore},
@@ -17,12 +17,12 @@ defmodule StaekDesktop.Application do
       # Start a worker by calling: StaekDesktop.Worker.start_link(arg)
       # {StaekDesktop.Worker, arg},
       # Start to serve requests, typically the last entry
-      StaekDesktopWeb.Endpoint,
+      StaekWeb.Endpoint,
       {Desktop.Window,
        [
          app: :staek_desktop,
          id: StaekDesktopWindow,
-         url: &StaekDesktopWeb.Endpoint.url/0
+         url: &StaekWeb.Endpoint.url/0
        ]}
     ]
 
@@ -36,7 +36,7 @@ defmodule StaekDesktop.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    StaekDesktopWeb.Endpoint.config_change(changed, removed)
+    StaekWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 
