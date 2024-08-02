@@ -10,6 +10,12 @@ config :staek, Staek.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
+config :staek_desktop, StaekDesktop.Repo,
+  database: Path.expand("../staek_desktop_dev.db", __DIR__),
+  pool_size: 5,
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -58,14 +64,16 @@ config :staek, StaekWeb.Endpoint,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/staek_web/(controllers|live|components)/.*(ex|heex)$",
       ~r"lib/staek/(accounts|expenses)/.*(ex)",
-      ~r"lib/staek/.*(ex)"
+      ~r"lib/staek/.*(ex)",
+      ~r"lib/staek_desktop/.*(ex)",
+      ~r"lib/staek_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
 config :staek, dev_routes: true
+config :staek_desktop, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

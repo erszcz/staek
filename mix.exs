@@ -33,6 +33,10 @@ defmodule Staek.MixProject do
       web: [
         include_executables_for: [:unix],
         applications: [staek: :permanent]
+      ],
+      desktop: [
+        include_executables_for: [:unix],
+        applications: [staek_desktop: :permanent]
       ]
     ]
   end
@@ -47,6 +51,7 @@ defmodule Staek.MixProject do
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
+      {:ecto_sqlite3, ">= 0.0.0"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
@@ -70,7 +75,8 @@ defmodule Staek.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:decimal, "~> 2.1"}
+      {:decimal, "~> 2.1"},
+      {:desktop, github: "elixir-desktop/desktop"}
     ]
   end
 
@@ -87,10 +93,17 @@ defmodule Staek.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind staek", "esbuild staek"],
+      "assets.build": [
+        "tailwind staek",
+        "tailwind staek_desktop",
+        "esbuild staek",
+        "esbuild staek_desktop"
+      ],
       "assets.deploy": [
         "tailwind staek --minify",
+        "tailwind staek_desktop --minify",
         "esbuild staek --minify",
+        "esbuild staek_desktop --minify",
         "phx.digest"
       ]
     ]

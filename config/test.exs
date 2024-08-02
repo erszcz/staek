@@ -16,6 +16,11 @@ config :staek, Staek.Repo,
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
+config :staek_desktop, StaekDesktop.Repo,
+  database: Path.expand("../staek_desktop_test.db", __DIR__),
+  pool_size: 5,
+  pool: Ecto.Adapters.SQL.Sandbox
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :staek, StaekWeb.Endpoint,

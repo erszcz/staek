@@ -24,6 +24,7 @@ erl_crash.dump
 
 # Ignore package tarball (built via "mix hex.build").
 staek-*.tar
+staek_desktop-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
@@ -35,4 +36,9 @@ staek-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Database files
+*.db
+*.db-*
+
+# Tags
 tags
