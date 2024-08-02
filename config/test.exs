@@ -6,8 +6,8 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :staek, Staek.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "staek_db",
+  password: "staek_db_secret",
   hostname: "localhost",
   database: "staek_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
