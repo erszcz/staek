@@ -20,6 +20,8 @@ if System.get_env("PHX_SERVER") do
   config :staek, StaekWeb.Endpoint, server: true
 end
 
+config :staek, :repo, Staek.Repo
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||

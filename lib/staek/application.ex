@@ -7,6 +7,8 @@ defmodule Staek.Application do
 
   @impl true
   def start(_type, _args) do
+    set_repo(Application.fetch_env!(:staek, :repo))
+
     children = [
       StaekWeb.Telemetry,
       repo(),
@@ -34,7 +36,16 @@ defmodule Staek.Application do
     :ok
   end
 
+  @pt_repo {__MODULE__, :repo}
+
+  defp set_repo(repo) do
+    :persistent_term.put(@pt_repo, repo)
+  end
+
+  @doc """
+  Return the Ecto.Repo module to be used across the application.
+  """
   def repo do
-    Staek.Repo
+    :persistent_term.get(@pt_repo)
   end
 end
