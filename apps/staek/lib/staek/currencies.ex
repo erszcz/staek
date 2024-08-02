@@ -1,5 +1,6 @@
 defmodule Staek.Currencies do
-  @currencies File.read!("priv/currencies.csv")
+  @currencies Application.app_dir(:staek, ["priv", "currencies.csv"])
+              |> File.read!()
               |> String.split("\n", trim: true)
               |> Enum.filter(&(not String.starts_with?(&1, "#")))
               |> Enum.into(%{}, fn line ->
