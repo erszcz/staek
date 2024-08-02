@@ -16,11 +16,10 @@ import Config
 #
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
-if System.get_env("PHX_SERVER") do
-  config :staek, StaekWeb.Endpoint, server: true
-end
-
-config :staek, :repo, Staek.Repo
+# if System.get_env("PHX_SERVER") do
+#  config :staek, StaekWeb.Endpoint, server: true
+# end
+config :staek, StaekWeb.Endpoint, server: true
 
 if config_env() == :prod do
   database_url =
@@ -117,3 +116,16 @@ if config_env() == :prod do
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 end
+
+defmodule Staek.RuntimeConfig do
+  def configure("desktop") do
+    config :staek, :repo, Staek.LocalRepo
+  end
+
+  def configure("web") do
+    config :staek, :repo, Staek.Repo
+  end
+end
+
+release_app = System.fetch_env!("STAEK_RELEASE")
+Staek.RuntimeConfig.configure(release_app)
