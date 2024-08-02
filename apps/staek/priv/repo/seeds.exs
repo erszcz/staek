@@ -13,7 +13,7 @@
 alias Staek.Accounts.User
 alias Staek.Expenses
 
-import Staek.Application, only: [repo: 0]
+alias Staek.Repo
 
 user1_params = %{
   email: "user1@example.com",
@@ -43,7 +43,7 @@ user4_params = %{
   Enum.map([user1_params, user2_params, user3_params, user4_params], fn user ->
     %User{}
     |> User.registration_changeset(user)
-    |> repo().insert!()
+    |> Repo.insert!()
   end)
 
 group1_params = %{
