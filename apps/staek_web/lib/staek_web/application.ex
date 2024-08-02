@@ -12,7 +12,13 @@ defmodule StaekWeb.Application do
       # Start a worker by calling: StaekWeb.Worker.start_link(arg)
       # {StaekWeb.Worker, arg},
       # Start to serve requests, typically the last entry
-      StaekWeb.Endpoint
+      StaekWeb.Endpoint,
+      {Desktop.Window,
+       [
+         app: :staek_web,
+         id: StaekWebWindow,
+         url: &StaekWeb.Endpoint.url/0
+       ]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

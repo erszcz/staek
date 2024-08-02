@@ -1,5 +1,5 @@
 defmodule StaekWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :staek_web
+  use Desktop.Endpoint, otp_app: :staek_web
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -49,5 +49,6 @@ defmodule StaekWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug Desktop.Auth
   plug StaekWeb.Router
 end
