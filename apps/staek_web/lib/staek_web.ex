@@ -85,6 +85,7 @@ defmodule StaekWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import StaekWeb.CoreComponents
+      import StaekWeb.CustomComponents
       import StaekWeb.Gettext
 
       # Shortcut for generating JS commands
@@ -105,7 +106,7 @@ defmodule StaekWeb do
   end
 
   @doc """
-  When used, dispatch to the appropriate controller/view/etc.
+  When used, dispatch to the appropriate controller/live_view/etc.
   """
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])

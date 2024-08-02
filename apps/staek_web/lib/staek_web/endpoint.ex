@@ -7,7 +7,7 @@ defmodule StaekWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_staek_web_key",
-    signing_salt: "yU+R/S75",
+    signing_salt: "bjqz6Qpz",
     same_site: "Lax"
   ]
 
