@@ -11,7 +11,8 @@ defmodule Staek.ExpensesFixtures do
     {:ok, group} =
       attrs
       |> Enum.into(%{
-        name: "some name"
+        name: "some name",
+        default_currency: :EUR
       })
       |> Staek.Expenses.create_group()
 
