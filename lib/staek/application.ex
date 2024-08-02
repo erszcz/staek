@@ -9,7 +9,7 @@ defmodule Staek.Application do
   def start(_type, _args) do
     children = [
       StaekWeb.Telemetry,
-      Staek.Repo,
+      repo(),
       {DNSCluster, query: Application.get_env(:staek, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Staek.PubSub},
       # Start the Finch HTTP client for sending emails
@@ -32,5 +32,9 @@ defmodule Staek.Application do
   def config_change(changed, _new, removed) do
     StaekWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  def repo do
+    Staek.Repo
   end
 end

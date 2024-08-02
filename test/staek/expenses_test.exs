@@ -78,8 +78,8 @@ defmodule Staek.ExpensesTest do
     test "are accessible on users", ctx do
       %{user1: user1, user2: user2, group1: group1} = ctx
 
-      user1 = user1 |> Repo.preload(:groups)
-      user2 = user2 |> Repo.preload(:groups)
+      user1 = user1 |> repo().preload(:groups)
+      user2 = user2 |> repo().preload(:groups)
 
       assert Enum.map(user1.groups, & &1.id) == [group1.id]
       assert Enum.map(user2.groups, & &1.id) == [group1.id]
@@ -173,7 +173,7 @@ defmodule Staek.ExpensesTest do
 
       group1 =
         group1
-        |> Repo.preload(:expenses)
+        |> repo().preload(:expenses)
 
       assert Enum.map(group1.expenses, & &1.id) == [exp1.id, exp2.id]
     end
@@ -204,7 +204,7 @@ defmodule Staek.ExpensesTest do
 
       exp1 =
         exp1
-        |> Repo.preload([:credits, :debits])
+        |> repo().preload([:credits, :debits])
 
       assert Enum.map(exp1.credits, & &1.id) == [credit1.id]
       assert Enum.map(exp1.debits, & &1.id) == [debit1.id]
@@ -213,7 +213,7 @@ defmodule Staek.ExpensesTest do
     test "allow access to and from users", ctx do
       %{credit1: credit1, debit1: debit1, user1: user1, user2: user2} = ctx
 
-      [user1, user2] = Enum.map([user1, user2], &Repo.preload(&1, [:credits, :debits]))
+      [user1, user2] = Enum.map([user1, user2], &repo().preload(&1, [:credits, :debits]))
 
       assert credit1.user_id == user1.id
       assert debit1.user_id == user2.id

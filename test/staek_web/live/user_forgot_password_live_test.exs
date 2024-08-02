@@ -3,9 +3,9 @@ defmodule StaekWeb.UserForgotPasswordLiveTest do
 
   import Phoenix.LiveViewTest
   import Staek.AccountsFixtures
+  import Staek.Application, only: [repo: 0]
 
   alias Staek.Accounts
-  alias Staek.Repo
 
   describe "Forgot password page" do
     test "renders email page", %{conn: conn} do
@@ -43,7 +43,7 @@ defmodule StaekWeb.UserForgotPasswordLiveTest do
 
       assert Phoenix.Flash.get(conn.assigns.flash, :info) =~ "If your email is in our system"
 
-      assert Repo.get_by!(Accounts.UserToken, user_id: user.id).context ==
+      assert repo().get_by!(Accounts.UserToken, user_id: user.id).context ==
                "reset_password"
     end
 
@@ -57,7 +57,7 @@ defmodule StaekWeb.UserForgotPasswordLiveTest do
         |> follow_redirect(conn, "/")
 
       assert Phoenix.Flash.get(conn.assigns.flash, :info) =~ "If your email is in our system"
-      assert Repo.all(Accounts.UserToken) == []
+      assert repo().all(Accounts.UserToken) == []
     end
   end
 end

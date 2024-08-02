@@ -1,6 +1,7 @@
 defmodule Staek.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
+  import Staek.Application, only: [repo: 0]
 
   alias Staek.Expenses.Credit
   alias Staek.Expenses.Debit
@@ -91,7 +92,7 @@ defmodule Staek.Accounts.User do
   defp maybe_validate_unique_email(changeset, opts) do
     if Keyword.get(opts, :validate_email, true) do
       changeset
-      |> unsafe_validate_unique(:email, Staek.Repo)
+      |> unsafe_validate_unique(:email, repo())
       |> unique_constraint(:email)
     else
       changeset

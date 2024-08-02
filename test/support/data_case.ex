@@ -18,7 +18,7 @@ defmodule Staek.DataCase do
 
   using do
     quote do
-      alias Staek.Repo
+      import Staek.Application, only: [repo: 0]
 
       import Ecto
       import Ecto.Changeset
@@ -36,7 +36,9 @@ defmodule Staek.DataCase do
   Sets up the sandbox based on the test tags.
   """
   def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Staek.Repo, shared: not tags[:async])
+    pid =
+      Ecto.Adapters.SQL.Sandbox.start_owner!(Staek.Application.repo(), shared: not tags[:async])
+
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
 
