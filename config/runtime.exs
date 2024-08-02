@@ -109,3 +109,4 @@ if config_env() == :prod do
 end
 
 config :staek, :repo, Staek.Repo
+config :staek_web, StaekWeb.Endpoint, server: true

@@ -58,7 +58,9 @@ defmodule StaekWeb.MixProject do
       {:gettext, "~> 0.20"},
       {:staek, in_umbrella: true},
       {:jason, "~> 1.2"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+
+      {:staek, in_umbrella: true}
     ]
   end
 
