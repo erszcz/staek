@@ -42,7 +42,8 @@ defmodule Staek.MixProject do
       {:ecto_sqlite3, ">= 0.0.0"},
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.5"},
-      {:finch, "~> 0.13"}
+      {:finch, "~> 0.13"},
+      {:bcrypt_elixir, "~> 3.0"}
     ]
   end
 
