@@ -1,0 +1,40 @@
+<.flash_group flash={@flash} />
+
+<div class="absolute left-0 top-0 h-screen w-full z-10 flex flex-col justify-center items-center">
+  <div class="flex flex-row gap-2 m-auto bg-white rounded-lg shadow-lg p-12 gap-12">
+    <img src={~p"/images/logo.svg"} width="256" class="mr-6" />
+    <div class="flex flex-col gap-4 my-auto">
+      <header class="text-9xl font-bold">Staek</header>
+      <p class="text-4xl p-1 font-semibold">Split your bills with ease</p>
+      <p class="p-1">Log in or register in the top right ↗️</p>
+      <p class="p-1">
+        Expenses are managed in <a class="text-gray-500 hover:text-gray-400" href="/groups">groups</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<svg
+  viewBox="0 0 900 600"
+  fill="none"
+  aria-hidden="true"
+  class="absolute inset-0 h-full w-full z-0"
+  preserveAspectRatio="xMinYMid slice"
+>
+  <defs>
+    <filter id="blur1" x="-10%" y="-10%" width="120%" height="120%">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+      <feGaussianBlur stdDeviation="161" result="effect1_foregroundBlur"></feGaussianBlur>
+    </filter>
+  </defs>
+  <rect width="900" height="600" fill="#6600FF"></rect>
+  <g filter="url(#blur1)">
+    <circle cx="378" cy="424" fill="#F7770F" r="357"></circle>
+    <circle cx="28" cy="108" fill="#6600FF" r="357"></circle>
+    <circle cx="606" cy="223" fill="#F7770F" r="357"></circle>
+    <circle cx="813" cy="534" fill="#F7770F" r="357"></circle>
+    <circle cx="626" cy="417" fill="#6600FF" r="357"></circle>
+    <circle cx="688" cy="1" fill="#F7770F" r="357"></circle>
+  </g>
+</svg>

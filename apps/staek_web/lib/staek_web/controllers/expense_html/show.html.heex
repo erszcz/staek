@@ -1,0 +1,15 @@
+<.header>
+  Expense <%= @expense.id %>
+  <:subtitle>This is a expense record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/expenses/#{@expense}/edit"}>
+      <.button>Edit expense</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @expense.name %></:item>
+</.list>
+
+<.back navigate={~p"/expenses"}>Back to expenses</.back>

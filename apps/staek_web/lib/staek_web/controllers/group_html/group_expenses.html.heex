@@ -1,0 +1,22 @@
+<div :if={@items != []} class="flex flex-col">
+  <div :for={expense <- @items} class="odd:bg-gray-100 hover:bg-gray-200 last:rounded-b-lg">
+    <a href="" class="block w-full flex flex-row">
+      <div class="basis-2/5 text-xl m-auto px-4 py-3"><%= expense.name %></div>
+      <div class="basis-2/5 text-right px-2 py-1">
+        <%= StaekWeb.GroupHTML.render_who_paid(
+          expense.who_paid,
+          Map.put(assigns, :currency, expense.currency)
+        ) %>
+      </div>
+      <div class="basis-1/5 text-right px-2 py-1">
+        <%= StaekWeb.GroupHTML.render_user_debt(
+          expense.user_debt,
+          Map.put(assigns, :currency, expense.currency)
+        ) %>
+      </div>
+    </a>
+  </div>
+</div>
+<div :if={@items == []} class="p-4">
+  No expenses recorded in this group
+</div>

@@ -1,0 +1,12 @@
+<.header>
+  Edit group settings
+</.header>
+
+<.group_form
+  changeset={@changeset}
+  action={~p"/groups/#{@group}"}
+  members={@members}
+  users={@users}
+/>
+
+<.back navigate={~p"/groups"}>Back to groups</.back>

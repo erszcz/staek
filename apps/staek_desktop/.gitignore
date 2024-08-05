@@ -23,16 +23,5 @@ erl_crash.dump
 /tmp/
 
 # Ignore package tarball (built via "mix hex.build").
-staek-*.tar
 staek_desktop-*.tar
 
-# In case you use Node.js/npm, you want to ignore these.
-npm-debug.log
-/assets/node_modules/
-
-# Database files
-*.db
-*.db-*
-
-# Tags
-tags
