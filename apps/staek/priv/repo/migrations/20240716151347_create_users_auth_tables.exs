@@ -2,10 +2,18 @@ defmodule Staek.Repo.Migrations.CreateUsersAuthTables do
   use Ecto.Migration
 
   def change do
-    execute "CREATE EXTENSION IF NOT EXISTS citext", ""
+    string_t =
+      case Ecto.Adapter.lookup_meta(Staek.Repo)[:adapter] do
+        Ecto.Adapters.Postgres ->
+          execute "CREATE EXTENSION IF NOT EXISTS citext", ""
+          :citext
+
+        _ ->
+          :string
+      end
 
     create table(:users) do
-      add :email, :citext, null: false
+      add :email, string_t, null: false
       add :name, :string, null: false
       add :hashed_password, :string, null: false
       add :confirmed_at, :utc_datetime
