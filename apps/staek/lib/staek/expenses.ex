@@ -4,12 +4,12 @@ defmodule Staek.Expenses do
   """
 
   import Ecto.Query, warn: false
-  import Staek.Application, only: [repo: 0]
 
   alias Staek.Accounts.User
   alias Staek.Expenses.Credit
   alias Staek.Expenses.Debit
   alias Staek.Expenses.Group
+  alias Staek.Repo
 
   @doc """
   Returns the list of groups.
@@ -21,7 +21,7 @@ defmodule Staek.Expenses do
 
   """
   def list_groups do
-    repo().all(Group)
+    Repo.all(Group)
   end
 
   @doc """
@@ -40,8 +40,8 @@ defmodule Staek.Expenses do
   """
   def get_group!(id, preloads \\ []) do
     Group
-    |> repo().get!(id)
-    |> repo().preload(preloads)
+    |> Repo.get!(id)
+    |> Repo.preload(preloads)
   end
 
   @doc """
@@ -59,7 +59,7 @@ defmodule Staek.Expenses do
   def create_group(attrs \\ %{}) do
     %Group{}
     |> Group.changeset(attrs)
-    |> repo().insert()
+    |> Repo.insert()
   end
 
   @doc """
@@ -77,7 +77,7 @@ defmodule Staek.Expenses do
   def update_group(%Group{} = group, attrs) do
     group
     |> Group.changeset(attrs)
-    |> repo().update()
+    |> Repo.update()
   end
 
   @doc """
@@ -93,7 +93,7 @@ defmodule Staek.Expenses do
 
   """
   def delete_group(%Group{} = group) do
-    repo().delete(group)
+    Repo.delete(group)
   end
 
   @doc """
@@ -110,7 +110,7 @@ defmodule Staek.Expenses do
   end
 
   def get_user_groups(%User{} = user) do
-    user = user |> repo().preload(:groups)
+    user = user |> Repo.preload(:groups)
     user.groups
   end
 
@@ -126,7 +126,7 @@ defmodule Staek.Expenses do
 
   """
   def list_expenses do
-    repo().all(Expense)
+    Repo.all(Expense)
   end
 
   @doc """
@@ -143,7 +143,7 @@ defmodule Staek.Expenses do
       ** (Ecto.NoResultsError)
 
   """
-  def get_expense!(id), do: repo().get!(Expense, id)
+  def get_expense!(id), do: Repo.get!(Expense, id)
 
   @doc """
   Creates a expense.
@@ -160,7 +160,7 @@ defmodule Staek.Expenses do
   def create_expense(attrs \\ %{}) do
     %Expense{}
     |> Expense.changeset(attrs)
-    |> repo().insert()
+    |> Repo.insert()
   end
 
   @doc """
@@ -178,7 +178,7 @@ defmodule Staek.Expenses do
   def update_expense(%Expense{} = expense, attrs) do
     expense
     |> Expense.changeset(attrs)
-    |> repo().update()
+    |> Repo.update()
   end
 
   @doc """
@@ -194,7 +194,7 @@ defmodule Staek.Expenses do
 
   """
   def delete_expense(%Expense{} = expense) do
-    repo().delete(expense)
+    Repo.delete(expense)
   end
 
   @doc """
@@ -225,7 +225,7 @@ defmodule Staek.Expenses do
   def create_credit(attrs \\ %{}) do
     %Credit{}
     |> Credit.changeset(attrs)
-    |> repo().insert()
+    |> Repo.insert()
   end
 
   @doc """
@@ -243,7 +243,7 @@ defmodule Staek.Expenses do
   def create_debit(attrs \\ %{}) do
     %Debit{}
     |> Debit.changeset(attrs)
-    |> repo().insert()
+    |> Repo.insert()
   end
 
   @spec get_group_expenses(integer()) :: [%Expense{}]
@@ -255,7 +255,7 @@ defmodule Staek.Expenses do
       group_by: e.id,
       order_by: [desc: e.inserted_at]
     )
-    |> repo().all()
-    |> repo().preload([:credits, :debits])
+    |> Repo.all()
+    |> Repo.preload([:credits, :debits])
   end
 end

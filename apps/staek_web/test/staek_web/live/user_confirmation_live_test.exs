@@ -3,9 +3,9 @@ defmodule StaekWeb.UserConfirmationLiveTest do
 
   import Phoenix.LiveViewTest
   import Staek.AccountsFixtures
-  import Staek.Application, only: [repo: 0]
 
   alias Staek.Accounts
+  alias Staek.Repo
 
   setup do
     %{user: user_fixture()}
@@ -38,7 +38,7 @@ defmodule StaekWeb.UserConfirmationLiveTest do
 
       assert Accounts.get_user!(user.id).confirmed_at
       refute get_session(conn, :user_token)
-      assert repo().all(Accounts.UserToken) == []
+      assert Repo.all(Accounts.UserToken) == []
 
       # when not logged in
       {:ok, lv, _html} = live(conn, ~p"/users/confirm/#{token}")
