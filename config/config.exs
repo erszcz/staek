@@ -9,6 +9,57 @@
 # move said applications out of the umbrella.
 import Config
 
+config :staek_desktop,
+  generators: [context_app: false]
+
+# Configures the endpoint
+config :staek_desktop, StaekDesktop.Endpoint,
+  url: [host: "localhost"],
+  adapter: Bandit.PhoenixAdapter,
+  render_errors: [
+    formats: [json: StaekDesktop.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: StaekDesktop.PubSub,
+  live_view: [signing_salt: "bTuPq/oE"]
+
+config :staek_desktop,
+  ecto_repos: [StaekDesktop.Repo],
+  generators: [context_app: false]
+
+# Configures the endpoint
+config :staek_desktop, StaekDesktop.Endpoint,
+  url: [host: "localhost"],
+  adapter: Bandit.PhoenixAdapter,
+  render_errors: [
+    formats: [html: StaekDesktop.ErrorHTML, json: StaekDesktop.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: StaekDesktop.PubSub,
+  live_view: [signing_salt: "d5evc6s7"]
+
+# Configure esbuild (the version is required)
+config :esbuild,
+  version: "0.17.11",
+  staek_desktop: [
+    args:
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../apps/staek_desktop/assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+# Configure tailwind (the version is required)
+config :tailwind,
+  version: "3.4.3",
+  staek_desktop: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../apps/staek_desktop/assets", __DIR__)
+  ]
+
 # Configure Mix tasks and generators
 config :staek,
   ecto_repos: [Staek.Repo]
