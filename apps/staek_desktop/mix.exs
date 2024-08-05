@@ -40,7 +40,9 @@ defmodule StaekDesktop.MixProject do
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+
+      {:desktop, github: "elixir-desktop/desktop"}
     ]
   end
 

@@ -90,8 +90,8 @@ if config_env() == :prod do
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
-      ip: {0, 0, 0, 0, 0, 0, 0, 0},
-      port: String.to_integer(System.get_env("PORT") || "4000")
+      ip: {0, 0, 0, 0, 0, 0, 0, 1},
+      port: 0
     ],
     secret_key_base: secret_key_base
 
@@ -257,4 +257,5 @@ if config_env() == :prod do
 end
 
 config :staek, :repo, Staek.Repo
+config :staek_desktop, StaekDesktop.Endpoint, server: true
 config :staek_web, StaekWeb.Endpoint, server: true
