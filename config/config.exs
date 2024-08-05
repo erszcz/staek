@@ -36,10 +36,6 @@ config :staek_desktop, StaekDesktop.Endpoint,
   pubsub_server: StaekDesktop.PubSub,
   live_view: [signing_salt: "bTuPq/oE"]
 
-config :staek_desktop,
-  ecto_repos: [StaekDesktop.Repo],
-  generators: [context_app: false]
-
 # Configures the endpoint
 config :staek_desktop, StaekDesktop.Endpoint,
   url: [host: "localhost"],
