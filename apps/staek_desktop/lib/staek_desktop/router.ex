@@ -7,5 +7,7 @@ defmodule StaekDesktop.Router do
 
   scope "/api", StaekDesktop do
     pipe_through :api
+
+    get "/", APIController, :index
   end
 end
