@@ -42,6 +42,7 @@ defmodule StaekDesktop.MixProject do
       {:jason, "~> 1.2"},
       {:bandit, "~> 1.5"},
 
+      {:staek_web, in_umbrella: true},
       {:desktop, github: "elixir-desktop/desktop"}
     ]
   end

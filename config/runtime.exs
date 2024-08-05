@@ -258,4 +258,3 @@ end
 
 config :staek, :repo, Staek.Repo
 config :staek_desktop, StaekDesktop.Endpoint, server: true
-config :staek_web, StaekWeb.Endpoint, server: true

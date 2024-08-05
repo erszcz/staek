@@ -21,9 +21,9 @@ defmodule StaekDesktop.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :staek_desktop,
+    from: :staek_web,
     gzip: false,
-    only: StaekDesktop.static_paths()
+    only: StaekWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -43,5 +43,5 @@ defmodule StaekDesktop.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug Desktop.Auth
-  plug StaekDesktop.Router
+  plug StaekWeb.Router
 end
