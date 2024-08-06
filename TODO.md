@@ -14,6 +14,7 @@
 - [ ] support non-equal expense credit/debit assignments
 - [ ] fold group balances and group members into an accordion
 - [ ] redesign the main group expenses view to use fixed columns instead of flex divs with basis
+- [ ] should a user be able to see a group they're not a member of?
 
 
 ## Elixir Desktop
