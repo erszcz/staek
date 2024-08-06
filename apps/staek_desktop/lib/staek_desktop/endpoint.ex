@@ -42,6 +42,7 @@ defmodule StaekDesktop.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug Desktop.Auth
+  ## Disabled as it breaks the UX around logging in/out of the app.
+  # plug Desktop.Auth
   plug StaekWeb.Router
 end
