@@ -1,0 +1,3 @@
+seq_map_path="/tmp/marmot-staek-desktop-sm.cbor"
+db_path="/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/staek_desktop.db"
+node_id=2
