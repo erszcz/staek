@@ -181,4 +181,16 @@ if config_env() == :prod do
 end
 
 config :staek, :repo, Staek.Repo
-config :staek_desktop, StaekDesktop.Endpoint, server: true
+
+defmodule Staek.RuntimeConfig do
+  def configure("desktop") do
+    config :staek_desktop, StaekDesktop.Endpoint, server: true
+  end
+
+  def configure("web") do
+    config :staek_web, StaekWeb.Endpoint, server: true
+  end
+end
+
+endpoint = System.get_env("RELEASE_NAME", "web")
+Staek.RuntimeConfig.configure(endpoint)
