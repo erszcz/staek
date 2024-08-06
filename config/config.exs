@@ -33,19 +33,8 @@ config :staek_desktop, StaekDesktop.Endpoint,
     formats: [json: StaekDesktop.ErrorJSON],
     layout: false
   ],
-  pubsub_server: StaekDesktop.PubSub,
+  pubsub_server: Staek.PubSub,
   live_view: [signing_salt: "bTuPq/oE"]
-
-# Configures the endpoint
-config :staek_desktop, StaekDesktop.Endpoint,
-  url: [host: "localhost"],
-  adapter: Bandit.PhoenixAdapter,
-  render_errors: [
-    formats: [html: StaekDesktop.ErrorHTML, json: StaekDesktop.ErrorJSON],
-    layout: false
-  ],
-  pubsub_server: StaekDesktop.PubSub,
-  live_view: [signing_salt: "d5evc6s7"]
 
 # Configure esbuild (the version is required)
 config :esbuild,
