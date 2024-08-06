@@ -31,10 +31,7 @@ config :staek_desktop, StaekDesktop.Endpoint,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "Wq8rDE9F5S7SkKaMIlegMsCMh7P4QLJaPhZXsSSshMXMtGyrP4CNEK/+sWrnR/NE",
-  watchers: [
-    esbuild: {Esbuild, :install_and_run, [:staek_desktop, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:staek_desktop, ~w(--watch)]}
-  ]
+  watchers: []
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
