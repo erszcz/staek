@@ -142,6 +142,9 @@ defmodule StaekWeb.GroupController do
 
         {{:n_users_paid, _, _}, [], [%Debit{} = d]} ->
           {:current_user_borrowed, d.amount}
+
+        {{:n_users_paid, _, _}, [], []} ->
+          :not_involved
       end
 
     %{
