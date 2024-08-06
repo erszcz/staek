@@ -18,8 +18,17 @@ defmodule StaekWeb.GroupController do
   end
 
   def new(conn, _params) do
-    changeset = Expenses.change_group(%Group{})
-    render(conn, :new, changeset: changeset)
+    group = %Group{}
+    changeset = Expenses.change_group(group)
+    users = Accounts.all_users()
+
+    assigns = %{
+      group: group,
+      changeset: changeset,
+      users: users
+    }
+
+    render(conn, :new, assigns)
   end
 
   def create(conn, %{"group" => group_params}) do
