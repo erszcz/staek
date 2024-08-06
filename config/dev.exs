@@ -1,22 +1,5 @@
 import Config
 
-# Configure your database - SQLite3
-config :staek, Staek.Repo,
-  database: Path.expand("../staek_dev.db", __DIR__),
-  pool_size: 5,
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true
-
-# Configure your database - Postgres
-# config :staek, Staek.Repo,
-#   username: "staek_db",
-#   password: "staek_db_secret",
-#   hostname: "localhost",
-#   database: "staek_db",
-#   stacktrace: true,
-#   show_sensitive_data_on_connection_error: true,
-#   pool_size: 10
-
 secret_key_base = "Wq8rDE9F5S7SkKaMIlegMsCMh7P4QLJaPhZXsSSshMXMtGyrP4CNEK/+sWrnR/NE"
 
 # For development, we disable any cache and enable

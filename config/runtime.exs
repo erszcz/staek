@@ -182,12 +182,24 @@ end
 
 config :staek, :repo, Staek.Repo
 
+# Configure your database - SQLite3
+config :staek, Staek.Repo,
+  pool_size: 5,
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true
+
 defmodule Staek.RuntimeConfig do
   def configure("desktop") do
+    config :staek, Staek.Repo,
+      database: Application.app_dir(:staek, ["db", "staek_desktop.db"])
+
     config :staek_desktop, StaekDesktop.Endpoint, server: true
   end
 
   def configure("web") do
+    config :staek, Staek.Repo,
+      database: Application.app_dir(:staek, ["db", "staek_web.db"])
+
     config :staek_web, StaekWeb.Endpoint, server: true
   end
 end
