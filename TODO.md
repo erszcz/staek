@@ -14,9 +14,17 @@
 - [ ] support non-equal expense credit/debit assignments
 - [ ] fold group balances and group members into an accordion
 - [ ] redesign the main group expenses view to use fixed columns instead of flex divs with basis
-- [ ] why do assets sometimes disappear?
-  after merging branches main and umbrella and rebuilding the app, assets disappeared
-- [ ] does the desktop webview run javascript?
-  test with a simple alert triggered by a button click
-- [ ] why does the desktop release try to use the web release's endpoint port?
-  this prevents the desktop and web releases from running side by side
+
+
+## Elixir Desktop
+
+- [ ] Why do assets sometimes disappear?
+  After merging branches main and umbrella and rebuilding the app, assets disappeared.
+  This seems to work again, but I don't know what the triggers here are.
+
+- [x] Does the desktop webview run JavaScript?
+  Test with a simple alert triggered by a button click.
+  Answer: yes, it does, for example an alert gets displayed in a new dialog.
+
+- [ ] Why does the desktop release try to use the web release's endpoint port?
+  This prevents the desktop and web releases from running side by side.
