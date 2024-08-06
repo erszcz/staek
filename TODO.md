@@ -28,3 +28,6 @@
 
 - [ ] Why does the desktop release try to use the web release's endpoint port?
   This prevents the desktop and web releases from running side by side.
+
+- [ ] Set up Marmot to enable database syncing between a desktop/mobile
+  node and a web / backend node.
