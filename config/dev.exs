@@ -17,6 +17,8 @@ config :staek, Staek.Repo,
 #   show_sensitive_data_on_connection_error: true,
 #   pool_size: 10
 
+secret_key_base = "Wq8rDE9F5S7SkKaMIlegMsCMh7P4QLJaPhZXsSSshMXMtGyrP4CNEK/+sWrnR/NE"
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -30,7 +32,7 @@ config :staek_desktop, StaekDesktop.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "Wq8rDE9F5S7SkKaMIlegMsCMh7P4QLJaPhZXsSSshMXMtGyrP4CNEK/+sWrnR/NE",
+  secret_key_base: secret_key_base,
   watchers: []
 
 # For development, we disable any cache and enable
@@ -46,7 +48,7 @@ config :staek_web, StaekWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "vgmfJkrWDAvvM5kvNhJB8J1HGVtxUNbpt0GUwLh+LHGvwwIZkibEfkqvt7l9eA3V",
+  secret_key_base: secret_key_base,
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:staek_web, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:staek_web, ~w(--watch)]}
