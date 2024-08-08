@@ -2,10 +2,11 @@ defmodule Staek.Repo.Migrations.CreateDebits do
   use Ecto.Migration
 
   def change do
-    create table(:debits) do
+    create table(:debits, primary_key: false) do
+      add :id, :binary_id, primary_key: true, null: false
       add :amount, :decimal
-      add :expense_id, references(:expenses, on_delete: :delete_all), null: false
-      add :user_id, references(:users, on_delete: :restrict), null: false
+      add :expense_id, :binary_id
+      add :user_id, :id
 
       timestamps(type: :utc_datetime)
     end

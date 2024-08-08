@@ -2,9 +2,10 @@ defmodule Staek.Repo.Migrations.CreateExpenses do
   use Ecto.Migration
 
   def change do
-    create table(:expenses) do
+    create table(:expenses, primary_key: false) do
+      add :id, :binary_id, primary_key: true, null: false
       add :name, :string
-      add :group_id, references(:groups, on_delete: :delete_all)
+      add :group_id, :binary_id
 
       timestamps(type: :utc_datetime)
     end

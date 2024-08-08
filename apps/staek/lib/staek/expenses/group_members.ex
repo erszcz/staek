@@ -5,8 +5,9 @@ defmodule Staek.Expenses.GroupMembers do
   alias Staek.Accounts.User
   alias Staek.Expenses.Group
 
+  @primary_key {:id, Ecto.Nanoid, autogenerate: true}
   schema "group_members" do
-    belongs_to :group, Group
+    belongs_to :group, Group, type: Ecto.Nanoid
     belongs_to :user, User
 
     timestamps(type: :utc_datetime)

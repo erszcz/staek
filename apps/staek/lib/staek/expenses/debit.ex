@@ -5,9 +5,10 @@ defmodule Staek.Expenses.Debit do
   alias Staek.Accounts.User
   alias Staek.Expenses.Expense
 
+  @primary_key {:id, Ecto.Nanoid, autogenerate: true}
   schema "debits" do
     field :amount, :decimal
-    belongs_to :expense, Expense
+    belongs_to :expense, Expense, type: Ecto.Nanoid
     belongs_to :user, User
 
     timestamps(type: :utc_datetime)

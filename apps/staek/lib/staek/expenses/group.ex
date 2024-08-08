@@ -9,6 +9,7 @@ defmodule Staek.Expenses.Group do
 
   require Currencies
 
+  @primary_key {:id, Ecto.Nanoid, autogenerate: true}
   schema "groups" do
     field :name, :string
     field :default_currency, Ecto.Enum, values: Currencies.literal_symbols()

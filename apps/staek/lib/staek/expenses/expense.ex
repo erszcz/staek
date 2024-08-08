@@ -9,10 +9,11 @@ defmodule Staek.Expenses.Expense do
 
   require Currencies
 
+  @primary_key {:id, Ecto.Nanoid, autogenerate: true}
   schema "expenses" do
     field :name, :string
     field :currency, Ecto.Enum, values: Currencies.literal_symbols()
-    belongs_to :group, Group
+    belongs_to :group, Group, type: Ecto.Nanoid
     has_many :credits, Credit
     has_many :debits, Debit
 

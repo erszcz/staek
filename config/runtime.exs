@@ -182,11 +182,23 @@ end
 
 config :staek, :repo, Staek.Repo
 
+platform = System.cmd("uname", ~w[-s -m]) |> elem(0) |> String.split(~r/\s/, trim: true) |> Enum.map(&String.downcase(&1)) |> Enum.join("-")
+
+crsqlite = case platform do
+  "darwin" <> _ -> "crsqlite.dylib"
+  "linux" <> _ -> "crsqlite.so"
+  "windows" <> _ -> "crsqlite.dll"
+end
+
 # Configure your database - SQLite3
 config :staek, Staek.Repo,
   pool_size: 5,
   stacktrace: true,
-  show_sensitive_data_on_connection_error: true
+  show_sensitive_data_on_connection_error: true,
+  migration_timestamps: [
+    default: Ecto.Migration.fragment("current_timestamp")
+  ],
+  load_extensions: [Application.app_dir(:staek, ["priv", "sqlite3_extensions", platform, crsqlite])]
 
 defmodule Staek.RuntimeConfig do
   def configure("desktop") do

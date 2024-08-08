@@ -43,7 +43,8 @@ defmodule Staek.MixProject do
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
-      {:bcrypt_elixir, "~> 3.0"}
+      {:bcrypt_elixir, "~> 3.0"},
+      {:ecto_identifier, "~> 0.2.0"}
     ]
   end
 
