@@ -27,14 +27,19 @@
   Test with a simple alert triggered by a button click.
   Answer: yes, it does, for example an alert gets displayed in a new dialog.
 
-- [ ] Why does the desktop release try to use the web release's endpoint port?
+- [x] Why does the desktop release try to use the web release's endpoint port?
   This prevents the desktop and web releases from running side by side.
-
-- [ ] Set up Marmot to enable database syncing between a desktop/mobile
-  node and a web / backend node.
+  Answer: there was port configuration defined under config/,
+  which made both apps use the same port. It's cleaned up now.
 
 
 ## Local first
+
+- [x] Set up Marmot to enable database syncing between a desktop/mobile
+  node and a web / backend node.
+  Answer: This seemed promising, until it stopped. The solution doesn't
+  seem to be robust enough or I don't know how to use NATS properly.
+  Anyway, Marmot seemed to be quite limited.
 
 - [ ] `db_version` should be stored persistently across app restarts to avoid resending
   db history since its creation
