@@ -11,4 +11,36 @@ defmodule Staek.Repo do
   def enable_crr!(table) when is_binary(table) or is_atom(table) do
     query!("select crsql_as_crr($1);", [table])
   end
+
+  def get_crsql_changes!(since_db_version \\ 0) do
+    q = """
+    SELECT "table", "pk", "cid", "val", "col_version", "db_version", "site_id", "cl", "seq"
+    FROM crsql_changes
+    WHERE db_version > $1
+    """
+
+    args = [since_db_version]
+    result = query!(q, args)
+    changes_to_entries(result)
+  end
+
+  def get_crsql_changes_for_site!(site_id, since_db_version \\ 0) do
+    q = """
+    SELECT "table", "pk", "cid", "val", "col_version", "db_version", COALESCE("site_id", crsql_site_id()), "cl", "seq"
+    FROM crsql_changes
+    WHERE db_version > $1 AND site_id IS NOT $2
+    """
+
+    args = [since_db_version, site_id]
+    result = query!(q, args)
+    changes_to_entries(result)
+  end
+
+  def apply_crsql_changes(entries) do
+    insert_all("crsql_changes", entries)
+  end
+
+  defp changes_to_entries(changes_result) do
+    Enum.map(changes_result.rows, & Enum.zip(changes_result.columns, &1))
+  end
 end

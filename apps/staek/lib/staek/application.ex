@@ -14,6 +14,7 @@ defmodule Staek.Application do
         skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:staek, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Staek.PubSub},
+      {Staek.SyncService, pubsub: Staek.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: Staek.Finch}
       # Start a worker by calling: Staek.Worker.start_link(arg)

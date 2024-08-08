@@ -32,3 +32,12 @@
 
 - [ ] Set up Marmot to enable database syncing between a desktop/mobile
   node and a web / backend node.
+
+
+## Local first
+
+- [ ] `db_version` should be stored persistently across app restarts to avoid resending
+  db history since its creation
+- [ ] watch out for out of order messages and missing updates!
+- [ ] verify if it's safe to apply the changes,
+  i.e. there's no gap between our `db_version` and `from_db_version`

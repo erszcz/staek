@@ -200,6 +200,10 @@ config :staek, Staek.Repo,
   ],
   load_extensions: [Application.app_dir(:staek, ["priv", "sqlite3_extensions", platform, crsqlite])]
 
+config :staek, Staek.SyncService, %{
+  nodes: [:'desktop@x7', :'web@x7']
+}
+
 defmodule Staek.RuntimeConfig do
   def configure("desktop") do
     config :staek, Staek.Repo,
