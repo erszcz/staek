@@ -40,6 +40,12 @@ defmodule Staek.Repo do
     insert_all("crsql_changes", entries)
   end
 
+  def get_crsql_db_version() do
+    q = "SELECT db_version FROM crsql_changes ORDER BY db_version DESC LIMIT 1;"
+    %Exqlite.Result{rows: [[version]]} = query!(q)
+    version
+  end
+
   defp changes_to_entries(changes_result) do
     Enum.map(changes_result.rows, & Enum.zip(changes_result.columns, &1))
   end
