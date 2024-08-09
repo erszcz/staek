@@ -41,8 +41,8 @@ defmodule StaekDesktop.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:bandit, "~> 1.5"},
-
-      {:phoenix_live_view, ">= 0.0.0", [env: :prod, hex: "phoenix_live_view", repo: "hexpm", override: true]},
+      {:phoenix_live_view, ">= 0.0.0",
+       [env: :prod, hex: "phoenix_live_view", repo: "hexpm", override: true]},
       {:staek_web, in_umbrella: true},
       {:desktop, github: "elixir-desktop/desktop"}
     ]

@@ -10,8 +10,7 @@ defmodule Staek.Application do
     children = [
       Staek.Repo,
       {Ecto.Migrator,
-        repos: Application.fetch_env!(:staek, :ecto_repos),
-        skip: skip_migrations?()},
+       repos: Application.fetch_env!(:staek, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:staek, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Staek.PubSub},
       {Staek.SyncService, pubsub: Staek.PubSub},

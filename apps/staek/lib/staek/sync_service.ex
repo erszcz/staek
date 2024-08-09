@@ -35,19 +35,21 @@ defmodule Staek.SyncService do
     ##       resending db history since its creation
     entries = Repo.get_crsql_changes!(state.db_version)
 
-    db_version = case entries do
-      [] ->
-        state.db_version
-      [_|_] ->
-        entries |> List.last() |> Enum.into(%{}) |> Map.get("db_version")
-    end
+    db_version =
+      case entries do
+        [] ->
+          state.db_version
 
-    Logger.debug([
+        [_ | _] ->
+          entries |> List.last() |> Enum.into(%{}) |> Map.get("db_version")
+      end
+
+    Logger.debug(
       event: :tick,
       entries: length(entries),
       prev_db_version: state.db_version,
       db_version: db_version
-    ])
+    )
 
     ## TODO: watch out for out of order messages and missing updates!
     PubSub.broadcast(state.pubsub, @topic, %{
@@ -75,10 +77,10 @@ defmodule Staek.SyncService do
       entries: entries
     } = message
 
-    Logger.debug([
+    Logger.debug(
       event: :entries,
       entries: length(entries)
-    ])
+    )
 
     {_, nil} = Repo.apply_crsql_changes(entries)
 

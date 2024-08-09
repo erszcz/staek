@@ -47,6 +47,6 @@ defmodule Staek.Repo do
   end
 
   defp changes_to_entries(changes_result) do
-    Enum.map(changes_result.rows, & Enum.zip(changes_result.columns, &1))
+    Enum.map(changes_result.rows, &Enum.zip(changes_result.columns, &1))
   end
 end

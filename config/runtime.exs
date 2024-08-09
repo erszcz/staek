@@ -182,13 +182,19 @@ end
 
 config :staek, :repo, Staek.Repo
 
-platform = System.cmd("uname", ~w[-s -m]) |> elem(0) |> String.split(~r/\s/, trim: true) |> Enum.map(&String.downcase(&1)) |> Enum.join("-")
+platform =
+  System.cmd("uname", ~w[-s -m])
+  |> elem(0)
+  |> String.split(~r/\s/, trim: true)
+  |> Enum.map(&String.downcase(&1))
+  |> Enum.join("-")
 
-crsqlite = case platform do
-  "darwin" <> _ -> "crsqlite.dylib"
-  "linux" <> _ -> "crsqlite.so"
-  "windows" <> _ -> "crsqlite.dll"
-end
+crsqlite =
+  case platform do
+    "darwin" <> _ -> "crsqlite.dylib"
+    "linux" <> _ -> "crsqlite.so"
+    "windows" <> _ -> "crsqlite.dll"
+  end
 
 # Configure your database - SQLite3
 config :staek, Staek.Repo,
@@ -198,23 +204,23 @@ config :staek, Staek.Repo,
   migration_timestamps: [
     default: Ecto.Migration.fragment("current_timestamp")
   ],
-  load_extensions: [Application.app_dir(:staek, ["priv", "sqlite3_extensions", platform, crsqlite])]
+  load_extensions: [
+    Application.app_dir(:staek, ["priv", "sqlite3_extensions", platform, crsqlite])
+  ]
 
 config :staek, Staek.SyncService, %{
-  nodes: [:'desktop@x7', :'web@x7']
+  nodes: [:desktop@x7, :web@x7]
 }
 
 defmodule Staek.RuntimeConfig do
   def configure("desktop") do
-    config :staek, Staek.Repo,
-      database: Application.app_dir(:staek, ["db", "staek_desktop.db"])
+    config :staek, Staek.Repo, database: Application.app_dir(:staek, ["db", "staek_desktop.db"])
 
     config :staek_desktop, StaekDesktop.Endpoint, server: true
   end
 
   def configure("web") do
-    config :staek, Staek.Repo,
-      database: Application.app_dir(:staek, ["db", "staek_web.db"])
+    config :staek, Staek.Repo, database: Application.app_dir(:staek, ["db", "staek_web.db"])
 
     config :staek_web, StaekWeb.Endpoint, server: true
   end
