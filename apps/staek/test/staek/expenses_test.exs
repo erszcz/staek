@@ -103,7 +103,7 @@ defmodule Staek.ExpensesTest do
 
     test "list_expenses/0 returns all expenses" do
       expense = expense_fixture()
-      assert Expenses.list_expenses() == [expense]
+      assert Enum.map(Expenses.list_expenses(), & &1.id) == [expense.id]
     end
 
     test "get_expense!/1 returns the expense with given id" do

@@ -23,11 +23,23 @@ defmodule Staek.ExpensesFixtures do
   Generate a expense.
   """
   def expense_fixture(attrs \\ %{}) do
+    credit = %{
+      user_id: System.unique_integer([:positive]),
+      amount: "120.5"
+    }
+    debit = %{
+      user_id: System.unique_integer([:positive]),
+      amount: "120.5"
+    }
+
     {:ok, expense} =
       attrs
       |> Enum.into(%{
+        group_id: Ecto.Nanoid.autogenerate(),
         name: "some name",
-        currency: :EUR
+        currency: :EUR,
+        credits: [credit],
+        debits: [debit]
       })
       |> Staek.Expenses.create_expense()
 
