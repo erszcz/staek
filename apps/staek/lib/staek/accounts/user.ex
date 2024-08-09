@@ -47,6 +47,10 @@ defmodule Staek.Accounts.User do
       Defaults to `true`.
   """
   def registration_changeset(user, attrs, opts \\ []) do
+    attrs =
+      attrs
+      |> maybe_downcase(:email)
+
     user
     |> cast(attrs, [:email, :name, :password])
     |> validate_email(opts)
@@ -105,6 +109,10 @@ defmodule Staek.Accounts.User do
   It requires the email to change otherwise an error is added.
   """
   def email_changeset(user, attrs, opts \\ []) do
+    attrs =
+      attrs
+      |> maybe_downcase(:email)
+
     user
     |> cast(attrs, [:email])
     |> validate_email(opts)
@@ -167,6 +175,14 @@ defmodule Staek.Accounts.User do
       changeset
     else
       add_error(changeset, :current_password, "is not valid")
+    end
+  end
+
+  defp maybe_downcase(attrs, key) when is_atom(key) do
+    if value = attrs[key] || attrs[to_string(key)] do
+      Map.put(attrs, key, String.downcase(value))
+    else
+      attrs
     end
   end
 end
