@@ -23,13 +23,13 @@ defmodule Staek.SyncService do
     nodes = Application.fetch_env!(:staek, __MODULE__).nodes
     connect_nodes(nodes)
     PubSub.subscribe(state.pubsub, @topic)
-    schedule_sync(state)
+    schedule_tick(state)
     {:ok, state}
   end
 
   @impl true
-  def handle_info(:sync, state) do
-    Logger.debug(__MODULE__: :sync)
+  def handle_info(:tick, state) do
+    Logger.debug(__MODULE__: :tick)
 
     ## TODO: db_version should be stored persistently across app restarts to avoid
     ##       resending db history since its creation
@@ -43,7 +43,7 @@ defmodule Staek.SyncService do
     end
 
     Logger.debug([
-      event: :sync,
+      event: :tick,
       entries: length(entries),
       prev_db_version: state.db_version,
       db_version: db_version
@@ -57,7 +57,7 @@ defmodule Staek.SyncService do
       entries: entries
     })
 
-    schedule_sync(state)
+    schedule_tick(state)
 
     state =
       state
@@ -93,8 +93,8 @@ defmodule Staek.SyncService do
     Enum.each(nodes, &:net_adm.ping(&1))
   end
 
-  defp schedule_sync(state) do
-    Logger.debug(event: :schedule_sync)
-    Process.send_after(self(), :sync, state.sync_interval)
+  defp schedule_tick(state) do
+    Logger.debug(event: :schedule_tick)
+    Process.send_after(self(), :tick, state.sync_interval)
   end
 end
