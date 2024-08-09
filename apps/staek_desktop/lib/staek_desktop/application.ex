@@ -18,6 +18,7 @@ defmodule StaekDesktop.Application do
          app: :staek_desktop,
          id: StaekDesktopWindow,
          title: "StaekDesktop",
+         min_size: {360, 640},
          size: {800, 600},
          url: &StaekDesktop.Endpoint.url/0
        ]}
