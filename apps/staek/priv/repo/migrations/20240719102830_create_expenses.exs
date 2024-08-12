@@ -6,6 +6,7 @@ defmodule Staek.Repo.Migrations.CreateExpenses do
       add :id, :binary_id, primary_key: true, null: false
       add :name, :string
       add :group_id, :binary_id
+      add :currency, :text, null: false, default: "EUR"
 
       timestamps(type: :utc_datetime)
     end
