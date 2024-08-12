@@ -111,8 +111,22 @@ defmodule Staek.ExpensesTest do
       assert Expenses.get_expense!(expense.id).id == expense.id
     end
 
-    test "create_expense/1 with valid data creates a expense" do
-      valid_attrs = %{name: "some name", currency: :PLN}
+    test "create_expense/1 with valid data creates an expense" do
+      credit = %{
+        user_id: System.unique_integer([:positive]),
+        amount: "120.5"
+      }
+      debit = %{
+        user_id: System.unique_integer([:positive]),
+        amount: "120.5"
+      }
+      valid_attrs = %{
+        group_id: Ecto.Nanoid.autogenerate(),
+        name: "some name",
+        currency: :PLN,
+        credits: [credit],
+        debits: [debit]
+      }
 
       assert {:ok, %Expense{} = expense} = Expenses.create_expense(valid_attrs)
       assert expense.name == "some name"
