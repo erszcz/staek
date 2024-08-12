@@ -202,11 +202,11 @@ defmodule Staek.ExpensesTest do
       user2 = user_fixture()
 
       credit1 = %{
-        user_id: System.unique_integer([:positive]),
+        user_id: user1.id,
         amount: Decimal.new("120.5")
       }
       debit1 = %{
-        user_id: System.unique_integer([:positive]),
+        user_id: user2.id,
         amount: Decimal.new("120.5")
       }
 
@@ -244,10 +244,11 @@ defmodule Staek.ExpensesTest do
 
       assert credit1.user_id == user1.id
       assert debit1.user_id == user2.id
-      assert Enum.map(user1.credits, & &1.id) == [credit1.id]
-      assert Enum.map(user1.debits, & &1.id) == []
-      assert Enum.map(user2.credits, & &1.id) == []
-      assert Enum.map(user2.debits, & &1.id) == [debit1.id]
+      credit_spec = &Map.take(&1, [:amount, :user_id])
+      assert Enum.map(user1.credits, credit_spec) == [credit1]
+      assert Enum.map(user1.debits, credit_spec) == []
+      assert Enum.map(user2.credits, credit_spec) == []
+      assert Enum.map(user2.debits, credit_spec) == [debit1]
     end
   end
 
