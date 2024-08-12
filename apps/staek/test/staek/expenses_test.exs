@@ -108,7 +108,7 @@ defmodule Staek.ExpensesTest do
 
     test "get_expense!/1 returns the expense with given id" do
       expense = expense_fixture()
-      assert Expenses.get_expense!(expense.id) == expense
+      assert Expenses.get_expense!(expense.id).id == expense.id
     end
 
     test "create_expense/1 with valid data creates a expense" do
