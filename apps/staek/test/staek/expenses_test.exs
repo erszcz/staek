@@ -200,8 +200,16 @@ defmodule Staek.ExpensesTest do
     setup do
       user1 = user_fixture()
       user2 = user_fixture()
-      credit1 = credit_fixture(user: user1)
-      debit1 = debit_fixture(user: user2)
+
+      credit1 = %{
+        user_id: System.unique_integer([:positive]),
+        amount: Decimal.new("120.5")
+      }
+      debit1 = %{
+        user_id: System.unique_integer([:positive]),
+        amount: Decimal.new("120.5")
+      }
+
       exp1 = expense_fixture(credits: [credit1], debits: [debit1])
 
       %{
@@ -220,12 +228,17 @@ defmodule Staek.ExpensesTest do
         exp1
         |> Repo.preload([:credits, :debits])
 
-      assert Enum.map(exp1.credits, & &1.id) == [credit1.id]
-      assert Enum.map(exp1.debits, & &1.id) == [debit1.id]
+      assert Enum.map(exp1.credits, &Map.take(&1, [:amount, :user_id])) == [credit1]
+      assert Enum.map(exp1.debits, &Map.take(&1, [:amount, :user_id])) == [debit1]
     end
 
     test "allow access to and from users", ctx do
-      %{credit1: credit1, debit1: debit1, user1: user1, user2: user2} = ctx
+      %{
+        credit1: credit1,
+        debit1: debit1,
+        user1: user1,
+        user2: user2
+      } = ctx
 
       [user1, user2] = Enum.map([user1, user2], &Repo.preload(&1, [:credits, :debits]))
 

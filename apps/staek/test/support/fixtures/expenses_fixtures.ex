@@ -53,6 +53,7 @@ defmodule Staek.ExpensesFixtures do
     {:ok, credit} =
       attrs
       |> Enum.into(%{
+        user_id: System.unique_integer([:positive]),
         amount: "120.5"
       })
       |> Staek.Expenses.create_credit()
@@ -67,6 +68,7 @@ defmodule Staek.ExpensesFixtures do
     {:ok, debit} =
       attrs
       |> Enum.into(%{
+        user_id: System.unique_integer([:positive]),
         amount: "120.5"
       })
       |> Staek.Expenses.create_debit()
