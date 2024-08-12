@@ -158,8 +158,8 @@ defmodule Staek.ExpensesTest do
 
     setup do
       group1 = group_fixture()
-      exp1 = expense_fixture(group: group1)
-      exp2 = expense_fixture(group: group1)
+      exp1 = expense_fixture(group_id: group1.id)
+      exp2 = expense_fixture(group_id: group1.id)
 
       %{
         group1: group1,
