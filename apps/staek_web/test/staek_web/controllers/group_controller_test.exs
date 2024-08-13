@@ -62,7 +62,7 @@ defmodule StaekWeb.GroupControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn, group: group} do
       conn = put(conn, ~p"/groups/#{group}", group: @invalid_attrs)
-      assert html_response(conn, 200) =~ "Edit Group"
+      assert html_response(conn, 200) =~ "Edit group settings"
     end
   end
 
