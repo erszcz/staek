@@ -47,7 +47,7 @@ defmodule StaekWeb.GroupController do
         |> redirect(to: ~p"/groups/#{group}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, :new, changeset: changeset)
+        render(conn, :new, changeset: changeset, users: Accounts.all_users())
     end
   end
 
