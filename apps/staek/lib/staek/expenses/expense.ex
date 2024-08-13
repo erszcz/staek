@@ -72,7 +72,7 @@ defmodule Staek.Expenses.Expense do
           {field,
            {
              "#{owners_name} not unique",
-             duplicate_user_ids: owners -- unique_owners
+             duplicate_user_ids: all_owners -- unique_owners
            }}
         ]
     end

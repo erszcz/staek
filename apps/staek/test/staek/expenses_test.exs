@@ -295,12 +295,13 @@ defmodule Staek.ExpensesTest do
     test ": creditors must be unique", ctx do
       %{user1: user1} = ctx
 
-      {:ok, credit1} = Expenses.create_credit(%{user: user1, amount: "60.0"})
-      {:ok, credit2} = Expenses.create_credit(%{user: user1, amount: "60.0"})
-      {:ok, debit1} = Expenses.create_debit(%{user: user1, amount: "120.0"})
+      credit1 = %{user_id: user1.id, amount: "60.0"}
+      credit2 = %{user_id: user1.id, amount: "60.0"}
+      debit1 = %{user_id: user1.id, amount: "120.0"}
 
       assert {:error, changeset} =
                Expenses.create_expense(%{
+                 group_id: Ecto.Nanoid.autogenerate(),
                  name: "Creditors are not unique",
                  currency: :PLN,
                  credits: [credit1, credit2],
