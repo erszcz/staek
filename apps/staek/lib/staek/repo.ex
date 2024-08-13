@@ -40,10 +40,12 @@ defmodule Staek.Repo do
     insert_all("crsql_changes", entries)
   end
 
-  def get_crsql_db_version() do
-    q = "SELECT db_version FROM crsql_changes ORDER BY db_version DESC LIMIT 1;"
-    %Exqlite.Result{rows: [[version]]} = query!(q)
-    version
+  def get_crsql_db_version(db_version \\ 0) do
+    q = "SELECT db_version FROM crsql_changes WHERE db_version >= $1 ORDER BY db_version DESC LIMIT 1;"
+    case query!(q, [db_version]) do
+      %Exqlite.Result{rows: [[version]]} -> version
+      _ -> 0
+    end
   end
 
   defp changes_to_entries(changes_result) do

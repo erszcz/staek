@@ -24,16 +24,23 @@ defmodule Staek.SyncService do
     connect_nodes(nodes)
     PubSub.subscribe(state.pubsub, @topic)
     schedule_tick(state)
-    {:ok, state}
+
+    state = %{state | db_version: Repo.get_crsql_db_version()}
+
+    {:ok, state, {:continue, :sync_request}}
   end
 
   @impl true
-  def handle_info(:tick, state) do
-    Logger.debug(__MODULE__: :tick)
+  def handle_continue(:sync_request, state) do
+    PubSub.broadcast(state.pubsub, @topic, sync_request(%{
+      from_db_version: state.db_version
+    }))
 
-    ## TODO: db_version should be stored persistently across app restarts to avoid
-    ##       resending db history since its creation
-    entries = Repo.get_crsql_changes!(state.db_version)
+    {:noreply, state}
+  end
+
+  def handle_continue({:send_entries, from_db_version}, state) do
+    entries = Repo.get_crsql_changes!(from_db_version)
 
     db_version =
       case entries do
@@ -45,22 +52,70 @@ defmodule Staek.SyncService do
       end
 
     Logger.debug(
-      event: :tick,
+      event: :send_entries,
       entries: length(entries),
+      from_db_version: from_db_version,
+      db_version: db_version
+    )
+
+    PubSub.broadcast(state.pubsub, @topic, entries(%{
+      from_db_version: from_db_version,
+      db_version: db_version,
+      entries: entries
+    }))
+
+    state = %{state | db_version: db_version}
+
+    {:noreply, state}
+  end
+
+  @impl true
+  def handle_info(:tick, state) do
+    db_version = Repo.get_crsql_db_version(state.db_version)
+
+    Logger.debug(
+      event: :tick,
       prev_db_version: state.db_version,
       db_version: db_version
     )
 
-    ## TODO: watch out for out of order messages and missing updates!
-    PubSub.broadcast(state.pubsub, @topic, %{
-      message: :entries,
-      node: node(),
-      from_db_version: state.db_version,
-      to_db_version: db_version,
-      entries: entries
-    })
-
     schedule_tick(state)
+
+    if state.db_version < db_version do
+      {:noreply, state, {:continue, {:send_entries, state.db_version}}}
+    else
+      {:noreply, state}
+    end
+  end
+
+  def handle_info(%{message: :sync_request, node: node} = message, state) when node != node() do
+    Logger.debug(
+      event: :sync_request,
+      node: node,
+      from_db_version: message.from_db_version
+    )
+
+    {:noreply, state, {:continue, {:send_entries, message.from_db_version}}}
+  end
+
+  def handle_info(%{message: :entries, node: node} = message, state) when node != node() do
+    ## TODO: verify if it's safe to apply the changes,
+    ##       i.e. there's no gap between our db_version and from_db_version
+    %{
+      from_db_version: from_db_version,
+      db_version: db_version,
+      entries: entries
+    } = message
+
+    Logger.debug(
+      event: :entries,
+      entries: length(entries),
+      node: node,
+      from_db_version: from_db_version,
+      db_version: db_version
+    )
+
+    {_, nil} = Repo.apply_crsql_changes(entries)
 
     state =
       state
@@ -69,33 +124,13 @@ defmodule Staek.SyncService do
     {:noreply, state}
   end
 
-  def handle_info(%{message: :entries} = message, state) do
-    ## TODO: verify if it's safe to apply the changes,
-    ##       i.e. there's no gap between our db_version and from_db_version
-    %{
-      from_db_version: _from_db_version,
-      to_db_version: to_db_version,
-      entries: entries
-      node: node
-    } = message
-
+  def handle_info(message, state) do
     Logger.debug(
-      event: :entries,
-      entries: length(entries),
-      node: node
+      event: :discarding_info,
+      message: message
     )
 
-    if node != node() do
-      {_, nil} = Repo.apply_crsql_changes(entries)
-
-      state =
-        state
-        |> Map.put(:db_version, to_db_version)
-
-      {:noreply, state}
-    else
-      {:noreply, state}
-    end
+    {:noreply, state}
   end
 
   defp connect_nodes(nodes) do
@@ -105,5 +140,29 @@ defmodule Staek.SyncService do
   defp schedule_tick(state) do
     Logger.debug(event: :schedule_tick)
     Process.send_after(self(), :tick, state.sync_interval)
+  end
+
+  defp entries(attrs) do
+    %{
+      from_db_version: _,
+      db_version: _,
+      entries: _
+    } = attrs
+
+    attrs |> Enum.into(%{
+      message: :entries,
+      node: node()
+    })
+  end
+
+  defp sync_request(attrs) do
+    %{
+      from_db_version: _,
+    } = attrs
+
+    attrs |> Enum.into(%{
+      message: :sync_request,
+      node: node()
+    })
   end
 end

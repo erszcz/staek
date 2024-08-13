@@ -41,8 +41,9 @@
   seem to be robust enough or I don't know how to use NATS properly.
   Anyway, Marmot seemed to be quite limited.
 
-- [ ] `db_version` should be stored persistently across app restarts to avoid resending
+- [x] `db_version` should be stored persistently across app restarts to avoid resending
   db history since its creation
+- [x] don't process messages from self
 - [ ] watch out for out of order messages and missing updates!
 - [ ] verify if it's safe to apply the changes,
   i.e. there's no gap between our `db_version` and `from_db_version`
