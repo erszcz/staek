@@ -54,6 +54,7 @@ defmodule Staek.SyncService do
     ## TODO: watch out for out of order messages and missing updates!
     PubSub.broadcast(state.pubsub, @topic, %{
       message: :entries,
+      node: node(),
       from_db_version: state.db_version,
       to_db_version: db_version,
       entries: entries
@@ -75,20 +76,26 @@ defmodule Staek.SyncService do
       from_db_version: _from_db_version,
       to_db_version: to_db_version,
       entries: entries
+      node: node
     } = message
 
     Logger.debug(
       event: :entries,
-      entries: length(entries)
+      entries: length(entries),
+      node: node
     )
 
-    {_, nil} = Repo.apply_crsql_changes(entries)
+    if node != node() do
+      {_, nil} = Repo.apply_crsql_changes(entries)
 
-    state =
-      state
-      |> Map.put(:db_version, to_db_version)
+      state =
+        state
+        |> Map.put(:db_version, to_db_version)
 
-    {:noreply, state}
+      {:noreply, state}
+    else
+      {:noreply, state}
+    end
   end
 
   defp connect_nodes(nodes) do
