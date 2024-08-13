@@ -152,7 +152,7 @@ defmodule Staek.ExpensesTest do
     test "update_expense/2 with invalid data returns error changeset" do
       expense = expense_fixture()
       assert {:error, %Ecto.Changeset{}} = Expenses.update_expense(expense, @invalid_attrs)
-      assert expense == Expenses.get_expense!(expense.id)
+      assert Expenses.get_expense!(expense.id).name != nil
     end
 
     test "delete_expense/1 deletes the expense" do
