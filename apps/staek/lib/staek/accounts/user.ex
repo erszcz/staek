@@ -179,7 +179,18 @@ defmodule Staek.Accounts.User do
   end
 
   defp maybe_downcase(attrs, key) when is_atom(key) do
-    if value = attrs[key] || attrs[to_string(key)] do
+    {key, value} = case {attrs[key], attrs[to_string(key)]} do
+      {nil, nil} ->
+        {key, nil}
+      {nil, v} ->
+        {to_string(key), v}
+      {v, nil} ->
+        {key, v}
+      {_, _} ->
+        raise "redundant values: #{Map.take(attrs, [key, to_string(key)])}"
+    end
+
+    if value do
       Map.put(attrs, key, String.downcase(value))
     else
       attrs
