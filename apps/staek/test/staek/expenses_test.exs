@@ -270,11 +270,12 @@ defmodule Staek.ExpensesTest do
     test "unequal totals fail validation", ctx do
       %{user1: user1, user2: user2} = ctx
 
-      {:ok, credit1} = Expenses.create_credit(%{user: user1, amount: "120.0"})
-      {:ok, debit1} = Expenses.create_debit(%{user: user2, amount: "40.0"})
+      credit1 = %{user_id: user1.id, amount: "120.0"}
+      debit1 = %{user_id: user2.id, amount: "40.0"}
 
       assert {:error, changeset} =
                Expenses.create_expense(%{
+                 group_id: Ecto.Nanoid.autogenerate(),
                  name: "Totals don't match",
                  currency: :PLN,
                  credits: [credit1],
