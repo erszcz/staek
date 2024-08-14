@@ -27,6 +27,7 @@ defmodule Staek.ExpensesFixtures do
       user_id: System.unique_integer([:positive]),
       amount: "120.5"
     }
+
     debit = %{
       user_id: System.unique_integer([:positive]),
       amount: "120.5"

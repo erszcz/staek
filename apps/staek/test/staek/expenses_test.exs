@@ -116,10 +116,12 @@ defmodule Staek.ExpensesTest do
         user_id: System.unique_integer([:positive]),
         amount: "120.5"
       }
+
       debit = %{
         user_id: System.unique_integer([:positive]),
         amount: "120.5"
       }
+
       valid_attrs = %{
         group_id: Ecto.Nanoid.autogenerate(),
         name: "some name",
@@ -205,6 +207,7 @@ defmodule Staek.ExpensesTest do
         user_id: user1.id,
         amount: Decimal.new("120.5")
       }
+
       debit1 = %{
         user_id: user2.id,
         amount: Decimal.new("120.5")
