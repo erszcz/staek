@@ -37,9 +37,13 @@ defmodule Staek.SyncService do
       db_version: state.db_version
     )
 
-    PubSub.broadcast(state.pubsub, @topic, sync_request(%{
-      from_db_version: state.db_version
-    }))
+    PubSub.broadcast(
+      state.pubsub,
+      @topic,
+      sync_request(%{
+        from_db_version: state.db_version
+      })
+    )
 
     {:noreply, state}
   end
@@ -63,11 +67,15 @@ defmodule Staek.SyncService do
       db_version: db_version
     )
 
-    PubSub.broadcast(state.pubsub, @topic, changes(%{
-      from_db_version: from_db_version,
-      db_version: db_version,
-      changes: changes
-    }))
+    PubSub.broadcast(
+      state.pubsub,
+      @topic,
+      changes(%{
+        from_db_version: from_db_version,
+        db_version: db_version,
+        changes: changes
+      })
+    )
 
     state = %{state | db_version: db_version}
 
@@ -117,25 +125,34 @@ defmodule Staek.SyncService do
       db_version: db_version
     }
 
-    Logger.debug(%{
-      event: :received_changes,
-    } |> Enum.into(meta))
+    Logger.debug(
+      %{
+        event: :received_changes
+      }
+      |> Enum.into(meta)
+    )
 
     if state.db_version >= from_db_version && state.db_version <= db_version do
       {_, nil} = Repo.apply_crsql_changes(changes)
 
-      Logger.debug(%{
-        event: :applied_changes,
-      } |> Enum.into(meta))
+      Logger.debug(
+        %{
+          event: :applied_changes
+        }
+        |> Enum.into(meta)
+      )
 
       state = %{state | db_version: db_version}
 
       {:noreply, state}
     else
-      Logger.debug(%{
-        event: :refused_changes,
-        local_db_version: state.db_version
-      } |> Enum.into(meta))
+      Logger.debug(
+        %{
+          event: :refused_changes,
+          local_db_version: state.db_version
+        }
+        |> Enum.into(meta)
+      )
 
       {:noreply, state, {:continue, :sync_request}}
     end
@@ -166,7 +183,8 @@ defmodule Staek.SyncService do
       changes: _
     } = attrs
 
-    attrs |> Enum.into(%{
+    attrs
+    |> Enum.into(%{
       message: :changes,
       node: node()
     })
@@ -174,10 +192,11 @@ defmodule Staek.SyncService do
 
   defp sync_request(attrs) do
     %{
-      from_db_version: _,
+      from_db_version: _
     } = attrs
 
-    attrs |> Enum.into(%{
+    attrs
+    |> Enum.into(%{
       message: :sync_request,
       node: node()
     })

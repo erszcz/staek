@@ -41,7 +41,9 @@ defmodule Staek.Repo do
   end
 
   def get_crsql_db_version(db_version \\ 0) do
-    q = "SELECT db_version FROM crsql_changes WHERE db_version >= $1 ORDER BY db_version DESC LIMIT 1;"
+    q =
+      "SELECT db_version FROM crsql_changes WHERE db_version >= $1 ORDER BY db_version DESC LIMIT 1;"
+
     case query!(q, [db_version]) do
       %Exqlite.Result{rows: [[version]]} -> version
       _ -> 0
