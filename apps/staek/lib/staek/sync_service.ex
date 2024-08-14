@@ -32,6 +32,11 @@ defmodule Staek.SyncService do
 
   @impl true
   def handle_continue(:sync_request, state) do
+    Logger.debug(
+      event: :sending_sync_request,
+      db_version: state.db_version
+    )
+
     PubSub.broadcast(state.pubsub, @topic, sync_request(%{
       from_db_version: state.db_version
     }))
@@ -90,7 +95,7 @@ defmodule Staek.SyncService do
 
   def handle_info(%{message: :sync_request, node: node} = message, state) when node != node() do
     Logger.debug(
-      event: :sync_request,
+      event: :received_sync_request,
       node: node,
       from_db_version: message.from_db_version
     )
