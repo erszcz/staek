@@ -99,29 +99,41 @@ defmodule Staek.SyncService do
   end
 
   def handle_info(%{message: :entries, node: node} = message, state) when node != node() do
-    ## TODO: verify if it's safe to apply the changes,
-    ##       i.e. there's no gap between our db_version and from_db_version
     %{
       from_db_version: from_db_version,
       db_version: db_version,
       entries: entries
     } = message
 
-    Logger.debug(
-      event: :entries,
+    meta = %{
       entries: length(entries),
       node: node,
       from_db_version: from_db_version,
       db_version: db_version
-    )
+    }
 
-    {_, nil} = Repo.apply_crsql_changes(entries)
+    Logger.debug(%{
+      event: :received_entries,
+    } |> Enum.into(meta))
 
-    state =
-      state
-      |> Map.put(:db_version, db_version)
+    if state.db_version >= from_db_version && state.db_version <= db_version do
+      {_, nil} = Repo.apply_crsql_changes(entries)
 
-    {:noreply, state}
+      Logger.debug(%{
+        event: :applied_entries,
+      } |> Enum.into(meta))
+
+      state = %{state | db_version: db_version}
+
+      {:noreply, state}
+    else
+      Logger.debug(%{
+        event: :refused_entries,
+        local_db_version: state.db_version
+      } |> Enum.into(meta))
+
+      {:noreply, state, {:continue, :sync_request}}
+    end
   end
 
   def handle_info(message, state) do
