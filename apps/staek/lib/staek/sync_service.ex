@@ -39,29 +39,29 @@ defmodule Staek.SyncService do
     {:noreply, state}
   end
 
-  def handle_continue({:send_entries, from_db_version}, state) do
-    entries = Repo.get_crsql_changes!(from_db_version)
+  def handle_continue({:send_changes, from_db_version}, state) do
+    changes = Repo.get_crsql_changes!(from_db_version)
 
     db_version =
-      case entries do
+      case changes do
         [] ->
           state.db_version
 
         [_ | _] ->
-          entries |> List.last() |> Enum.into(%{}) |> Map.get("db_version")
+          changes |> List.last() |> Enum.into(%{}) |> Map.get("db_version")
       end
 
     Logger.debug(
-      event: :send_entries,
-      entries: length(entries),
+      event: :send_changes,
+      changes: length(changes),
       from_db_version: from_db_version,
       db_version: db_version
     )
 
-    PubSub.broadcast(state.pubsub, @topic, entries(%{
+    PubSub.broadcast(state.pubsub, @topic, changes(%{
       from_db_version: from_db_version,
       db_version: db_version,
-      entries: entries
+      changes: changes
     }))
 
     state = %{state | db_version: db_version}
@@ -82,7 +82,7 @@ defmodule Staek.SyncService do
     schedule_tick(state)
 
     if state.db_version < db_version do
-      {:noreply, state, {:continue, {:send_entries, state.db_version}}}
+      {:noreply, state, {:continue, {:send_changes, state.db_version}}}
     else
       {:noreply, state}
     end
@@ -95,32 +95,32 @@ defmodule Staek.SyncService do
       from_db_version: message.from_db_version
     )
 
-    {:noreply, state, {:continue, {:send_entries, message.from_db_version}}}
+    {:noreply, state, {:continue, {:send_changes, message.from_db_version}}}
   end
 
-  def handle_info(%{message: :entries, node: node} = message, state) when node != node() do
+  def handle_info(%{message: :changes, node: node} = message, state) when node != node() do
     %{
       from_db_version: from_db_version,
       db_version: db_version,
-      entries: entries
+      changes: changes
     } = message
 
     meta = %{
-      entries: length(entries),
+      changes: length(changes),
       node: node,
       from_db_version: from_db_version,
       db_version: db_version
     }
 
     Logger.debug(%{
-      event: :received_entries,
+      event: :received_changes,
     } |> Enum.into(meta))
 
     if state.db_version >= from_db_version && state.db_version <= db_version do
-      {_, nil} = Repo.apply_crsql_changes(entries)
+      {_, nil} = Repo.apply_crsql_changes(changes)
 
       Logger.debug(%{
-        event: :applied_entries,
+        event: :applied_changes,
       } |> Enum.into(meta))
 
       state = %{state | db_version: db_version}
@@ -128,7 +128,7 @@ defmodule Staek.SyncService do
       {:noreply, state}
     else
       Logger.debug(%{
-        event: :refused_entries,
+        event: :refused_changes,
         local_db_version: state.db_version
       } |> Enum.into(meta))
 
@@ -154,15 +154,15 @@ defmodule Staek.SyncService do
     Process.send_after(self(), :tick, state.sync_interval)
   end
 
-  defp entries(attrs) do
+  defp changes(attrs) do
     %{
       from_db_version: _,
       db_version: _,
-      entries: _
+      changes: _
     } = attrs
 
     attrs |> Enum.into(%{
-      message: :entries,
+      message: :changes,
       node: node()
     })
   end
