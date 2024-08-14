@@ -12,47 +12,49 @@
     </script>
   </head>
   <body class="bg-gray-100">
-    <ul class="relative z-20 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
-      <%= if @current_user do %>
-        <li class="text-[0.8125rem] leading-6 text-zinc-900">
-          <%= @current_user.name %>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/settings"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Settings
-          </.link>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/log_out"}
-            method="delete"
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Log out
-          </.link>
-        </li>
-      <% else %>
-        <li>
-          <.link
-            href={~p"/users/register"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Register
-          </.link>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/log_in"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Log in
-          </.link>
-        </li>
-      <% end %>
-    </ul>
+    <div class="flex flex-rows mx-auto max-w-5xl">
+      <header class="px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
+          <div class="flex items-center">
+            <img src={~p"/images/logo.svg"} width="36" />
+            <p class="px-2 font-medium leading-6">
+              Staek - split your bills with ease!
+            </p>
+            <p class="bg-brand/5 text-brand rounded-full px-2 font-medium leading-6">
+              v<%= Application.spec(:staek, :vsn) %>
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <div class="relative z-20 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end ml-auto">
+        <%= if @current_user do %>
+          <.dropdown text={@current_user.name} items={[
+            %{text: "Settings", href: ~p"/users/settings"},
+            %{text: "Log out", method: "delete", href: ~p"/users/log_out"}
+          ]}/>
+        <% else %>
+        <ul class="flex flex-rows gap-4">
+          <li>
+            <.link
+              href={~p"/users/register"}
+              class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+            >
+              Register
+            </.link>
+          </li>
+          <li>
+            <.link
+              href={~p"/users/log_in"}
+              class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+            >
+              Log in
+            </.link>
+          </li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
     <%= @inner_content %>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.phoenix.min.js">
     </script>
