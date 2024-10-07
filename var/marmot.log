@@ -1,0 +1,1465 @@
+17:53:39 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ ./marmot/run-cluster.sh
+3:30PM INF Starting nats-server from=nats node_id=2
+3:30PM INF   Version:  2.10.4 from=nats node_id=2
+3:30PM INF   Git:      [not set] from=nats node_id=2
+3:30PM INF   Cluster:  e-marmot from=nats node_id=2
+3:30PM INF   Name:     marmot-node-2 from=nats node_id=2
+3:30PM INF   Node:     aThtkTV0 from=nats node_id=2
+3:30PM INF   ID:       NAU7443DJO7J5CNMUJ67GIN4E7BKTSJQ6WE5ZNEICHEIFLGF6PWBLDFI from=nats node_id=2
+3:30PM INF Starting JetStream from=nats node_id=2
+3:30PM INF Starting nats-server from=nats node_id=1
+3:30PM INF   Version:  2.10.4 from=nats node_id=1
+3:30PM INF   Git:      [not set] from=nats node_id=1
+3:30PM INF   Cluster:  e-marmot from=nats node_id=1
+3:30PM INF   Name:     marmot-node-1 from=nats node_id=1
+3:30PM INF   Node:     OWL7P9aV from=nats node_id=1
+3:30PM INF   ID:       NBFMJKNAJFPJGCRQTUMCERUYNM4J5SPZV5CO6T7XSPVRRU7LTZADHNSV from=nats node_id=1
+3:30PM INF Starting JetStream from=nats node_id=1
+3:30PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=2
+3:30PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=2
+3:30PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=2
+3:30PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=2
+3:30PM INF from=nats node_id=2
+3:30PM INF          https://docs.nats.io/jetstream from=nats node_id=2
+3:30PM INF from=nats node_id=2
+3:30PM INF ---------------- JETSTREAM ---------------- from=nats node_id=2
+3:30PM INF   Max Memory:      24.00 GB from=nats node_id=2
+3:30PM INF   Max Storage:     515.19 GB from=nats node_id=2
+3:30PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-2/jetstream" from=nats node_id=2
+3:30PM INF ------------------------------------------- from=nats node_id=2
+3:30PM INF Starting JetStream cluster from=nats node_id=2
+3:30PM INF Creating JetStream metadata controller from=nats node_id=2
+3:30PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+3:30PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+3:30PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+3:30PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+3:30PM INF from=nats node_id=1
+3:30PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+3:30PM INF from=nats node_id=1
+3:30PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+3:30PM INF   Max Memory:      24.00 GB from=nats node_id=1
+3:30PM INF   Max Storage:     515.19 GB from=nats node_id=1
+3:30PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+3:30PM INF ------------------------------------------- from=nats node_id=1
+3:30PM INF Starting JetStream cluster from=nats node_id=1
+3:30PM INF Creating JetStream metadata controller from=nats node_id=1
+3:30PM INF JetStream cluster bootstrapping from=nats node_id=2
+3:30PM INF JetStream cluster bootstrapping from=nats node_id=1
+3:30PM INF Listening for client connections on 0.0.0.0:59625 from=nats node_id=2
+3:30PM INF Server is ready from=nats node_id=2
+3:30PM INF Cluster name is e-marmot from=nats node_id=2
+3:30PM INF Listening for client connections on 0.0.0.0:59628 from=nats node_id=1
+3:30PM INF Server is ready from=nats node_id=1
+3:30PM INF Cluster name is e-marmot from=nats node_id=1
+3:30PM INF Listening for route connections on localhost:4221 from=nats node_id=2
+3:30PM WRN JetStream has not established contact with a meta leader from=nats node_id=2
+3:30PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+3:30PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+3:30PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4222: connect: connection refused from=nats node_id=2
+3:30PM INF 127.0.0.1:4222 - rid:7 - Route connection created from=nats node_id=2
+3:30PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+3:30PM INF 127.0.0.1:59630 - rid:7 - Route connection created from=nats node_id=1
+3:30PM INF 127.0.0.1:4221 - rid:8 - Route connection created from=nats node_id=1
+3:30PM INF 127.0.0.1:59632 - rid:8 - Route connection created from=nats node_id=2
+3:30PM INF 127.0.0.1:4222 - rid:10 - Route connection created from=nats node_id=2
+3:30PM INF 127.0.0.1:59633 - rid:10 - Route connection created from=nats node_id=1
+3:30PM WRN Waiting for routing to be established... from=nats node_id=2
+3:30PM WRN Waiting for routing to be established... from=nats node_id=1
+3:30PM INF 127.0.0.1:4222 - rid:11 - Route connection created from=nats node_id=2
+3:30PM INF 127.0.0.1:59634 - rid:11 - Route connection created from=nats node_id=1
+3:30PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+3:30PM INF JetStream cluster new metadata leader: marmot-node-1/e-marmot from=nats node_id=2
+3:30PM INF 127.0.0.1:4222 - rid:12 - Route connection created from=nats node_id=2
+3:30PM INF 127.0.0.1:59635 - rid:12 - Route connection created from=nats node_id=1
+3:30PM INF 127.0.0.1:4222 - rid:12 - Router connection closed: Duplicate Route from=nats node_id=2
+3:30PM INF 127.0.0.1:59635 - rid:12 - Router connection closed: Duplicate Route from=nats node_id=1
+3:30PM INF 127.0.0.1:4221 - rid:13 - Route connection created from=nats node_id=1
+3:30PM INF 127.0.0.1:59636 - rid:13 - Route connection created from=nats node_id=2
+3:30PM INF 127.0.0.1:4221 - rid:13 - Router connection closed: Duplicate Route from=nats node_id=1
+3:30PM INF 127.0.0.1:59636 - rid:13 - Router connection closed: Client Closed from=nats node_id=2
+3:30PM ERR NATS client disconnected node_id=2
+3:30PM ERR NATS client exiting node_id=2
+3:30PM ERR NATS client disconnected node_id=1
+3:30PM ERR NATS client exiting node_id=1
+3:30PM INF Streaming ready... node_id=2
+3:30PM INF Streaming ready... node_id=2
+3:30PM INF Streaming ready... node_id=1
+3:30PM INF Streaming ready... node_id=1
+3:30PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+3:30PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=2
+3:30PM INF Listing tables to watch... node_id=2
+3:30PM INF Listing tables to watch... node_id=1
+3:30PM INF Starting change data capture pipeline... node_id=1
+3:30PM INF Starting change data capture pipeline... node_id=2
+3:30PM INF Creating global change log table node_id=2
+3:30PM INF Creating global change log table node_id=1
+3:30PM INF Creating trigger for debits node_id=2
+3:30PM INF Creating trigger for groups node_id=1
+3:30PM INF Creating trigger for schema_migrations node_id=2
+3:30PM INF Creating trigger for group_members node_id=1
+3:30PM INF Creating trigger for users node_id=2
+3:30PM INF Creating trigger for expenses node_id=1
+3:30PM INF Creating trigger for users_tokens node_id=2
+3:30PM INF Creating trigger for credits node_id=1
+3:30PM INF Creating trigger for groups node_id=2
+3:30PM INF Creating trigger for debits node_id=1
+3:30PM INF Creating trigger for group_members node_id=2
+3:30PM INF Creating trigger for schema_migrations node_id=1
+3:30PM INF Creating trigger for expenses node_id=2
+3:30PM INF Creating trigger for users node_id=1
+3:30PM INF Creating trigger for credits node_id=2
+3:30PM INF Creating trigger for users_tokens node_id=1
+3:30PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > Fewwblrs' from=nats node_id=1
+3:30PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > rA28BCAI' from=nats node_id=1
+
+
+^C15:34:22 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ ./marmot/run-cluster.sh
+3:35PM INF Starting nats-server from=nats node_id=2
+3:35PM INF   Version:  2.10.4 from=nats node_id=2
+3:35PM INF   Git:      [not set] from=nats node_id=2
+3:35PM INF   Cluster:  e-marmot from=nats node_id=2
+3:35PM INF   Name:     marmot-node-2 from=nats node_id=2
+3:35PM INF   Node:     aThtkTV0 from=nats node_id=2
+3:35PM INF   ID:       NBV5ULPVITXFH4Y44EHOANNUKQCIQYBRS7S574EE55PX5LMML74TQ24R from=nats node_id=2
+3:35PM INF Starting JetStream from=nats node_id=2
+3:35PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=2
+3:35PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=2
+3:35PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=2
+3:35PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=2
+3:35PM INF from=nats node_id=2
+3:35PM INF          https://docs.nats.io/jetstream from=nats node_id=2
+3:35PM INF from=nats node_id=2
+3:35PM INF ---------------- JETSTREAM ---------------- from=nats node_id=2
+3:35PM INF   Max Memory:      24.00 GB from=nats node_id=2
+3:35PM INF   Max Storage:     515.24 GB from=nats node_id=2
+3:35PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-2/jetstream" from=nats node_id=2
+3:35PM INF ------------------------------------------- from=nats node_id=2
+3:35PM INF   Starting restore for stream '$G > KV_e-marmot' from=nats node_id=2
+3:35PM INF   Restored 0 messages for stream '$G > KV_e-marmot' in 1ms from=nats node_id=2
+3:35PM INF Starting JetStream cluster from=nats node_id=2
+3:35PM INF Creating JetStream metadata controller from=nats node_id=2
+3:35PM INF JetStream cluster recovering state from=nats node_id=2
+3:35PM INF Listening for client connections on 0.0.0.0:59772 from=nats node_id=2
+3:35PM INF Server is ready from=nats node_id=2
+3:35PM INF Cluster name is e-marmot from=nats node_id=2
+3:35PM INF Listening for route connections on localhost:4221 from=nats node_id=2
+3:35PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4222: connect: connection refused from=nats node_id=2
+3:35PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4222: connect: connection refused from=nats node_id=2
+3:35PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=2
+3:35PM WRN JetStream has not established contact with a meta leader from=nats node_id=2
+3:35PM WRN Waiting for routing to be established... from=nats node_id=2
+3:35PM INF Starting nats-server from=nats node_id=1
+3:35PM INF   Version:  2.10.4 from=nats node_id=1
+3:35PM INF   Git:      [not set] from=nats node_id=1
+3:35PM INF   Cluster:  e-marmot from=nats node_id=1
+3:35PM INF   Name:     marmot-node-1 from=nats node_id=1
+3:35PM INF   Node:     OWL7P9aV from=nats node_id=1
+3:35PM INF   ID:       NDZV6OZMBFNTFX25UJDERLJVVFBH2HTKIPZ2LNK7C3GEVZBGZP43JUUW from=nats node_id=1
+3:35PM INF Starting JetStream from=nats node_id=1
+3:35PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+3:35PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+3:35PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+3:35PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+3:35PM INF from=nats node_id=1
+3:35PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+3:35PM INF from=nats node_id=1
+3:35PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+3:35PM INF   Max Memory:      24.00 GB from=nats node_id=1
+3:35PM INF   Max Storage:     515.24 GB from=nats node_id=1
+3:35PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+3:35PM INF ------------------------------------------- from=nats node_id=1
+3:35PM INF   Starting restore for stream '$G > marmot-changes-c-1' from=nats node_id=1
+3:35PM INF   Restored 1 messages for stream '$G > marmot-changes-c-1' in 1ms from=nats node_id=1
+3:35PM INF   Recovering 2 consumers for stream - '$G > marmot-changes-c-1' from=nats node_id=1
+3:35PM INF Starting JetStream cluster from=nats node_id=1
+3:35PM INF Creating JetStream metadata controller from=nats node_id=1
+3:35PM INF JetStream cluster recovering state from=nats node_id=1
+3:35PM INF Listening for client connections on 0.0.0.0:59779 from=nats node_id=1
+3:35PM INF Server is ready from=nats node_id=1
+3:35PM INF Cluster name is e-marmot from=nats node_id=1
+3:35PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+3:35PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+3:35PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+3:35PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+3:35PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > Fewwblrs' from=nats node_id=1
+3:35PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > rA28BCAI' from=nats node_id=1
+3:35PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+3:35PM ERR NATS client disconnected node_id=2
+3:35PM ERR NATS client exiting node_id=2
+3:35PM WRN Waiting for routing to be established... from=nats node_id=1
+3:35PM INF 127.0.0.1:4221 - rid:15 - Route connection created from=nats node_id=1
+3:35PM INF 127.0.0.1:59786 - rid:11 - Route connection created from=nats node_id=2
+3:35PM INF 127.0.0.1:4221 - rid:16 - Route connection created from=nats node_id=1
+3:35PM INF 127.0.0.1:59785 - rid:12 - Route connection created from=nats node_id=2
+3:35PM WRN Waiting for routing to be established... from=nats node_id=2
+3:35PM ERR NATS client disconnected node_id=1
+3:35PM ERR NATS client exiting node_id=1
+3:35PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+3:35PM INF 127.0.0.1:4222 - rid:14 - Route connection created from=nats node_id=2
+3:35PM INF 127.0.0.1:59790 - rid:17 - Route connection created from=nats node_id=1
+3:35PM INF 127.0.0.1:4222 - rid:15 - Route connection created from=nats node_id=2
+3:35PM INF 127.0.0.1:59791 - rid:18 - Route connection created from=nats node_id=1
+3:35PM INF 127.0.0.1:4222 - rid:15 - Router connection closed: Duplicate Route from=nats node_id=2
+3:35PM INF 127.0.0.1:59791 - rid:18 - Router connection closed: Duplicate Route from=nats node_id=1
+3:35PM ERR NATS client disconnected node_id=2
+3:35PM ERR NATS client exiting node_id=2
+3:35PM INF 127.0.0.1:4222 - rid:16 - Route connection created from=nats node_id=2
+3:35PM INF 127.0.0.1:59792 - rid:20 - Route connection created from=nats node_id=1
+3:35PM ERR NATS client disconnected node_id=1
+3:35PM ERR NATS client exiting node_id=1
+3:35PM INF JetStream cluster new metadata leader: marmot-node-2/e-marmot from=nats node_id=1
+3:35PM INF Self is new JetStream cluster metadata leader from=nats node_id=2
+3:35PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > rA28BCAI' from=nats node_id=1
+3:35PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > Fewwblrs' from=nats node_id=1
+3:35PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > Fewwblrs' from=nats node_id=1
+3:35PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > rA28BCAI' from=nats node_id=1
+3:35PM ERR NATS client disconnected node_id=2
+3:35PM ERR NATS client exiting node_id=2
+3:35PM INF Streaming ready... node_id=1
+3:35PM INF Streaming ready... node_id=1
+3:35PM INF Listing tables to watch... node_id=1
+3:35PM INF Starting change data capture pipeline... node_id=1
+3:35PM INF Creating global change log table node_id=1
+3:35PM INF Creating trigger for users node_id=1
+3:35PM INF Creating trigger for users_tokens node_id=1
+3:35PM INF Creating trigger for groups node_id=1
+3:35PM INF Creating trigger for group_members node_id=1
+3:35PM INF Creating trigger for expenses node_id=1
+3:35PM INF Creating trigger for credits node_id=1
+3:35PM INF Creating trigger for debits node_id=1
+3:35PM INF Creating trigger for schema_migrations node_id=1
+3:35PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > ow1fVKVm' from=nats node_id=1
+3:35PM INF Streaming ready... node_id=2
+3:35PM INF Streaming ready... node_id=2
+3:35PM INF Listing tables to watch... node_id=2
+3:35PM INF Starting change data capture pipeline... node_id=2
+3:35PM INF Creating global change log table node_id=2
+3:35PM INF Creating trigger for users_tokens node_id=2
+3:35PM INF Creating trigger for groups node_id=2
+3:35PM INF Creating trigger for group_members node_id=2
+3:35PM INF Creating trigger for expenses node_id=2
+3:35PM INF Creating trigger for credits node_id=2
+3:35PM INF Creating trigger for debits node_id=2
+3:35PM INF Creating trigger for schema_migrations node_id=2
+3:35PM INF Creating trigger for users node_id=2
+3:35PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > bJ6k5TDs' from=nats node_id=1
+3:35PM INF 127.0.0.1:4221 - rid:27 - Route connection created from=nats node_id=1
+3:35PM INF 127.0.0.1:59797 - rid:20 - Route connection created from=nats node_id=2
+3:35PM INF 127.0.0.1:4221 - rid:27 - Router connection closed: Duplicate Route from=nats node_id=1
+3:35PM INF 127.0.0.1:59797 - rid:20 - Router connection closed: Client Closed from=nats node_id=2
+
+
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+3:44PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+^C15:44:38 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ pds
+15:46:27 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ ./marmot/run-nodes.sh desktop
+3:49PM INF Starting nats-server from=nats node_id=2
+3:49PM INF   Version:  2.10.4 from=nats node_id=2
+3:49PM INF   Git:      [not set] from=nats node_id=2
+3:49PM INF   Cluster:  e-marmot from=nats node_id=2
+3:49PM INF   Name:     marmot-node-2 from=nats node_id=2
+3:49PM INF   Node:     aThtkTV0 from=nats node_id=2
+3:49PM INF   ID:       NDUMSOVR7XOYQI2ZWA3RBELWWXTIUTJXMERGPL6NQHMSQQQLBWBTE24R from=nats node_id=2
+3:49PM INF Starting JetStream from=nats node_id=2
+3:49PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=2
+3:49PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=2
+3:49PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=2
+3:49PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=2
+3:49PM INF from=nats node_id=2
+3:49PM INF          https://docs.nats.io/jetstream from=nats node_id=2
+3:49PM INF from=nats node_id=2
+3:49PM INF ---------------- JETSTREAM ---------------- from=nats node_id=2
+3:49PM INF   Max Memory:      24.00 GB from=nats node_id=2
+3:49PM INF   Max Storage:     514.34 GB from=nats node_id=2
+3:49PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-2/jetstream" from=nats node_id=2
+3:49PM INF ------------------------------------------- from=nats node_id=2
+3:49PM INF Starting JetStream cluster from=nats node_id=2
+3:49PM INF Creating JetStream metadata controller from=nats node_id=2
+3:49PM INF JetStream cluster bootstrapping from=nats node_id=2
+3:49PM INF Listening for client connections on 0.0.0.0:60052 from=nats node_id=2
+3:49PM INF Server is ready from=nats node_id=2
+3:49PM INF Cluster name is e-marmot from=nats node_id=2
+3:49PM INF Listening for route connections on localhost:4221 from=nats node_id=2
+3:49PM WRN JetStream has not established contact with a meta leader from=nats node_id=2
+3:49PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4222: connect: connection refused from=nats node_id=2
+3:49PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4222: connect: connection refused from=nats node_id=2
+3:49PM WRN Waiting for routing to be established... from=nats node_id=2
+3:49PM ERR NATS client disconnected node_id=2
+3:49PM ERR NATS client exiting node_id=2
+3:49PM WRN Waiting for routing to be established... from=nats node_id=2
+3:49PM ERR NATS client disconnected node_id=2
+3:49PM ERR NATS client exiting node_id=2
+3:49PM WRN Waiting for routing to be established... from=nats node_id=2
+3:49PM ERR NATS client disconnected node_id=2
+3:49PM ERR NATS client exiting node_id=2
+3:49PM WRN Waiting for routing to be established... from=nats node_id=2
+3:49PM ERR NATS client disconnected node_id=2
+3:49PM ERR NATS client exiting node_id=2
+3:49PM WRN Waiting for routing to be established... from=nats node_id=2
+3:49PM ERR NATS client disconnected node_id=2
+3:49PM ERR NATS client exiting node_id=2
+3:49PM WRN Waiting for routing to be established... from=nats node_id=2
+3:49PM ERR NATS client disconnected node_id=2
+3:49PM ERR NATS client exiting node_id=2
+3:49PM WRN Waiting for routing to be established... from=nats node_id=2
+3:49PM ERR NATS client disconnected node_id=2
+3:49PM ERR NATS client exiting node_id=2
+3:49PM ERR NATS client disconnected node_id=2
+3:49PM ERR NATS client exiting node_id=2
+3:49PM WRN Waiting for routing to be established... from=nats node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM WRN Waiting for routing to be established... from=nats node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM WRN Waiting for routing to be established... from=nats node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM WRN Waiting for routing to be established... from=nats node_id=2
+3:50PM INF 127.0.0.1:60108 - rid:19 - Route connection created from=nats node_id=2
+3:50PM INF 127.0.0.1:60110 - rid:20 - Route connection created from=nats node_id=2
+3:50PM INF 127.0.0.1:60111 - rid:21 - Route connection created from=nats node_id=2
+3:50PM INF 127.0.0.1:4222 - rid:23 - Route connection created from=nats node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM INF 127.0.0.1:60118 - rid:25 - Route connection created from=nats node_id=2
+3:50PM INF 127.0.0.1:60118 - rid:25 - Router connection closed: Duplicate Route from=nats node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM INF 127.0.0.1:4222 - rid:27 - Route connection created from=nats node_id=2
+3:50PM INF 127.0.0.1:4222 - rid:27 - Router connection closed: Duplicate Route from=nats node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM ERR NATS client disconnected node_id=2
+3:50PM ERR NATS client exiting node_id=2
+3:50PM INF JetStream cluster new metadata leader: marmot-node-1/e-marmot from=nats node_id=2
+3:50PM INF Streaming ready... node_id=2
+3:50PM INF Streaming ready... node_id=2
+3:50PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=2
+3:50PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=2
+3:50PM INF Listing tables to watch... node_id=2
+3:50PM INF Starting change data capture pipeline... node_id=2
+3:50PM INF Creating global change log table node_id=2
+3:50PM INF Creating trigger for groups node_id=2
+3:50PM INF Creating trigger for group_members node_id=2
+3:50PM INF Creating trigger for expenses node_id=2
+3:50PM INF Creating trigger for credits node_id=2
+3:50PM INF Creating trigger for debits node_id=2
+3:50PM INF Creating trigger for schema_migrations node_id=2
+3:50PM INF Creating trigger for users node_id=2
+3:50PM INF Creating trigger for users_tokens node_id=2
+3:50PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > QF3UTc26' from=nats node_id=2
+3:50PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > x3e3LK0Y' from=nats node_id=2
+
+
+
+4:08PM INF 127.0.0.1:4222 - rid:23 - Router connection closed: Client Closed from=nats node_id=2
+4:08PM INF 127.0.0.1:60110 - rid:20 - Router connection closed: Client Closed from=nats node_id=2
+4:08PM INF 127.0.0.1:60108 - rid:19 - Router connection closed: Client Closed from=nats node_id=2
+4:08PM INF 127.0.0.1:60111 - rid:21 - Router connection closed: Client Closed from=nats node_id=2
+^C16:08:06 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$
+16:08:07 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ ./marmot/run-nodes.sh web
+4:09PM INF Starting nats-server from=nats node_id=1
+4:09PM INF   Version:  2.10.4 from=nats node_id=1
+4:09PM INF   Git:      [not set] from=nats node_id=1
+4:09PM INF   Cluster:  e-marmot from=nats node_id=1
+4:09PM INF   Name:     marmot-node-1 from=nats node_id=1
+4:09PM INF   Node:     OWL7P9aV from=nats node_id=1
+4:09PM INF   ID:       NBB7EYCTUULS6JD6GYGQWPY6JWEIETPVKUJ72DIGX6Y3Z7CKB67HPHOL from=nats node_id=1
+4:09PM INF Starting JetStream from=nats node_id=1
+4:09PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+4:09PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+4:09PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+4:09PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+4:09PM INF from=nats node_id=1
+4:09PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+4:09PM INF from=nats node_id=1
+4:09PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+4:09PM INF   Max Memory:      24.00 GB from=nats node_id=1
+4:09PM INF   Max Storage:     514.33 GB from=nats node_id=1
+4:09PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+4:09PM INF ------------------------------------------- from=nats node_id=1
+4:09PM INF Starting JetStream cluster from=nats node_id=1
+4:09PM INF Creating JetStream metadata controller from=nats node_id=1
+4:09PM INF JetStream cluster bootstrapping from=nats node_id=1
+4:09PM INF Listening for client connections on 0.0.0.0:61497 from=nats node_id=1
+4:09PM INF Server is ready from=nats node_id=1
+4:09PM INF Cluster name is e-marmot from=nats node_id=1
+4:09PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+4:09PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+4:09PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+4:09PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+4:09PM WRN Waiting for routing to be established... from=nats node_id=1
+4:09PM ERR NATS client disconnected node_id=1
+4:09PM ERR NATS client exiting node_id=1
+4:09PM WRN Waiting for routing to be established... from=nats node_id=1
+4:09PM ERR NATS client disconnected node_id=1
+4:09PM ERR NATS client exiting node_id=1
+4:09PM WRN Waiting for routing to be established... from=nats node_id=1
+4:09PM INF 127.0.0.1:61513 - rid:10 - Route connection created from=nats node_id=1
+4:09PM INF 127.0.0.1:61514 - rid:11 - Route connection created from=nats node_id=1
+4:09PM INF 127.0.0.1:61515 - rid:12 - Route connection created from=nats node_id=1
+4:09PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+4:09PM INF 127.0.0.1:4221 - rid:13 - Route connection created from=nats node_id=1
+4:09PM INF 127.0.0.1:4221 - rid:13 - Router connection closed: Duplicate Route from=nats node_id=1
+4:09PM ERR NATS client disconnected node_id=1
+4:09PM ERR NATS client exiting node_id=1
+4:09PM INF Streaming ready... node_id=1
+4:09PM INF Streaming ready... node_id=1
+4:09PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+4:09PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=1
+4:09PM INF Listing tables to watch... node_id=1
+4:09PM INF Starting change data capture pipeline... node_id=1
+4:09PM INF Creating global change log table node_id=1
+4:09PM INF Creating trigger for credits node_id=1
+4:09PM INF Creating trigger for debits node_id=1
+4:09PM INF Creating trigger for schema_migrations node_id=1
+4:09PM INF Creating trigger for users node_id=1
+4:09PM INF Creating trigger for users_tokens node_id=1
+4:09PM INF Creating trigger for groups node_id=1
+4:09PM INF Creating trigger for group_members node_id=1
+4:09PM INF Creating trigger for expenses node_id=1
+4:09PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > JYOfGwpE' from=nats node_id=1
+4:09PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > L7lkhpR3' from=nats node_id=1
+4:09PM INF 127.0.0.1:61527 - rid:26 - Route connection created from=nats node_id=1
+4:09PM INF 127.0.0.1:4221 - rid:27 - Route connection created from=nats node_id=1
+4:09PM INF 127.0.0.1:4221 - rid:27 - Router connection closed: Duplicate Route from=nats node_id=1
+
+
+
+
+^C16:10:17 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ ./marmot/run-nodes.sh web
+4:11PM INF Starting nats-server from=nats node_id=1
+4:11PM INF   Version:  2.10.4 from=nats node_id=1
+4:11PM INF   Git:      [not set] from=nats node_id=1
+4:11PM INF   Cluster:  e-marmot from=nats node_id=1
+4:11PM INF   Name:     marmot-node-1 from=nats node_id=1
+4:11PM INF   Node:     OWL7P9aV from=nats node_id=1
+4:11PM INF   ID:       NAAWLSNN46HPO2NTBHRISRWT5LOBXG7AKPW26G6QM7L5KCBRRTJFZ4H2 from=nats node_id=1
+4:11PM INF Starting JetStream from=nats node_id=1
+4:11PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+4:11PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+4:11PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+4:11PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+4:11PM INF from=nats node_id=1
+4:11PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+4:11PM INF from=nats node_id=1
+4:11PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+4:11PM INF   Max Memory:      24.00 GB from=nats node_id=1
+4:11PM INF   Max Storage:     514.32 GB from=nats node_id=1
+4:11PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+4:11PM INF ------------------------------------------- from=nats node_id=1
+4:11PM INF Starting JetStream cluster from=nats node_id=1
+4:11PM INF Creating JetStream metadata controller from=nats node_id=1
+4:11PM INF JetStream cluster bootstrapping from=nats node_id=1
+4:11PM INF Listening for client connections on 0.0.0.0:61623 from=nats node_id=1
+4:11PM INF Server is ready from=nats node_id=1
+4:11PM INF Cluster name is e-marmot from=nats node_id=1
+4:11PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+4:11PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+4:11PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+4:11PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+4:11PM WRN Waiting for routing to be established... from=nats node_id=1
+4:11PM INF 127.0.0.1:61630 - rid:8 - Route connection created from=nats node_id=1
+4:11PM INF 127.0.0.1:61629 - rid:9 - Route connection created from=nats node_id=1
+4:11PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+4:11PM INF 127.0.0.1:4221 - rid:10 - Route connection created from=nats node_id=1
+4:11PM INF 127.0.0.1:4221 - rid:11 - Route connection created from=nats node_id=1
+4:11PM INF 127.0.0.1:4221 - rid:11 - Router connection closed: Duplicate Route from=nats node_id=1
+4:11PM ERR NATS client disconnected node_id=1
+4:11PM ERR NATS client exiting node_id=1
+4:11PM INF 127.0.0.1:4221 - rid:12 - Route connection created from=nats node_id=1
+4:11PM INF Streaming ready... node_id=1
+4:11PM INF Streaming ready... node_id=1
+4:11PM INF Listing tables to watch... node_id=1
+4:11PM INF Starting change data capture pipeline... node_id=1
+4:11PM INF Creating global change log table node_id=1
+4:11PM INF Creating trigger for expenses node_id=1
+4:11PM INF Creating trigger for credits node_id=1
+4:11PM INF Creating trigger for debits node_id=1
+4:11PM INF Creating trigger for schema_migrations node_id=1
+4:11PM INF Creating trigger for users node_id=1
+4:11PM INF Creating trigger for users_tokens node_id=1
+4:11PM INF Creating trigger for groups node_id=1
+4:11PM INF Creating trigger for group_members node_id=1
+4:11PM INF 127.0.0.1:61641 - rid:15 - Route connection created from=nats node_id=1
+4:11PM INF 127.0.0.1:61641 - rid:15 - Router connection closed: Client Closed from=nats node_id=1
+
+
+^C16:19:49 erszcz @ x7 : ~/work/erszcz/staek (main)
+$ ./marmot/run-nodes.sh web
+4:19PM INF Starting nats-server from=nats node_id=1
+4:19PM INF   Version:  2.10.4 from=nats node_id=1
+4:19PM INF   Git:      [not set] from=nats node_id=1
+4:19PM INF   Cluster:  e-marmot from=nats node_id=1
+4:19PM INF   Name:     marmot-node-1 from=nats node_id=1
+4:19PM INF   Node:     OWL7P9aV from=nats node_id=1
+4:19PM INF   ID:       NBUVES3XAGKTK22VHXEA6BOXHA2GLQY6PG4DXS2PP3F7WBE2QSFIM3TX from=nats node_id=1
+4:19PM INF Starting JetStream from=nats node_id=1
+4:19PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+4:19PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+4:19PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+4:19PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+4:19PM INF from=nats node_id=1
+4:19PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+4:19PM INF from=nats node_id=1
+4:19PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+4:19PM INF   Max Memory:      24.00 GB from=nats node_id=1
+4:19PM INF   Max Storage:     514.33 GB from=nats node_id=1
+4:19PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+4:19PM INF ------------------------------------------- from=nats node_id=1
+4:19PM INF Starting JetStream cluster from=nats node_id=1
+4:19PM INF Creating JetStream metadata controller from=nats node_id=1
+4:19PM INF JetStream cluster recovering state from=nats node_id=1
+4:19PM INF Listening for client connections on 0.0.0.0:61776 from=nats node_id=1
+4:19PM INF Server is ready from=nats node_id=1
+4:19PM INF Cluster name is e-marmot from=nats node_id=1
+4:19PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+4:19PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+4:19PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+4:19PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+4:19PM WRN Waiting for routing to be established... from=nats node_id=1
+4:19PM ERR NATS client disconnected node_id=1
+4:19PM ERR NATS client exiting node_id=1
+4:19PM WRN Waiting for routing to be established... from=nats node_id=1
+4:19PM INF 127.0.0.1:61787 - rid:9 - Route connection created from=nats node_id=1
+4:19PM INF 127.0.0.1:4221 - rid:10 - Route connection created from=nats node_id=1
+4:19PM ERR NATS client disconnected node_id=1
+4:19PM ERR NATS client exiting node_id=1
+4:19PM INF 127.0.0.1:61792 - rid:11 - Route connection created from=nats node_id=1
+4:19PM INF 127.0.0.1:61793 - rid:12 - Route connection created from=nats node_id=1
+4:19PM INF 127.0.0.1:4221 - rid:14 - Route connection created from=nats node_id=1
+4:19PM INF 127.0.0.1:4221 - rid:14 - Router connection closed: Duplicate Route from=nats node_id=1
+4:19PM ERR NATS client disconnected node_id=1
+4:19PM ERR NATS client exiting node_id=1
+4:20PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+4:20PM ERR NATS client disconnected node_id=1
+4:20PM ERR NATS client exiting node_id=1
+4:20PM INF Streaming ready... node_id=1
+4:20PM INF Streaming ready... node_id=1
+4:20PM INF Listing tables to watch... node_id=1
+4:20PM INF Starting change data capture pipeline... node_id=1
+4:20PM INF Creating global change log table node_id=1
+4:20PM INF Creating trigger for groups node_id=1
+4:20PM INF Creating trigger for group_members node_id=1
+4:20PM INF Creating trigger for expenses node_id=1
+4:20PM INF Creating trigger for credits node_id=1
+4:20PM INF Creating trigger for debits node_id=1
+4:20PM INF Creating trigger for schema_migrations node_id=1
+4:20PM INF Creating trigger for users node_id=1
+4:20PM INF Creating trigger for users_tokens node_id=1
+4:20PM INF 127.0.0.1:61800 - rid:18 - Route connection created from=nats node_id=1
+4:20PM INF 127.0.0.1:61800 - rid:18 - Router connection closed: Duplicate Route from=nats node_id=1
+
+
+
+
+
+
+^C16:33:44 erszcz @ x7 : ~/work/erszcz/staek (main *)
+$
+16:36:38 erszcz @ x7 : ~/work/erszcz/staek (main)
+$ ./marmot/run-nodes.sh web
+4:44PM INF Starting nats-server from=nats node_id=1
+4:44PM INF   Version:  2.10.4 from=nats node_id=1
+4:44PM INF   Git:      [not set] from=nats node_id=1
+4:44PM INF   Cluster:  e-marmot from=nats node_id=1
+4:44PM INF   Name:     marmot-node-1 from=nats node_id=1
+4:44PM INF   Node:     OWL7P9aV from=nats node_id=1
+4:44PM INF   ID:       NCM647AS6DALKW6V5H7YEZTZAFFVMWV6IZTFPKQPVZTTW7DVZUKZB2WJ from=nats node_id=1
+4:44PM INF Starting JetStream from=nats node_id=1
+4:44PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+4:44PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+4:44PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+4:44PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+4:44PM INF from=nats node_id=1
+4:44PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+4:44PM INF from=nats node_id=1
+4:44PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+4:44PM INF   Max Memory:      24.00 GB from=nats node_id=1
+4:44PM INF   Max Storage:     515.07 GB from=nats node_id=1
+4:44PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+4:44PM INF ------------------------------------------- from=nats node_id=1
+4:44PM INF Starting JetStream cluster from=nats node_id=1
+4:44PM INF Creating JetStream metadata controller from=nats node_id=1
+4:44PM INF JetStream cluster bootstrapping from=nats node_id=1
+4:44PM INF Listening for client connections on 0.0.0.0:62342 from=nats node_id=1
+4:44PM INF Server is ready from=nats node_id=1
+4:44PM INF Cluster name is e-marmot from=nats node_id=1
+4:44PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+4:44PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+4:44PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+4:44PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+4:44PM WRN Waiting for routing to be established... from=nats node_id=1
+4:44PM ERR NATS client disconnected node_id=1
+4:44PM ERR NATS client exiting node_id=1
+4:44PM WRN Waiting for routing to be established... from=nats node_id=1
+4:44PM INF 127.0.0.1:62354 - rid:9 - Route connection created from=nats node_id=1
+4:44PM INF 127.0.0.1:62355 - rid:10 - Route connection created from=nats node_id=1
+4:44PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+4:44PM INF 127.0.0.1:62356 - rid:11 - Route connection created from=nats node_id=1
+4:44PM INF 127.0.0.1:4221 - rid:12 - Route connection created from=nats node_id=1
+4:44PM ERR NATS client disconnected node_id=1
+4:44PM ERR NATS client exiting node_id=1
+4:44PM INF 127.0.0.1:62360 - rid:13 - Route connection created from=nats node_id=1
+4:44PM INF 127.0.0.1:62360 - rid:13 - Router connection closed: Client Closed from=nats node_id=1
+4:44PM INF 127.0.0.1:4221 - rid:14 - Route connection created from=nats node_id=1
+4:44PM INF 127.0.0.1:4221 - rid:14 - Router connection closed: Duplicate Route from=nats node_id=1
+4:44PM INF Streaming ready... node_id=1
+4:44PM INF Streaming ready... node_id=1
+4:44PM INF Listing tables to watch... node_id=1
+4:44PM INF Starting change data capture pipeline... node_id=1
+4:44PM INF Creating global change log table node_id=1
+4:44PM INF Creating trigger for credits node_id=1
+4:44PM INF Creating trigger for debits node_id=1
+4:44PM INF Creating trigger for schema_migrations node_id=1
+4:44PM INF Creating trigger for users node_id=1
+4:44PM INF Creating trigger for users_tokens node_id=1
+4:44PM INF Creating trigger for groups node_id=1
+4:44PM INF Creating trigger for group_members node_id=1
+4:44PM INF Creating trigger for expenses node_id=1
+^C16:56:05 erszcz @ x7 : ~/work/erszcz/staek (main)
+$ ./marmot/run-nodes.sh web
+4:57PM INF Starting nats-server from=nats node_id=1
+4:57PM INF   Version:  2.10.4 from=nats node_id=1
+4:57PM INF   Git:      [not set] from=nats node_id=1
+4:57PM INF   Cluster:  e-marmot from=nats node_id=1
+4:57PM INF   Name:     marmot-node-1 from=nats node_id=1
+4:57PM INF   Node:     OWL7P9aV from=nats node_id=1
+4:57PM INF   ID:       ND7HQEPLOSJIYHAM5F7ZVKVGWOYYWDHXCNF7QIBMZXNHB2RGGEQ3ZJSL from=nats node_id=1
+4:57PM INF Starting JetStream from=nats node_id=1
+4:57PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+4:57PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+4:57PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+4:57PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+4:57PM INF from=nats node_id=1
+4:57PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+4:57PM INF from=nats node_id=1
+4:57PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+4:57PM INF   Max Memory:      24.00 GB from=nats node_id=1
+4:57PM INF   Max Storage:     515.09 GB from=nats node_id=1
+4:57PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+4:57PM INF ------------------------------------------- from=nats node_id=1
+4:57PM INF Starting JetStream cluster from=nats node_id=1
+4:57PM INF Creating JetStream metadata controller from=nats node_id=1
+4:57PM INF JetStream cluster bootstrapping from=nats node_id=1
+4:57PM INF Listening for client connections on 0.0.0.0:62515 from=nats node_id=1
+4:57PM INF Server is ready from=nats node_id=1
+4:57PM INF Cluster name is e-marmot from=nats node_id=1
+4:57PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+4:57PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+4:57PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+4:57PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+4:57PM WRN Waiting for routing to be established... from=nats node_id=1
+4:57PM ERR NATS client disconnected node_id=1
+4:57PM ERR NATS client exiting node_id=1
+4:57PM INF 127.0.0.1:62523 - rid:8 - Route connection created from=nats node_id=1
+4:57PM INF 127.0.0.1:62525 - rid:9 - Route connection created from=nats node_id=1
+4:57PM INF 127.0.0.1:62526 - rid:10 - Route connection created from=nats node_id=1
+4:57PM INF 127.0.0.1:4221 - rid:11 - Route connection created from=nats node_id=1
+4:57PM INF 127.0.0.1:62531 - rid:13 - Route connection created from=nats node_id=1
+4:57PM INF 127.0.0.1:62531 - rid:13 - Router connection closed: Duplicate Route from=nats node_id=1
+4:57PM INF 127.0.0.1:4221 - rid:14 - Route connection created from=nats node_id=1
+4:57PM INF 127.0.0.1:4221 - rid:14 - Router connection closed: Duplicate Route from=nats node_id=1
+4:57PM ERR NATS client disconnected node_id=1
+4:57PM ERR NATS client exiting node_id=1
+4:57PM ERR NATS client disconnected node_id=1
+4:57PM ERR NATS client exiting node_id=1
+4:57PM ERR NATS client disconnected node_id=1
+4:57PM ERR NATS client exiting node_id=1
+4:57PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+4:57PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+4:57PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=1
+4:57PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > U3s12A7j' from=nats node_id=1
+4:57PM INF Streaming ready... node_id=1
+4:57PM INF Streaming ready... node_id=1
+4:57PM INF Listing tables to watch... node_id=1
+4:57PM INF Starting change data capture pipeline... node_id=1
+4:57PM INF Creating global change log table node_id=1
+4:57PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > VT2tYEK1' from=nats node_id=1
+5:10PM INF 127.0.0.1:62523 - rid:8 - Router connection closed: Client Closed from=nats node_id=1
+5:10PM INF 127.0.0.1:62525 - rid:9 - Router connection closed: Client Closed from=nats node_id=1
+5:10PM INF 127.0.0.1:4221 - rid:11 - Router connection closed: Client Closed from=nats node_id=1
+5:10PM INF 127.0.0.1:62526 - rid:10 - Router connection closed: Client Closed from=nats node_id=1
+5:10PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+5:10PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:10PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+5:10PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+^C17:10:58 erszcz @ x7 : ~/work/erszcz/staek (main)
+$ ./marmot/run-nodes.sh web
+5:20PM INF Starting nats-server from=nats node_id=1
+5:20PM INF   Version:  2.10.4 from=nats node_id=1
+5:20PM INF   Git:      [not set] from=nats node_id=1
+5:20PM INF   Cluster:  e-marmot from=nats node_id=1
+5:20PM INF   Name:     marmot-node-1 from=nats node_id=1
+5:20PM INF   Node:     OWL7P9aV from=nats node_id=1
+5:20PM INF   ID:       NASGWKL3DSEBADXFGLLCDW7FVUVDZV7EZ37YXGVLOJMHOW4O2PIX5DM3 from=nats node_id=1
+5:20PM INF Starting JetStream from=nats node_id=1
+5:20PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+5:20PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+5:20PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+5:20PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+5:20PM INF from=nats node_id=1
+5:20PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+5:20PM INF from=nats node_id=1
+5:20PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+5:20PM INF   Max Memory:      24.00 GB from=nats node_id=1
+5:20PM INF   Max Storage:     515.07 GB from=nats node_id=1
+5:20PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+5:20PM INF ------------------------------------------- from=nats node_id=1
+5:20PM INF Starting JetStream cluster from=nats node_id=1
+5:20PM INF Creating JetStream metadata controller from=nats node_id=1
+5:20PM INF JetStream cluster bootstrapping from=nats node_id=1
+5:20PM INF Listening for client connections on 0.0.0.0:62888 from=nats node_id=1
+5:20PM INF Server is ready from=nats node_id=1
+5:20PM INF Cluster name is e-marmot from=nats node_id=1
+5:20PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+5:20PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+5:20PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:20PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+5:20PM WRN Waiting for routing to be established... from=nats node_id=1
+5:20PM ERR NATS client disconnected node_id=1
+5:20PM ERR NATS client exiting node_id=1
+5:20PM WRN Waiting for routing to be established... from=nats node_id=1
+5:20PM INF 127.0.0.1:62900 - rid:9 - Route connection created from=nats node_id=1
+5:20PM INF 127.0.0.1:4221 - rid:10 - Route connection created from=nats node_id=1
+5:20PM ERR NATS client disconnected node_id=1
+5:20PM ERR NATS client exiting node_id=1
+5:20PM INF 127.0.0.1:4221 - rid:11 - Route connection created from=nats node_id=1
+5:20PM INF 127.0.0.1:4221 - rid:12 - Route connection created from=nats node_id=1
+5:20PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+5:20PM INF 127.0.0.1:62906 - rid:13 - Route connection created from=nats node_id=1
+5:21PM INF 127.0.0.1:62906 - rid:13 - Router connection closed: Client Closed from=nats node_id=1
+5:21PM INF Streaming ready... node_id=1
+5:21PM INF Streaming ready... node_id=1
+5:21PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+5:21PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=1
+5:21PM INF Listing tables to watch... node_id=1
+5:21PM INF Starting change data capture pipeline... node_id=1
+5:21PM INF Creating global change log table node_id=1
+5:21PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > pKh9XHMu' from=nats node_id=1
+5:21PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > yAkrvDJi' from=nats node_id=1
+5:21PM INF 127.0.0.1:4221 - rid:26 - Route connection created from=nats node_id=1
+5:21PM INF 127.0.0.1:4221 - rid:26 - Router connection closed: Duplicate Route from=nats node_id=1
+^C^C
+17:21:23 erszcz @ x7 : ~/work/erszcz/staek (main)
+$ ./marmot/run-nodes.sh web
+5:21PM INF Starting nats-server from=nats node_id=1
+5:21PM INF   Version:  2.10.4 from=nats node_id=1
+5:21PM INF   Git:      [not set] from=nats node_id=1
+5:21PM INF   Cluster:  e-marmot from=nats node_id=1
+5:21PM INF   Name:     marmot-node-1 from=nats node_id=1
+5:21PM INF   Node:     OWL7P9aV from=nats node_id=1
+5:21PM INF   ID:       NDXNV4AKNOM2X5L3BRWFPVBMS3ERFJEZNM5EOJDSRCCPF75MRQBYP6NG from=nats node_id=1
+5:21PM INF Starting JetStream from=nats node_id=1
+5:21PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+5:21PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+5:21PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+5:21PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+5:21PM INF from=nats node_id=1
+5:21PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+5:21PM INF from=nats node_id=1
+5:21PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+5:21PM INF   Max Memory:      24.00 GB from=nats node_id=1
+5:21PM INF   Max Storage:     515.07 GB from=nats node_id=1
+5:21PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+5:21PM INF ------------------------------------------- from=nats node_id=1
+5:21PM INF   Starting restore for stream '$G > KV_e-marmot' from=nats node_id=1
+5:21PM INF   Restored 0 messages for stream '$G > KV_e-marmot' in 4ms from=nats node_id=1
+5:21PM INF   Starting restore for stream '$G > marmot-changes-c-1' from=nats node_id=1
+5:21PM INF   Restored 0 messages for stream '$G > marmot-changes-c-1' in 1ms from=nats node_id=1
+5:21PM INF   Recovering 2 consumers for stream - '$G > marmot-changes-c-1' from=nats node_id=1
+5:21PM INF Starting JetStream cluster from=nats node_id=1
+5:21PM INF Creating JetStream metadata controller from=nats node_id=1
+5:21PM INF JetStream cluster recovering state from=nats node_id=1
+5:21PM INF Listening for client connections on 0.0.0.0:62940 from=nats node_id=1
+5:21PM INF Server is ready from=nats node_id=1
+5:21PM INF Cluster name is e-marmot from=nats node_id=1
+5:21PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+5:21PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:21PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:21PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+5:21PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=1
+5:21PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > pKh9XHMu' from=nats node_id=1
+5:21PM WRN Detected orphaned consumer '$G > marmot-changes-c-1 > yAkrvDJi', will cleanup from=nats node_id=1
+5:21PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+5:21PM WRN Waiting for routing to be established... from=nats node_id=1
+5:21PM ERR NATS client disconnected node_id=1
+5:21PM ERR NATS client exiting node_id=1
+5:21PM INF 127.0.0.1:62949 - rid:18 - Route connection created from=nats node_id=1
+5:21PM INF 127.0.0.1:62948 - rid:19 - Route connection created from=nats node_id=1
+5:22PM INF 127.0.0.1:62953 - rid:21 - Route connection created from=nats node_id=1
+5:22PM INF 127.0.0.1:62954 - rid:22 - Route connection created from=nats node_id=1
+5:22PM ERR NATS client disconnected node_id=1
+5:22PM ERR NATS client exiting node_id=1
+5:22PM INF 127.0.0.1:4221 - rid:23 - Route connection created from=nats node_id=1
+5:22PM INF 127.0.0.1:4221 - rid:24 - Route connection created from=nats node_id=1
+5:22PM INF 127.0.0.1:4221 - rid:23 - Router connection closed: Duplicate Route from=nats node_id=1
+5:22PM INF 127.0.0.1:4221 - rid:24 - Router connection closed: Duplicate Route from=nats node_id=1
+5:22PM ERR NATS client disconnected node_id=1
+5:22PM ERR NATS client exiting node_id=1
+5:22PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+5:22PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > yAkrvDJi' from=nats node_id=1
+5:22PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > pKh9XHMu' from=nats node_id=1
+5:22PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > pKh9XHMu' from=nats node_id=1
+5:22PM INF Streaming ready... node_id=1
+5:22PM INF Streaming ready... node_id=1
+5:22PM INF Listing tables to watch... node_id=1
+5:22PM INF Starting change data capture pipeline... node_id=1
+5:22PM INF Creating global change log table node_id=1
+5:22PM INF Creating trigger for group_members node_id=1
+5:22PM INF Creating trigger for expenses node_id=1
+5:22PM INF Creating trigger for credits node_id=1
+5:22PM INF Creating trigger for debits node_id=1
+5:22PM INF Creating trigger for schema_migrations node_id=1
+5:22PM INF Creating trigger for users node_id=1
+5:22PM INF Creating trigger for users_tokens node_id=1
+5:22PM INF Creating trigger for groups node_id=1
+5:22PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > 8Z7GuifQ' from=nats node_id=1
+5:22PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > qhbir4qG' from=nats node_id=1
+
+
+
+
+
+
+^C17:30:31 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$
+17:30:34 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ ./marmot/run-cluster.sh
+5:31PM INF Starting nats-server from=nats node_id=2
+5:31PM INF   Version:  2.10.4 from=nats node_id=2
+5:31PM INF   Git:      [not set] from=nats node_id=2
+5:31PM INF   Cluster:  e-marmot from=nats node_id=2
+5:31PM INF   Name:     marmot-node-2 from=nats node_id=2
+5:31PM INF   Node:     aThtkTV0 from=nats node_id=2
+5:31PM INF   ID:       NCH4IZAPUMTOVBF6N2QCFFRZV2IVO2VMCXCQSSGDZFOC7CWPYBQ62XC4 from=nats node_id=2
+5:31PM INF Starting JetStream from=nats node_id=2
+5:31PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=2
+5:31PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=2
+5:31PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=2
+5:31PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=2
+5:31PM INF from=nats node_id=2
+5:31PM INF          https://docs.nats.io/jetstream from=nats node_id=2
+5:31PM INF from=nats node_id=2
+5:31PM INF ---------------- JETSTREAM ---------------- from=nats node_id=2
+5:31PM INF   Max Memory:      24.00 GB from=nats node_id=2
+5:31PM INF   Max Storage:     515.06 GB from=nats node_id=2
+5:31PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-2/jetstream" from=nats node_id=2
+5:31PM INF ------------------------------------------- from=nats node_id=2
+5:31PM INF Starting JetStream cluster from=nats node_id=2
+5:31PM INF Creating JetStream metadata controller from=nats node_id=2
+5:31PM INF JetStream cluster recovering state from=nats node_id=2
+5:31PM INF Listening for client connections on 0.0.0.0:63043 from=nats node_id=2
+5:31PM INF Server is ready from=nats node_id=2
+5:31PM INF Cluster name is e-marmot from=nats node_id=2
+5:31PM INF Listening for route connections on localhost:4221 from=nats node_id=2
+5:31PM WRN JetStream has not established contact with a meta leader from=nats node_id=2
+5:31PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4222: connect: connection refused from=nats node_id=2
+5:31PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4222: connect: connection refused from=nats node_id=2
+5:31PM WRN Waiting for routing to be established... from=nats node_id=2
+5:31PM INF Starting nats-server from=nats node_id=1
+5:31PM INF   Version:  2.10.4 from=nats node_id=1
+5:31PM INF   Git:      [not set] from=nats node_id=1
+5:31PM INF   Cluster:  e-marmot from=nats node_id=1
+5:31PM INF   Name:     marmot-node-1 from=nats node_id=1
+5:31PM INF   Node:     OWL7P9aV from=nats node_id=1
+5:31PM INF   ID:       NAYH3BUNIYVG2HOJDPSOGLQ4R6AL2BLKJSMI36RAV45HYWZN4CBKF74W from=nats node_id=1
+5:31PM INF Starting JetStream from=nats node_id=1
+5:31PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+5:31PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+5:31PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+5:31PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+5:31PM INF from=nats node_id=1
+5:31PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+5:31PM INF from=nats node_id=1
+5:31PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+5:31PM INF   Max Memory:      24.00 GB from=nats node_id=1
+5:31PM INF   Max Storage:     515.06 GB from=nats node_id=1
+5:31PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+5:31PM INF ------------------------------------------- from=nats node_id=1
+5:31PM INF   Starting restore for stream '$G > KV_e-marmot' from=nats node_id=1
+5:31PM INF   Restored 0 messages for stream '$G > KV_e-marmot' in 2ms from=nats node_id=1
+5:31PM INF   Starting restore for stream '$G > marmot-changes-c-1' from=nats node_id=1
+5:31PM INF   Restored 52 messages for stream '$G > marmot-changes-c-1' in 2ms from=nats node_id=1
+5:31PM INF   Recovering 2 consumers for stream - '$G > marmot-changes-c-1' from=nats node_id=1
+5:31PM INF Starting JetStream cluster from=nats node_id=1
+5:31PM INF Creating JetStream metadata controller from=nats node_id=1
+5:31PM INF JetStream cluster recovering state from=nats node_id=1
+5:31PM INF Listening for client connections on 0.0.0.0:63049 from=nats node_id=1
+5:31PM INF Server is ready from=nats node_id=1
+5:31PM INF Cluster name is e-marmot from=nats node_id=1
+5:31PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=1
+5:31PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+5:31PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:31PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:31PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+5:31PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > 8Z7GuifQ' from=nats node_id=1
+5:31PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > qhbir4qG' from=nats node_id=1
+5:31PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+5:31PM WRN Waiting for routing to be established... from=nats node_id=1
+5:31PM ERR NATS client disconnected node_id=2
+5:31PM ERR NATS client exiting node_id=2
+5:31PM ERR NATS client disconnected node_id=1
+5:31PM ERR NATS client exiting node_id=1
+5:31PM INF 127.0.0.1:4221 - rid:18 - Route connection created from=nats node_id=1
+5:31PM INF 127.0.0.1:63055 - rid:8 - Route connection created from=nats node_id=2
+5:31PM INF 127.0.0.1:4222 - rid:9 - Route connection created from=nats node_id=2
+5:31PM INF 127.0.0.1:63056 - rid:19 - Route connection created from=nats node_id=1
+5:31PM WRN Waiting for routing to be established... from=nats node_id=2
+5:31PM INF 127.0.0.1:4222 - rid:11 - Route connection created from=nats node_id=2
+5:31PM INF 127.0.0.1:63058 - rid:20 - Route connection created from=nats node_id=1
+5:31PM INF 127.0.0.1:4222 - rid:12 - Route connection created from=nats node_id=2
+5:31PM INF 127.0.0.1:63059 - rid:21 - Route connection created from=nats node_id=1
+5:31PM INF 127.0.0.1:4221 - rid:23 - Route connection created from=nats node_id=1
+5:31PM INF 127.0.0.1:63060 - rid:13 - Route connection created from=nats node_id=2
+5:31PM INF 127.0.0.1:4221 - rid:23 - Router connection closed: Duplicate Route from=nats node_id=1
+5:31PM INF 127.0.0.1:63060 - rid:13 - Router connection closed: Client Closed from=nats node_id=2
+5:31PM INF 127.0.0.1:4222 - rid:14 - Route connection created from=nats node_id=2
+5:31PM INF 127.0.0.1:63061 - rid:24 - Route connection created from=nats node_id=1
+5:31PM INF 127.0.0.1:4222 - rid:14 - Router connection closed: Duplicate Route from=nats node_id=2
+5:31PM INF 127.0.0.1:63061 - rid:24 - Router connection closed: Duplicate Route from=nats node_id=1
+5:31PM ERR NATS client disconnected node_id=2
+5:31PM ERR NATS client exiting node_id=2
+5:31PM ERR NATS client disconnected node_id=1
+5:31PM ERR NATS client exiting node_id=1
+5:31PM ERR NATS client disconnected node_id=2
+5:31PM ERR NATS client exiting node_id=2
+5:31PM ERR NATS client disconnected node_id=1
+5:31PM ERR NATS client exiting node_id=1
+5:31PM INF JetStream cluster new metadata leader: marmot-node-1/e-marmot from=nats node_id=2
+5:31PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+5:31PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > 8Z7GuifQ' from=nats node_id=1
+5:31PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > qhbir4qG' from=nats node_id=1
+5:31PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > 8Z7GuifQ' from=nats node_id=1
+5:31PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > qhbir4qG' from=nats node_id=1
+5:31PM INF Streaming ready... node_id=1
+5:31PM INF Streaming ready... node_id=1
+5:31PM INF Listing tables to watch... node_id=1
+5:31PM INF Starting change data capture pipeline... node_id=1
+5:31PM INF Creating global change log table node_id=1
+5:31PM INF Creating trigger for schema_migrations node_id=1
+5:31PM INF Creating trigger for users node_id=1
+5:31PM INF Creating trigger for users_tokens node_id=1
+5:31PM INF Creating trigger for groups node_id=1
+5:31PM INF Creating trigger for group_members node_id=1
+5:31PM INF Creating trigger for expenses node_id=1
+5:31PM INF Creating trigger for credits node_id=1
+5:31PM INF Creating trigger for debits node_id=1
+5:31PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > gS1erXzM' from=nats node_id=1
+5:31PM ERR NATS client disconnected node_id=2
+5:31PM ERR NATS client exiting node_id=2
+5:31PM INF Streaming ready... node_id=2
+5:31PM INF Streaming ready... node_id=2
+5:31PM INF Listing tables to watch... node_id=2
+5:31PM INF Starting change data capture pipeline... node_id=2
+5:31PM INF Creating global change log table node_id=2
+5:31PM INF Creating trigger for debits node_id=2
+5:31PM INF Creating trigger for schema_migrations node_id=2
+5:31PM INF Creating trigger for users node_id=2
+5:31PM INF Creating trigger for users_tokens node_id=2
+5:31PM INF Creating trigger for groups node_id=2
+5:31PM INF Creating trigger for group_members node_id=2
+5:31PM INF Creating trigger for expenses node_id=2
+5:31PM INF Creating trigger for credits node_id=2
+5:31PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > dxPh59G5' from=nats node_id=1
+
+
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+5:32PM ERR Unable to count global changes error="no such table: __marmot___change_log_global" node_id=1
+^C17:32:27 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ ./marmot/run-cluster.sh
+5:32PM INF Starting nats-server from=nats node_id=2
+5:32PM INF   Version:  2.10.4 from=nats node_id=2
+5:32PM INF   Git:      [not set] from=nats node_id=2
+5:32PM INF   Cluster:  e-marmot from=nats node_id=2
+5:32PM INF   Name:     marmot-node-2 from=nats node_id=2
+5:32PM INF   Node:     aThtkTV0 from=nats node_id=2
+5:32PM INF   ID:       NAUQVYMFKOAXWYH6SZH6WYLLI2AE2HKSDUU5BATEJ5NG3OLHEIOD67BU from=nats node_id=2
+5:32PM INF Starting JetStream from=nats node_id=2
+5:32PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=2
+5:32PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=2
+5:32PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=2
+5:32PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=2
+5:32PM INF from=nats node_id=2
+5:32PM INF          https://docs.nats.io/jetstream from=nats node_id=2
+5:32PM INF from=nats node_id=2
+5:32PM INF ---------------- JETSTREAM ---------------- from=nats node_id=2
+5:32PM INF   Max Memory:      24.00 GB from=nats node_id=2
+5:32PM INF   Max Storage:     515.06 GB from=nats node_id=2
+5:32PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-2/jetstream" from=nats node_id=2
+5:32PM INF ------------------------------------------- from=nats node_id=2
+5:32PM INF Starting JetStream cluster from=nats node_id=2
+5:32PM INF Creating JetStream metadata controller from=nats node_id=2
+5:32PM INF JetStream cluster recovering state from=nats node_id=2
+5:32PM INF Listening for client connections on 0.0.0.0:63120 from=nats node_id=2
+5:32PM INF Server is ready from=nats node_id=2
+5:32PM INF Cluster name is e-marmot from=nats node_id=2
+5:32PM INF Listening for route connections on localhost:4221 from=nats node_id=2
+5:32PM WRN JetStream has not established contact with a meta leader from=nats node_id=2
+5:32PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4222: connect: connection refused from=nats node_id=2
+5:32PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4222: connect: connection refused from=nats node_id=2
+5:32PM WRN Waiting for routing to be established... from=nats node_id=2
+5:32PM INF Starting nats-server from=nats node_id=1
+5:32PM INF   Version:  2.10.4 from=nats node_id=1
+5:32PM INF   Git:      [not set] from=nats node_id=1
+5:32PM INF   Cluster:  e-marmot from=nats node_id=1
+5:32PM INF   Name:     marmot-node-1 from=nats node_id=1
+5:32PM INF   Node:     OWL7P9aV from=nats node_id=1
+5:32PM INF   ID:       NAGTXAIIEV2MQ3R5BGFUFUXZYUVGLX2VTYJPJYDNCT64P5X4KLDBNY25 from=nats node_id=1
+5:32PM INF Starting JetStream from=nats node_id=1
+5:32PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+5:32PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+5:32PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+5:32PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+5:32PM INF from=nats node_id=1
+5:32PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+5:32PM INF from=nats node_id=1
+5:32PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+5:32PM INF   Max Memory:      24.00 GB from=nats node_id=1
+5:32PM INF   Max Storage:     515.06 GB from=nats node_id=1
+5:32PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+5:32PM INF ------------------------------------------- from=nats node_id=1
+5:32PM INF   Starting restore for stream '$G > KV_e-marmot' from=nats node_id=1
+5:32PM INF   Restored 0 messages for stream '$G > KV_e-marmot' in 1ms from=nats node_id=1
+5:32PM INF   Starting restore for stream '$G > marmot-changes-c-1' from=nats node_id=1
+5:32PM INF   Restored 57 messages for stream '$G > marmot-changes-c-1' in 1ms from=nats node_id=1
+5:32PM INF   Recovering 2 consumers for stream - '$G > marmot-changes-c-1' from=nats node_id=1
+5:32PM INF Starting JetStream cluster from=nats node_id=1
+5:32PM INF Creating JetStream metadata controller from=nats node_id=1
+5:32PM INF JetStream cluster recovering state from=nats node_id=1
+5:32PM INF Listening for client connections on 0.0.0.0:63127 from=nats node_id=1
+5:32PM INF Server is ready from=nats node_id=1
+5:32PM INF Cluster name is e-marmot from=nats node_id=1
+5:32PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+5:32PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:32PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:32PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=1
+5:32PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+5:32PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > gS1erXzM' from=nats node_id=1
+5:32PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > dxPh59G5' from=nats node_id=1
+5:32PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+5:32PM ERR NATS client disconnected node_id=2
+5:32PM ERR NATS client exiting node_id=2
+5:32PM WRN Waiting for routing to be established... from=nats node_id=1
+5:32PM INF 127.0.0.1:63131 - rid:18 - Route connection created from=nats node_id=1
+5:32PM INF 127.0.0.1:63130 - rid:19 - Route connection created from=nats node_id=1
+5:32PM INF 127.0.0.1:4222 - rid:8 - Route connection created from=nats node_id=2
+5:32PM INF 127.0.0.1:4222 - rid:9 - Route connection created from=nats node_id=2
+5:32PM WRN Waiting for routing to be established... from=nats node_id=2
+5:32PM INF 127.0.0.1:4221 - rid:20 - Route connection created from=nats node_id=1
+5:32PM INF 127.0.0.1:63132 - rid:10 - Route connection created from=nats node_id=2
+5:32PM INF 127.0.0.1:4221 - rid:21 - Route connection created from=nats node_id=1
+5:32PM INF 127.0.0.1:63133 - rid:11 - Route connection created from=nats node_id=2
+5:32PM INF 127.0.0.1:4221 - rid:21 - Router connection closed: Duplicate Route from=nats node_id=1
+5:32PM INF 127.0.0.1:63133 - rid:11 - Router connection closed: Duplicate Route from=nats node_id=2
+5:32PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4222: connect: connection refused from=nats node_id=2
+5:32PM ERR NATS client disconnected node_id=1
+5:32PM ERR NATS client exiting node_id=1
+5:32PM INF 127.0.0.1:4221 - rid:22 - Route connection created from=nats node_id=1
+5:32PM INF 127.0.0.1:63135 - rid:13 - Route connection created from=nats node_id=2
+5:32PM ERR NATS client disconnected node_id=2
+5:32PM ERR NATS client exiting node_id=2
+5:32PM INF 127.0.0.1:4222 - rid:14 - Route connection created from=nats node_id=2
+5:32PM INF 127.0.0.1:63136 - rid:23 - Route connection created from=nats node_id=1
+5:32PM INF 127.0.0.1:4222 - rid:14 - Router connection closed: Duplicate Route from=nats node_id=2
+5:32PM INF 127.0.0.1:63136 - rid:23 - Router connection closed: Client Closed from=nats node_id=1
+5:32PM ERR NATS client disconnected node_id=1
+5:32PM ERR NATS client exiting node_id=1
+5:32PM ERR NATS client disconnected node_id=2
+5:32PM ERR NATS client exiting node_id=2
+5:32PM INF Self is new JetStream cluster metadata leader from=nats node_id=2
+5:32PM INF JetStream cluster new metadata leader: marmot-node-2/e-marmot from=nats node_id=1
+5:32PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > gS1erXzM' from=nats node_id=1
+5:32PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > dxPh59G5' from=nats node_id=1
+5:32PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > gS1erXzM' from=nats node_id=1
+5:32PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > dxPh59G5' from=nats node_id=1
+5:32PM INF Streaming ready... node_id=2
+5:32PM INF Streaming ready... node_id=2
+5:32PM INF Listing tables to watch... node_id=2
+5:32PM INF Starting change data capture pipeline... node_id=2
+5:32PM INF Creating global change log table node_id=2
+5:32PM INF Creating trigger for schema_migrations node_id=2
+5:32PM INF Creating trigger for users node_id=2
+5:32PM INF Creating trigger for users_tokens node_id=2
+5:32PM ERR NATS client disconnected node_id=1
+5:32PM ERR NATS client exiting node_id=1
+5:32PM INF Creating trigger for groups node_id=2
+5:32PM INF Creating trigger for group_members node_id=2
+5:32PM INF Creating trigger for expenses node_id=2
+5:32PM INF Creating trigger for credits node_id=2
+5:32PM INF Creating trigger for debits node_id=2
+5:32PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > ZgH17oiu' from=nats node_id=1
+5:32PM INF Streaming ready... node_id=1
+5:32PM INF Streaming ready... node_id=1
+5:32PM INF Listing tables to watch... node_id=1
+5:32PM INF Starting change data capture pipeline... node_id=1
+5:32PM INF Creating global change log table node_id=1
+5:32PM INF Creating trigger for schema_migrations node_id=1
+5:32PM INF Creating trigger for users node_id=1
+5:32PM INF Creating trigger for users_tokens node_id=1
+5:32PM INF Creating trigger for groups node_id=1
+5:32PM INF Creating trigger for group_members node_id=1
+5:32PM INF Creating trigger for expenses node_id=1
+5:32PM INF Creating trigger for credits node_id=1
+5:32PM INF Creating trigger for debits node_id=1
+5:32PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > Jo8eHLG5' from=nats node_id=1
+
+^C17:34:50 erszcz @ x7 : ~/work/erszcz/staek (main %)
+$ ./marmot/run-nodes.sh web
+5:37PM INF Starting nats-server from=nats node_id=1
+5:37PM INF   Version:  2.10.4 from=nats node_id=1
+5:37PM INF   Git:      [not set] from=nats node_id=1
+5:37PM INF   Cluster:  e-marmot from=nats node_id=1
+5:37PM INF   Name:     marmot-node-1 from=nats node_id=1
+5:37PM INF   Node:     OWL7P9aV from=nats node_id=1
+5:37PM INF   ID:       NB4Y62FCCHE6WKV2UEIYO6QM6RQE5AXCXDCT2MLTLINAMIPACXOJ674L from=nats node_id=1
+5:37PM INF Starting JetStream from=nats node_id=1
+5:37PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+5:37PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+5:37PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+5:37PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+5:37PM INF from=nats node_id=1
+5:37PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+5:37PM INF from=nats node_id=1
+5:37PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+5:37PM INF   Max Memory:      24.00 GB from=nats node_id=1
+5:37PM INF   Max Storage:     515.06 GB from=nats node_id=1
+5:37PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+5:37PM INF ------------------------------------------- from=nats node_id=1
+5:37PM INF Starting JetStream cluster from=nats node_id=1
+5:37PM INF Creating JetStream metadata controller from=nats node_id=1
+5:37PM INF JetStream cluster bootstrapping from=nats node_id=1
+5:37PM INF Listening for client connections on 0.0.0.0:63207 from=nats node_id=1
+5:37PM INF Server is ready from=nats node_id=1
+5:37PM INF Cluster name is e-marmot from=nats node_id=1
+5:37PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+5:37PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+5:37PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+5:37PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4221: connect: connection refused from=nats node_id=1
+5:37PM WRN Waiting for routing to be established... from=nats node_id=1
+5:37PM ERR NATS client disconnected node_id=1
+5:37PM ERR NATS client exiting node_id=1
+5:37PM WRN Waiting for routing to be established... from=nats node_id=1
+5:37PM ERR NATS client disconnected node_id=1
+5:37PM ERR NATS client exiting node_id=1
+5:37PM WRN Waiting for routing to be established... from=nats node_id=1
+5:37PM ERR NATS client disconnected node_id=1
+5:37PM ERR NATS client exiting node_id=1
+5:37PM WRN Waiting for routing to be established... from=nats node_id=1
+5:37PM INF 127.0.0.1:63227 - rid:11 - Route connection created from=nats node_id=1
+5:37PM ERR NATS client disconnected node_id=1
+5:37PM ERR NATS client exiting node_id=1
+5:37PM INF 127.0.0.1:63231 - rid:12 - Route connection created from=nats node_id=1
+5:37PM INF 127.0.0.1:63232 - rid:13 - Route connection created from=nats node_id=1
+5:37PM INF 127.0.0.1:4221 - rid:14 - Route connection created from=nats node_id=1
+5:37PM INF 127.0.0.1:4221 - rid:15 - Route connection created from=nats node_id=1
+5:37PM INF 127.0.0.1:4221 - rid:14 - Router connection closed: Duplicate Route from=nats node_id=1
+5:37PM ERR NATS client disconnected node_id=1
+5:37PM ERR NATS client exiting node_id=1
+5:37PM ERR NATS client disconnected node_id=1
+5:37PM ERR NATS client exiting node_id=1
+5:37PM ERR NATS client disconnected node_id=1
+5:37PM ERR NATS client exiting node_id=1
+5:37PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+5:37PM INF Streaming ready... node_id=1
+5:37PM INF Streaming ready... node_id=1
+5:37PM INF Listing tables to watch... node_id=1
+5:37PM INF Starting change data capture pipeline... node_id=1
+5:37PM INF Creating global change log table node_id=1
+5:37PM INF Creating trigger for group_members node_id=1
+5:37PM INF Creating trigger for expenses node_id=1
+5:37PM INF Creating trigger for credits node_id=1
+5:37PM INF Creating trigger for debits node_id=1
+5:37PM INF Creating trigger for schema_migrations node_id=1
+5:37PM INF Creating trigger for users node_id=1
+5:37PM INF Creating trigger for users_tokens node_id=1
+5:37PM INF Creating trigger for groups node_id=1
+5:37PM INF 127.0.0.1:63243 - rid:21 - Route connection created from=nats node_id=1
+5:37PM INF 127.0.0.1:63243 - rid:21 - Router connection closed: Client Closed from=nats node_id=1
+^C17:41:56 erszcz @ x7 : ~/work/erszcz/staek (main *%)
+$ ./marmot/run-nodes.sh web
+running marmot web
+5:42PM INF Starting nats-server from=nats node_id=1
+5:42PM INF   Version:  2.10.4 from=nats node_id=1
+5:42PM INF   Git:      [not set] from=nats node_id=1
+5:42PM INF   Cluster:  e-marmot from=nats node_id=1
+5:42PM INF   Name:     marmot-node-1 from=nats node_id=1
+5:42PM INF   Node:     OWL7P9aV from=nats node_id=1
+5:42PM INF   ID:       NBDN5ZKSARV4VCKCP65EWE7ZAMJFLCMTAVSBMRXNY5RVPAODSNZO5FC3 from=nats node_id=1
+5:42PM INF Starting JetStream from=nats node_id=1
+5:42PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+5:42PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+5:42PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+5:42PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+5:42PM INF from=nats node_id=1
+5:42PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+5:42PM INF from=nats node_id=1
+5:42PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+5:42PM INF   Max Memory:      24.00 GB from=nats node_id=1
+5:42PM INF   Max Storage:     515.03 GB from=nats node_id=1
+5:42PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+5:42PM INF ------------------------------------------- from=nats node_id=1
+5:42PM INF Starting JetStream cluster from=nats node_id=1
+5:42PM INF Creating JetStream metadata controller from=nats node_id=1
+5:42PM INF JetStream cluster bootstrapping from=nats node_id=1
+5:42PM INF Listening for client connections on 0.0.0.0:63279 from=nats node_id=1
+5:42PM INF Server is ready from=nats node_id=1
+5:42PM INF Cluster name is e-marmot from=nats node_id=1
+5:42PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+5:42PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+5:42PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:42PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:42PM WRN Waiting for routing to be established... from=nats node_id=1
+5:42PM INF 127.0.0.1:63285 - rid:8 - Route connection created from=nats node_id=1
+5:42PM INF 127.0.0.1:4221 - rid:9 - Route connection created from=nats node_id=1
+5:42PM ERR NATS client disconnected node_id=1
+5:42PM ERR NATS client exiting node_id=1
+5:42PM INF 127.0.0.1:63290 - rid:10 - Route connection created from=nats node_id=1
+5:42PM INF 127.0.0.1:63290 - rid:10 - Router connection closed: Duplicate Route from=nats node_id=1
+5:42PM INF 127.0.0.1:63291 - rid:11 - Route connection created from=nats node_id=1
+5:42PM INF 127.0.0.1:4221 - rid:13 - Route connection created from=nats node_id=1
+5:42PM ERR NATS client disconnected node_id=1
+5:42PM ERR NATS client exiting node_id=1
+5:42PM INF 127.0.0.1:63296 - rid:14 - Route connection created from=nats node_id=1
+5:42PM INF 127.0.0.1:63296 - rid:14 - Router connection closed: Client Closed from=nats node_id=1
+5:42PM ERR NATS client disconnected node_id=1
+5:42PM ERR NATS client exiting node_id=1
+5:42PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+5:42PM ERR NATS client disconnected node_id=1
+5:42PM ERR NATS client exiting node_id=1
+5:42PM INF Streaming ready... node_id=1
+5:42PM INF Streaming ready... node_id=1
+5:42PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+5:42PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=1
+5:42PM INF Listing tables to watch... node_id=1
+5:42PM INF Starting change data capture pipeline... node_id=1
+5:42PM INF Creating global change log table node_id=1
+5:42PM INF Creating trigger for group_members node_id=1
+5:42PM INF Creating trigger for expenses node_id=1
+5:42PM INF Creating trigger for credits node_id=1
+5:42PM INF Creating trigger for debits node_id=1
+5:42PM INF Creating trigger for schema_migrations node_id=1
+5:42PM INF Creating trigger for users node_id=1
+5:42PM INF Creating trigger for users_tokens node_id=1
+5:42PM INF Creating trigger for groups node_id=1
+5:42PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > zukzR8Ou' from=nats node_id=1
+5:42PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > HL3wiwqO' from=nats node_id=1
+
+
+
+
+
+
+^C17:45:20 erszcz @ x7 : ~/work/erszcz/staek (main *%)
+$ ./marmot/run-cluster.sh
+5:45PM INF Starting nats-server from=nats node_id=2
+5:45PM INF   Version:  2.10.4 from=nats node_id=2
+5:45PM INF   Git:      [not set] from=nats node_id=2
+5:45PM INF   Cluster:  e-marmot from=nats node_id=2
+5:45PM INF   Name:     marmot-node-2 from=nats node_id=2
+5:45PM INF   Node:     aThtkTV0 from=nats node_id=2
+5:45PM INF   ID:       ND5G2PN6IVLUUCFRMJNSZBJ7Q72CCESY7GNKOZWBKSH67PCOV7LREQBL from=nats node_id=2
+5:45PM INF Starting JetStream from=nats node_id=2
+5:45PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=2
+5:45PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=2
+5:45PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=2
+5:45PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=2
+5:45PM INF from=nats node_id=2
+5:45PM INF          https://docs.nats.io/jetstream from=nats node_id=2
+5:45PM INF from=nats node_id=2
+5:45PM INF ---------------- JETSTREAM ---------------- from=nats node_id=2
+5:45PM INF   Max Memory:      24.00 GB from=nats node_id=2
+5:45PM INF   Max Storage:     515.06 GB from=nats node_id=2
+5:45PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-2/jetstream" from=nats node_id=2
+5:45PM INF ------------------------------------------- from=nats node_id=2
+5:45PM INF Starting JetStream cluster from=nats node_id=2
+5:45PM INF Creating JetStream metadata controller from=nats node_id=2
+5:45PM INF JetStream cluster recovering state from=nats node_id=2
+5:45PM INF Listening for client connections on 0.0.0.0:63331 from=nats node_id=2
+5:45PM INF Server is ready from=nats node_id=2
+5:45PM INF Cluster name is e-marmot from=nats node_id=2
+5:45PM INF Listening for route connections on localhost:4221 from=nats node_id=2
+5:45PM WRN JetStream has not established contact with a meta leader from=nats node_id=2
+5:45PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4222: connect: connection refused from=nats node_id=2
+5:45PM ERR Error trying to connect to route (attempt 1): dial tcp 127.0.0.1:4222: connect: connection refused from=nats node_id=2
+5:45PM WRN Waiting for routing to be established... from=nats node_id=2
+5:45PM INF Starting nats-server from=nats node_id=1
+5:45PM INF   Version:  2.10.4 from=nats node_id=1
+5:45PM INF   Git:      [not set] from=nats node_id=1
+5:45PM INF   Cluster:  e-marmot from=nats node_id=1
+5:45PM INF   Name:     marmot-node-1 from=nats node_id=1
+5:45PM INF   Node:     OWL7P9aV from=nats node_id=1
+5:45PM INF   ID:       NDKTTILVBKK3DDB4LEAHSNQGQOGE3Q7DUNAFN6I3VK6G7GSSDW7GKTWG from=nats node_id=1
+5:45PM INF Starting JetStream from=nats node_id=1
+5:45PM INF     _ ___ _____ ___ _____ ___ ___   _   __  __ from=nats node_id=1
+5:45PM INF  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  | from=nats node_id=1
+5:45PM INF | || | _|  | | \__ \ | | |   / _| / _ \| |\/| | from=nats node_id=1
+5:45PM INF  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_| from=nats node_id=1
+5:45PM INF from=nats node_id=1
+5:45PM INF          https://docs.nats.io/jetstream from=nats node_id=1
+5:45PM INF from=nats node_id=1
+5:45PM INF ---------------- JETSTREAM ---------------- from=nats node_id=1
+5:45PM INF   Max Memory:      24.00 GB from=nats node_id=1
+5:45PM INF   Max Storage:     515.06 GB from=nats node_id=1
+5:45PM INF   Store Directory: "/Users/erszcz/work/erszcz/staek/_build/dev/lib/staek/db/nats/marmot-node-1/jetstream" from=nats node_id=1
+5:45PM INF ------------------------------------------- from=nats node_id=1
+5:45PM ERR NATS client disconnected node_id=2
+5:45PM ERR NATS client exiting node_id=2
+5:45PM INF   Starting restore for stream '$G > KV_e-marmot' from=nats node_id=1
+5:45PM INF   Restored 0 messages for stream '$G > KV_e-marmot' in 2ms from=nats node_id=1
+5:45PM INF   Starting restore for stream '$G > marmot-changes-c-1' from=nats node_id=1
+5:45PM INF   Restored 47 messages for stream '$G > marmot-changes-c-1' in 1ms from=nats node_id=1
+5:45PM INF   Recovering 2 consumers for stream - '$G > marmot-changes-c-1' from=nats node_id=1
+5:45PM INF Starting JetStream cluster from=nats node_id=1
+5:45PM INF Creating JetStream metadata controller from=nats node_id=1
+5:45PM INF JetStream cluster recovering state from=nats node_id=1
+5:45PM INF Listening for client connections on 0.0.0.0:63338 from=nats node_id=1
+5:45PM INF Server is ready from=nats node_id=1
+5:45PM INF Cluster name is e-marmot from=nats node_id=1
+5:45PM INF Listening for route connections on localhost:4222 from=nats node_id=1
+5:45PM ERR Error trying to connect to route (attempt 1): dial tcp [::1]:4221: connect: connection refused from=nats node_id=1
+5:45PM INF JetStream cluster new stream leader for '$G > KV_e-marmot' from=nats node_id=1
+5:45PM INF 127.0.0.1:4221 - rid:17 - Route connection created from=nats node_id=1
+5:45PM INF 127.0.0.1:63340 - rid:8 - Route connection created from=nats node_id=2
+5:45PM INF JetStream cluster new stream leader for '$G > marmot-changes-c-1' from=nats node_id=1
+5:45PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > zukzR8Ou' from=nats node_id=1
+5:45PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > HL3wiwqO' from=nats node_id=1
+5:45PM WRN JetStream has not established contact with a meta leader from=nats node_id=1
+5:45PM WRN Waiting for routing to be established... from=nats node_id=1
+5:45PM INF 127.0.0.1:4222 - rid:10 - Route connection created from=nats node_id=2
+5:45PM INF 127.0.0.1:63341 - rid:19 - Route connection created from=nats node_id=1
+5:45PM INF 127.0.0.1:4222 - rid:10 - Router connection closed: Duplicate Route from=nats node_id=2
+5:45PM INF 127.0.0.1:63341 - rid:19 - Router connection closed: Duplicate Route from=nats node_id=1
+5:45PM WRN Waiting for routing to be established... from=nats node_id=2
+5:45PM INF 127.0.0.1:4221 - rid:20 - Route connection created from=nats node_id=1
+5:45PM INF 127.0.0.1:63343 - rid:11 - Route connection created from=nats node_id=2
+5:45PM ERR NATS client disconnected node_id=1
+5:45PM ERR NATS client exiting node_id=1
+5:45PM INF 127.0.0.1:4221 - rid:21 - Route connection created from=nats node_id=1
+5:45PM INF 127.0.0.1:63344 - rid:12 - Route connection created from=nats node_id=2
+5:45PM INF 127.0.0.1:4221 - rid:22 - Route connection created from=nats node_id=1
+5:45PM INF 127.0.0.1:63345 - rid:13 - Route connection created from=nats node_id=2
+5:45PM ERR NATS client disconnected node_id=2
+5:45PM ERR NATS client exiting node_id=2
+5:45PM INF 127.0.0.1:63346 - rid:23 - Route connection created from=nats node_id=1
+5:45PM INF 127.0.0.1:4222 - rid:14 - Route connection created from=nats node_id=2
+5:45PM INF 127.0.0.1:4222 - rid:14 - Router connection closed: Duplicate Route from=nats node_id=2
+5:45PM INF 127.0.0.1:63346 - rid:23 - Router connection closed: Client Closed from=nats node_id=1
+5:45PM ERR NATS client disconnected node_id=1
+5:45PM ERR NATS client exiting node_id=1
+5:45PM ERR NATS client disconnected node_id=2
+5:45PM ERR NATS client exiting node_id=2
+5:45PM INF Self is new JetStream cluster metadata leader from=nats node_id=1
+5:45PM INF JetStream cluster new metadata leader: marmot-node-1/e-marmot from=nats node_id=2
+5:45PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > zukzR8Ou' from=nats node_id=1
+5:45PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > HL3wiwqO' from=nats node_id=1
+5:45PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > zukzR8Ou' from=nats node_id=1
+5:45PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > HL3wiwqO' from=nats node_id=1
+5:45PM INF Streaming ready... node_id=2
+5:45PM INF Streaming ready... node_id=2
+5:45PM INF Listing tables to watch... node_id=2
+5:45PM INF Starting change data capture pipeline... node_id=2
+5:45PM INF Creating global change log table node_id=2
+5:45PM INF Creating trigger for users node_id=2
+5:45PM INF Creating trigger for users_tokens node_id=2
+5:45PM INF Creating trigger for groups node_id=2
+5:45PM INF Creating trigger for group_members node_id=2
+5:45PM INF Creating trigger for expenses node_id=2
+5:45PM INF Creating trigger for credits node_id=2
+5:45PM INF Creating trigger for debits node_id=2
+5:45PM INF Creating trigger for schema_migrations node_id=2
+5:45PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > sSORiKzf' from=nats node_id=1
+5:45PM ERR NATS client disconnected node_id=1
+5:45PM ERR NATS client exiting node_id=1
+5:45PM INF Streaming ready... node_id=1
+5:45PM INF Streaming ready... node_id=1
+5:45PM INF Listing tables to watch... node_id=1
+5:45PM INF Starting change data capture pipeline... node_id=1
+5:45PM INF Creating global change log table node_id=1
+5:45PM INF Creating trigger for users_tokens node_id=1
+5:45PM INF Creating trigger for groups node_id=1
+5:45PM INF Creating trigger for group_members node_id=1
+5:45PM INF Creating trigger for expenses node_id=1
+5:45PM INF Creating trigger for credits node_id=1
+5:45PM INF Creating trigger for debits node_id=1
+5:45PM INF Creating trigger for schema_migrations node_id=1
+5:45PM INF Creating trigger for users node_id=1
+5:45PM INF JetStream cluster new consumer leader for '$G > marmot-changes-c-1 > gTLB9bqG' from=nats node_id=1
+
+
+
+
+
+
+^C18:06:19 erszcz @ x7 : ~/work/erszcz/staek (main *%)
+$ ^C
+18:06:19 erszcz @ x7 : ~/work/erszcz/staek (main *%)
+$
+Session Contents Restored on 26 Aug 2024 at 09:05
+Last login: Mon Aug 26 09:05:26 on ttys018
+09:05:28 erszcz @ x7 : ~/work/erszcz/staek (main)
+$
