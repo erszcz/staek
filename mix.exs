@@ -57,7 +57,26 @@ defmodule Staek.Umbrella.MixProject do
   defp aliases do
     [
       # run `mix setup` in all child apps
-      setup: ["cmd mix setup"]
+      setup: ["cmd mix setup"],
+      reset: [&reset/1],
+      start_desktop: [&start(:desktop, &1)],
+      start_web: [&start(:web, &1)]
     ]
+  end
+
+  defp reset(_args) do
+    ~S"""
+    RELEASE_NAME=web mix ecto.drop ;
+    RELEASE_NAME=desktop mix ecto.drop ;
+    RELEASE_NAME=web mix ecto.reset &&
+    cp _build/dev/lib/staek/db/staek_web.db _build/dev/lib/staek/db/staek_desktop.db &&
+    cp _build/dev/lib/staek/db/staek_web.db-shm _build/dev/lib/staek/db/staek_desktop.db-shm &&
+    cp _build/dev/lib/staek/db/staek_web.db-wal _build/dev/lib/staek/db/staek_desktop.db-wal
+    """
+    |> Mix.shell().cmd()
+  end
+
+  defp start(app, _args) when app in [:desktop, :web] do
+    Mix.shell().cmd("RELEASE_NAME=#{app} iex --sname #{app} -S mix")
   end
 end
