@@ -27,8 +27,8 @@
         </div>
       </header>
 
-      <div class="relative z-20 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end ml-auto">
-        <%= if @current_user do %>
+      <%= if @current_user do %>
+        <div class="relative z-0 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end ml-auto">
           <.dropdown
             text={@current_user.name}
             items={[
@@ -37,7 +37,9 @@
               %{text: "Log out", method: "delete", href: ~p"/users/log_out"}
             ]}
           />
-        <% else %>
+        </div>
+      <% else %>
+        <div class="relative z-20 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end ml-auto">
           <ul class="flex flex-rows gap-4">
             <li>
               <.link
@@ -56,8 +58,8 @@
               </.link>
             </li>
           </ul>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
     <%= @inner_content %>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.phoenix.min.js">
