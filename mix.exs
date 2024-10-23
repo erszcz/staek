@@ -77,6 +77,8 @@ defmodule Staek.Umbrella.MixProject do
   end
 
   defp start(app, _args) when app in [:desktop, :web] do
-    Mix.shell().cmd("RELEASE_NAME=#{app} iex --sname #{app} -S mix")
+    Mix.shell().cmd(~s"""
+    RELEASE_NAME=#{app} iex --sname #{app} -S mix run --no-start -e '{:ok, _} = Application.ensure_all_started(:staek_#{app})'
+    """)
   end
 end
