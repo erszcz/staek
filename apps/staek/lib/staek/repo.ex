@@ -3,6 +3,31 @@ defmodule Staek.Repo do
     otp_app: :staek,
     adapter: Ecto.Adapters.SQLite3
 
+  @doc ~S"""
+  Perform operation on a specific database file, for example:
+
+  ```
+  Staek.Repo.with_dynamic_repo([database: "test1.sqlite"], fn ->
+    Staek.Repo.all(from p in "posts", select: {p.id, p.content})
+  end)
+  ```
+
+  See https://hexdocs.pm/ecto/replicas-and-dynamic-repositories.html#dynamic-repositories
+  """
+  def with_dynamic_repo(config, callback) do
+    default_dynamic_repo = get_dynamic_repo()
+    start_opts = [name: nil, pool_size: 1] ++ config
+    {:ok, repo} = __MODULE__.start_link(start_opts)
+
+    try do
+      __MODULE__.put_dynamic_repo(repo)
+      callback.()
+    after
+      __MODULE__.put_dynamic_repo(default_dynamic_repo)
+      Supervisor.stop(repo)
+    end
+  end
+
   @doc """
   Make a table (a _relation_ in SQL) a Conflict-free Replicated Relation.
 
