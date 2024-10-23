@@ -33,6 +33,7 @@
             text={@current_user.name}
             items={[
               %{text: "Settings", href: ~p"/users/settings"},
+              %{text: "Groups", href: ~p"/groups"},
               %{text: "Log out", method: "delete", href: ~p"/users/log_out"}
             ]}
           />
